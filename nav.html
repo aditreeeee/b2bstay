@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>B2BStays — Hotel B2B Operations Platform | Agent Bookings, City Ledger & Fleet</title>
+<meta name="description" content="B2BStays is the all-in-one B2B operations platform for hotels. Manage travel agent bookings, city ledger, commissions, fleet, vendor coordination and WhatsApp campaigns in one place.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="B2BStays — Hotel B2B Operations Platform">
+<meta property="og:description" content="One platform for every B2B workflow your hotel already runs: agent bookings, city ledger, commissions, fleet and vendor coordination.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="B2BStays — Hotel B2B Operations Platform">
+<meta name="twitter:description" content="One platform for every B2B workflow your hotel already runs: agent bookings, city ledger, commissions, fleet and vendor coordination.">
+<link rel="canonical" href="https://www.eglobe-solutions.com/b2bstays">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"B2BStays","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"All-in-one B2B operations platform for hotels covering agent bookings, city ledger, commissions, fleet and vendor coordination.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"eGlobe Solutions","url":"https://www.eglobe-solutions.com"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#0d1f3c;
+  --indigo:#1a6eb5;
+  --indigo-dark:#155d9e;
+  --sage:#60b8f5;
+  --ivory:#f4f8ff;
+  --cream:#e6f0fb;
+  --white:#ffffff;
+  --border:#a8cef0;
+  --muted:#3d5a7a;
+  --text:#0d1f3c;
+  --text-light:#1a3558;
+  --warm:#f97316;
+  --warm-dk:#ea6c0a;
+  --green:#22c55e;
+  /* ombre gradient stops */
+  --g-dark:#080f1e;
+  --g-mid:#0d1f3c;
+  --g-teal:#0e3a6e;
+  --g-sage:#1a6eb5;
+  --g-light:#60b8f5;
+  /* alternating section tints */
+  --sec-a:#f4f8ff;
+  --sec-b:#e6f0fb;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f6fefe;color:var(--text);overflow-x:hidden;line-height:1.6;font-size:15px}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;outline:none}
+img{display:block;max-width:100%}
+
+/* NAV PILL */
+.nav-pill{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:999;display:inline-flex;align-items:center;gap:16px;background:rgba(13,31,60,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(96,184,245,.2);border-radius:999px;padding:8px 8px 8px 24px;white-space:nowrap;animation:pill-in .5s .05s both}
+@keyframes pill-in{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.nav-pill-logo{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+.nav-pill-logo span{color:var(--sage)}
+.nav-pill-links{display:flex;gap:2px}
+.nav-pill-link{font-size:.78rem;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s,color .15s}
+.nav-pill-link:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav-pill-demo{background:var(--warm);color:#fff;font-size:.78rem;font-weight:700;padding:10px 22px;letter-spacing:.03em;transition:background .15s,box-shadow .15s;border:none;cursor:pointer;font-family:inherit;border-radius:999px;box-shadow:0 2px 12px rgba(249,115,22,.35)}
+.nav-pill-demo:hover{background:var(--warm-dk)}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,var(--g-dark) 0%,var(--g-mid) 40%,#0e3a6e 75%,#1a6eb5 100%);min-height:600px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 70% at 75% 50%,rgba(26,110,181,.32) 0%,transparent 70%),radial-gradient(ellipse 35% 45% at 10% 85%,rgba(96,184,245,.12) 0%,transparent 65%)}
+.hero-inner{width:100%;max-width:1280px;margin:0 auto;padding:100px 48px 72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--warm);flex-shrink:0}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,4.8vw,4.6rem);font-weight:900;color:var(--white);line-height:1.04;letter-spacing:-.03em;margin-bottom:24px}
+.hero h1 em{color:var(--sage);font-style:normal}
+.hero-sub{font-size:.96rem;color:rgba(255,255,255,.78);line-height:1.9;max-width:440px;margin-bottom:40px}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--warm);color:#fff;font-size:.86rem;font-weight:700;padding:15px 32px;border-radius:6px;letter-spacing:.03em;transition:background .15s,transform .18s,box-shadow .18s;box-shadow:0 4px 20px rgba(249,115,22,.4)}
+.hero-cta:hover{background:var(--warm-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.45)}
+.hero-cta-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.85);font-size:.84rem;font-weight:500;padding:14px 26px;border:1px solid rgba(255,255,255,.3);border-radius:6px;transition:all .15s;margin-left:12px}
+.hero-cta-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff;background:rgba(255,255,255,.06)}
+.hero-img-wrap{display:flex;align-items:center;justify-content:center;position:relative}
+.hero-img-frame{background:rgba(255,255,255,.06);border-radius:18px;padding:3px;box-shadow:0 40px 80px rgba(0,0,0,.45);backdrop-filter:blur(2px);animation:hero-img-in .9s .45s cubic-bezier(.22,.61,.36,1) both;position:relative}
+.hero-img-frame::before{content:'';position:absolute;inset:0;border-radius:18px;padding:3px;background:conic-gradient(from var(--angle,0deg),rgba(96,184,245,.12),rgba(26,110,181,.6),rgba(249,115,22,.35),rgba(26,110,181,.6),rgba(96,184,245,.12));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:border-spin 6s linear infinite;pointer-events:none}
+@property --angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes border-spin{to{--angle:360deg}}.hero-img-frame-inner{background:rgba(13,14,46,.85);border-radius:14px;overflow:hidden;padding:14px}
+.hero-img-frame img{width:100%;height:auto;object-fit:contain;display:block;border-radius:8px}
+@keyframes hero-img-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.trust{background:var(--forest);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;padding:14px 0}
+.trust-track{display:flex;width:max-content}
+.trust-item{display:flex;align-items:center;white-space:nowrap;padding:0 36px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.38);gap:36px}
+.trust-item::after{content:'';width:4px;height:4px;background:var(--warm);border-radius:50%;flex-shrink:0}
+@keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* WHAT MAKES US DIFFERENT */
+.diff-sec{background:var(--sec-b);padding:80px 48px}
+.diff-inner{max-width:1280px;margin:0 auto}
+.diff-head{text-align:center;margin-bottom:48px}
+.diff-head-ey{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--indigo);margin-bottom:14px}
+.diff-head h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:800;color:var(--forest);margin-bottom:14px;letter-spacing:-.025em}
+.diff-head p{font-size:.95rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8}
+.svg-defs{position:absolute;width:0;height:0;overflow:hidden}
+.diff-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.diff-grid .diff-card:nth-child(1){grid-column:1/3}
+.diff-grid .diff-card:nth-child(2){grid-column:3/5}
+.diff-grid .diff-card:nth-child(3){grid-column:5/7}
+.diff-grid .diff-card:nth-child(4){grid-column:2/4}
+.diff-grid .diff-card:nth-child(5){grid-column:4/6}
+.diff-card{padding:32px 24px;background:var(--forest);border:1px solid rgba(255,255,255,.08);border-radius:12px;display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s}
+.diff-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 55%);pointer-events:none;border-radius:inherit}
+.diff-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(13,14,46,.45),0 0 0 1px rgba(165,168,245,.4);border-color:rgba(165,168,245,.4)}
+.diff-card:hover .diff-card-icon svg{stroke:var(--sage)}
+.diff-card-icon{width:40px;height:40px;background:rgba(165,168,245,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0}
+.diff-card-icon svg{width:22px;height:22px;stroke:rgba(165,168,245,.7);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+.diff-card h3{font-size:.88rem;font-weight:700;line-height:1.45;margin-bottom:12px;color:#e8eaf5;letter-spacing:-.01em}
+.diff-card p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.8}
+.diff-cta{text-align:center;margin-top:40px}
+.btn-green{display:inline-flex;align-items:center;gap:8px;background:var(--warm);color:#fff;font-size:.86rem;font-weight:700;padding:14px 32px;border-radius:6px;letter-spacing:.03em;transition:background .15s,box-shadow .15s;box-shadow:0 4px 16px rgba(249,115,22,.3)}
+.btn-green:hover{background:var(--warm-dk);box-shadow:0 6px 24px rgba(249,115,22,.4)}
+
+/* CORE MODULES */
+.mods-sec{background:linear-gradient(160deg,var(--g-dark) 0%,var(--g-mid) 40%,#0e3a6e 75%,#1a6eb5 100%);padding:0}
+.mods-head{max-width:1280px;margin:0 auto;padding:72px 48px 0}
+.mods-head-ey{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:14px}
+.mods-head h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:10px;letter-spacing:-.025em}
+.mods-head p{font-size:.92rem;color:rgba(255,255,255,.7);line-height:1.75}
+.mods-tab-bar{border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);margin-top:32px;overflow-x:auto}
+.mods-tab-bar-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex}
+.mod-tab{display:flex;flex-direction:column;align-items:center;gap:10px;padding:22px 28px;cursor:pointer;border-bottom:2px solid transparent;min-width:120px;transition:all .15s;flex:1}
+.mod-tab svg{width:28px;height:28px;stroke:rgba(255,255,255,.7);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .15s}
+.mod-tab-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);text-align:center;line-height:1.3;transition:color .15s}
+.mod-tab.active,.mod-tab:hover{border-bottom-color:var(--sage)}
+.mod-tab.active svg,.mod-tab:hover svg{stroke:var(--sage)}
+.mod-tab.active .mod-tab-label,.mod-tab:hover .mod-tab-label{color:var(--white)}
+.mod-panels{position:relative}
+.mod-panel{display:none;grid-template-columns:1fr 1fr;min-height:480px}
+.mod-panel.active{display:grid}
+.mod-panel-img{overflow:hidden;background:rgba(255,255,255,.04)}
+.mod-panel-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.mod-panel-body{padding:48px 56px;display:flex;flex-direction:column;justify-content:center}
+.mod-panel-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--sage);margin-bottom:16px}
+.mod-panel-body h3{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:800;color:var(--white);line-height:1.1;margin-bottom:16px}
+.mod-panel-body p{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.85;max-width:420px}
+
+/* SOLVE / WORKFLOW */
+.solve-sec{background:var(--sec-a);padding:80px 48px}
+.solve-inner{max-width:1280px;margin:0 auto}
+.solve-top{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:48px}
+.solve-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid rgba(26,110,181,.25);background:rgba(26,110,181,.07);border-radius:100px;font-size:.7rem;font-weight:600;color:var(--indigo);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.solve-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:var(--forest);line-height:1.08;margin-bottom:16px;letter-spacing:-.025em}
+.solve-h em{color:var(--indigo);font-style:normal}
+.solve-sub{font-size:.92rem;color:var(--text-light);line-height:1.85;max-width:400px}
+.solve-checks{display:flex;flex-direction:column;gap:14px;padding-top:40px}
+.solve-check{display:flex;align-items:flex-start;gap:12px;font-size:.88rem;font-weight:500;color:var(--forest);line-height:1.55}
+.solve-check-dot{width:18px;height:18px;background:rgba(26,110,181,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.solve-check-dot::after{content:'';width:6px;height:6px;background:var(--indigo);border-radius:50%}
+/* UI MOCKUP PANELS */
+.solve-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.solve-card-light{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0;overflow:hidden;box-shadow:0 4px 24px rgba(30,31,94,.06)}
+.solve-card-dark{background:var(--forest);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:0;overflow:hidden;box-shadow:0 4px 24px rgba(13,14,46,.3)}
+.card-titlebar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(0,0,0,.07)}
+.card-titlebar-dk{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.card-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.card-title{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card-title-dk{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.card-body{padding:20px}
+.ui-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:7px;margin-bottom:6px;background:var(--sec-a);border:1px solid var(--border)}
+.ui-row-dk{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:7px;margin-bottom:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07)}
+.ui-row-label{font-size:.8rem;font-weight:600;color:var(--forest)}
+.ui-row-label-dk{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.85)}
+.ui-row-sub{font-size:.7rem;color:var(--muted);margin-top:1px}
+.ui-row-sub-dk{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:1px}
+.ui-badge{display:inline-block;padding:3px 9px;border-radius:100px;font-size:.65rem;font-weight:700;letter-spacing:.04em}
+.ui-badge.green{background:rgba(34,197,94,.12);color:#15803d}
+.ui-badge.amber{background:rgba(249,115,22,.12);color:#c2410c}
+.ui-badge.sage{background:rgba(85,88,232,.12);color:var(--indigo)}
+.ui-badge.white{background:rgba(255,255,255,.15);color:rgba(255,255,255,.85)}
+.ui-status{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.ui-status-dk{display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(255,255,255,.5);margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)}
+.spin{width:10px;height:10px;border:1.5px solid var(--indigo);border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+.spin.dk{border-color:rgba(255,255,255,.4);border-top-color:transparent}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* WHO IT'S FOR */
+.for-sec{background:linear-gradient(160deg,var(--g-dark) 0%,var(--g-mid) 35%,#0e3a6e 70%,#1a6eb5 100%);padding:0 48px}
+.for-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:0;align-items:stretch;position:relative}
+.for-inner::after{content:'';position:absolute;left:340px;top:0;bottom:0;width:1px;background:rgba(255,255,255,.12)}
+.for-sticky{padding:0;height:100%;align-self:stretch}
+.for-sticky-inner{position:sticky;top:80px;padding:64px 48px 64px 0;will-change:transform}
+.for-sticky-eyebrow{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--sage);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.for-sticky-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--sage);flex-shrink:0}
+.for-sticky h2{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,4.2vw,3.9rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.for-sticky h2 em{color:var(--sage);font-style:normal}
+.for-sticky p{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.85}
+.for-rows{display:flex;flex-direction:column;gap:16px;padding-left:64px;padding-top:64px;padding-bottom:64px}
+.for-row{display:grid;grid-template-columns:72px 1fr;gap:0;padding:36px 32px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);box-shadow:0 2px 12px rgba(0,0,0,.15);align-items:start;transition:transform .22s,box-shadow .22s,border-color .22s,background .22s}
+.for-row:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.25);border-color:rgba(165,168,245,.5);background:rgba(255,255,255,.2)}
+.for-row-num{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:900;color:rgba(255,255,255,.15);line-height:1;letter-spacing:-.04em;transition:color .35s,filter .35s;padding-top:2px;filter:blur(1px)}
+.for-row:hover .for-row-num{color:var(--sage)}
+.for-row-content{padding-left:12px}
+.for-row-type{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.for-row-type::before{content:'';display:block;width:20px;height:2px;background:var(--sage);flex-shrink:0}
+.for-row-content h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.18;letter-spacing:-.01em;margin-bottom:10px}
+.for-row-content p{font-size:.86rem;color:rgba(255,255,255,.88);line-height:1.8;max-width:460px;margin-bottom:20px}
+.for-row-replaces-label{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.7);margin-bottom:8px}
+.for-row-replaces-pills{display:flex;flex-wrap:wrap;gap:7px}
+.for-row-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border:1px solid rgba(255,255,255,.3);font-size:.73rem;font-weight:500;color:rgba(255,255,255,.9);background:rgba(255,255,255,.08);transition:background .18s,border-color .18s,color .18s}
+.for-row-pill::before{content:'↗';font-size:.62rem;color:var(--sage);opacity:.7;transition:color .18s,opacity .18s}
+.for-row-pill:hover{background:var(--sage);border-color:var(--sage);color:var(--forest)}
+.for-row-pill:hover::before{color:var(--forest);opacity:1}
+
+/* FAQ */
+.faq-sec{background:var(--sec-a);padding:80px 48px}
+.faq-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.faq-hd{position:sticky;top:80px}
+.faq-hd-ey{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--indigo);margin-bottom:16px}
+.faq-hd h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.9rem);font-weight:900;color:var(--forest);line-height:1.08;letter-spacing:-.025em;margin-bottom:16px}
+.faq-hd p{font-size:.88rem;color:var(--muted);line-height:1.85}
+.faq-hd-cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--indigo);border-bottom:1px solid rgba(85,88,232,.25);padding-bottom:2px;transition:color .15s,border-color .15s}
+.faq-hd-cta:hover{color:var(--forest);border-color:var(--forest)}
+.faq-list{display:flex;flex-direction:column;counter-reset:faq;min-height:420px}
+.faq-item{border-bottom:1px solid var(--border);counter-increment:faq;transition:background .2s}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-item.open{background:rgba(85,88,232,.04)}
+.faq-item.open+.faq-item{border-top:none}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 16px;font-size:.9rem;font-weight:600;color:var(--forest);text-align:left;transition:color .18s;font-family:inherit}
+.faq-q::before{content:counter(faq,decimal-leading-zero);font-size:.65rem;font-weight:700;color:rgba(85,88,232,.3);letter-spacing:.05em;flex-shrink:0;width:22px}
+.faq-item.open .faq-q{color:var(--indigo)}
+.faq-q:hover{color:var(--indigo)}
+.faq-ico{width:24px;height:24px;flex-shrink:0;border-radius:50%;border:1px solid var(--border);position:relative;transition:transform .25s,background .2s,border-color .2s}
+.faq-item.open .faq-ico{background:var(--indigo);border-color:var(--indigo)}
+.faq-ico::before,.faq-ico::after{content:'';position:absolute;background:var(--muted);border-radius:2px;transition:opacity .25s,background .18s}
+.faq-ico::before{width:10px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-ico::after{width:1.5px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-item.open .faq-ico::before,.faq-item.open .faq-ico::after{background:#fff}
+.faq-q[aria-expanded="true"] .faq-ico{transform:rotate(45deg)}
+.faq-a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+.faq-item.open .faq-a-wrap{grid-template-rows:1fr}
+.faq-a-inner{overflow:hidden}
+.faq-a{font-size:.86rem;color:var(--muted);line-height:1.85;padding:0 16px 20px 50px;opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .25s;pointer-events:none}
+.faq-item.open .faq-a{opacity:1;transform:translateY(0);pointer-events:auto}
+
+/* FINAL CTA */
+.cta-sec{background:var(--forest);padding:80px 48px;position:relative;overflow:hidden}
+.cta-sec::before{content:'B2B';position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:clamp(10rem,18vw,20rem);font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;letter-spacing:-.05em}
+.cta-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:72px;align-items:center;position:relative;z-index:1}
+.cta-stats{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap}
+.cta-stat{display:flex;flex-direction:column;gap:2px}
+.cta-stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--sage);line-height:1;letter-spacing:-.03em}
+.cta-stat-l{font-size:.7rem;color:rgba(255,255,255,.5);font-weight:500;text-transform:uppercase;letter-spacing:.1em}
+.cta-h{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:900;color:#fff;line-height:1.06;letter-spacing:-.025em}
+.cta-h em{color:var(--sage);font-style:normal}
+.cta-sub{font-size:.92rem;color:rgba(255,255,255,.65);line-height:1.85;margin-top:16px;max-width:460px}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-end;flex-shrink:0}
+.btn-forest{display:inline-flex;align-items:center;gap:8px;background:var(--warm);color:#fff;font-size:.86rem;font-weight:700;padding:15px 32px;border-radius:6px;letter-spacing:.03em;transition:background .15s,box-shadow .15s;box-shadow:0 4px 20px rgba(249,115,22,.4)}
+.btn-forest:hover{background:var(--warm-dk);box-shadow:0 8px 28px rgba(249,115,22,.45)}
+.btn-outline-f{display:inline-flex;align-items:center;background:transparent;color:rgba(255,255,255,.8);font-size:.84rem;font-weight:600;padding:14px 28px;border:1px solid rgba(255,255,255,.25);border-radius:6px;transition:all .15s}
+.btn-outline-f:hover{border-color:rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.06)}
+
+/* BOTTOM STRIP */
+.bottom-strip{background:var(--forest);border-top:1px solid rgba(255,255,255,.07);padding:20px 48px}
+.bottom-strip-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.bs-logo{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:800;color:rgba(255,255,255,.85)}
+.bs-logo span{color:var(--sage)}
+.bs-links{display:flex;gap:24px}
+.bs-links a{font-size:.72rem;color:rgba(255,255,255,.75);transition:color .15s}
+.bs-links a:hover{color:#fff}
+.bs-copy{font-size:.72rem;color:rgba(255,255,255,.65)}
+
+/* PAGE LOAD PROGRESS BAR */
+.progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--indigo),var(--sage));z-index:9999;transition:width .1s linear;pointer-events:none}
+
+/* MODULE PANEL image zoom */
+.mod-panel-img img{transition:transform .6s cubic-bezier(.22,.61,.36,1),opacity .3s}
+.mod-panel.active .mod-panel-img img{transform:scale(1)}
+.mod-panel-img img{transform:scale(1.06)}
+
+/* MODULE PANEL body slide-in */
+.mod-panel-body{transition:opacity .45s .1s cubic-bezier(.22,.61,.36,1),transform .45s .1s cubic-bezier(.22,.61,.36,1)}
+.mod-panel.entering .mod-panel-body{opacity:0;transform:translateX(20px)}
+.mod-panel.active .mod-panel-body{opacity:1;transform:translateX(0)}
+
+/* MODULE TAB active indicator dot */
+.mod-tab{position:relative}
+.mod-tab.active::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--sage);border-radius:50%}
+/* AUTO-ADVANCE PROGRESS BAR */
+.mod-progress{height:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
+.mod-progress-fill{height:100%;background:var(--sage);width:0%;animation:none}
+@keyframes mod-fill{from{width:0%}to{width:100%}}
+.mod-progress-fill.running{animation:mod-fill 4s linear forwards}
+
+/* TYPEWRITER cursor */
+.typewriter-cursor{display:inline-block;width:3px;height:.85em;background:var(--sage);margin-left:4px;vertical-align:middle;animation:blink .8s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+/* CYCLING WORD */
+.tw-cycle{color:var(--sage);font-style:normal;border-right:3px solid var(--sage);padding-right:4px}
+.tw-comma{color:var(--white);font-style:normal}
+
+/* COUNTER number */
+.diff-stat{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:6px}
+
+/* ANIMATIONS */
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* Stagger children */
+.stagger > *{opacity:0;transform:translateY(22px);transition:opacity .5s cubic-bezier(.22,.61,.36,1),transform .5s cubic-bezier(.22,.61,.36,1)}
+.stagger.visible > *:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
+.stagger.visible > *:nth-child(2){opacity:1;transform:none;transition-delay:.15s}
+.stagger.visible > *:nth-child(3){opacity:1;transform:none;transition-delay:.25s}
+.stagger.visible > *:nth-child(4){opacity:1;transform:none;transition-delay:.35s}
+.stagger.visible > *:nth-child(5){opacity:1;transform:none;transition-delay:.45s}
+
+/* Hero text fade-in on load */
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero-eyebrow{animation:fade-up .7s .1s both}
+.hero h1{animation:fade-up .8s .2s both}
+.hero-sub{animation:fade-up .7s .35s both}
+.hero-cta,.hero-cta-ghost{animation:fade-up .6s .5s both}
+.hero-mods{animation:fade-up .7s .4s both}
+
+/* #2 eyebrow line pulse */
+@keyframes eyebrow-pulse{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:.5;transform:scaleX(.6)}}
+.hero-eyebrow::before{animation:eyebrow-pulse 2.4s ease-in-out 1.2s infinite}
+
+/* Button hover lift */
+.btn-green,.btn-forest,.hero-cta{transition:background .15s,transform .18s,box-shadow .18s}
+.btn-green:hover,.btn-forest:hover,.hero-cta:hover{transform:translateY(-2px)}
+
+/* #5 diff card icon bounce on hover */
+@keyframes icon-bounce{0%{transform:scale(1)}30%{transform:scale(1.28) rotate(-8deg)}60%{transform:scale(.92) rotate(4deg)}80%{transform:scale(1.06)}100%{transform:scale(1)}}
+.diff-card:hover .diff-card-icon{animation:icon-bounce .45s cubic-bezier(.22,.61,.36,1)}
+
+/* #6 active module tab glow */
+.mod-tab.active{background:rgba(165,168,245,.08);border-radius:8px 8px 0 0}
+
+/* #7 module tag per-panel accent colours */
+.mod-panel[data-content="0"] .mod-panel-tag{color:#a5f3fc}
+.mod-panel[data-content="1"] .mod-panel-tag{color:#86efac}
+.mod-panel[data-content="2"] .mod-panel-tag{color:#fde68a}
+.mod-panel[data-content="3"] .mod-panel-tag{color:#93c5fd}
+.mod-panel[data-content="4"] .mod-panel-tag{color:#f9a8d4}
+.mod-panel[data-content="5"] .mod-panel-tag{color:#fdba74}
+
+/* #8 dark UI card slow pulse */
+@keyframes card-pulse{0%,100%{box-shadow:0 4px 24px rgba(13,14,46,.3)}50%{box-shadow:0 8px 36px rgba(85,88,232,.22),0 0 0 1px rgba(165,168,245,.15)}}
+.solve-card-dark{animation:card-pulse 3.5s ease-in-out infinite}
+
+/* #9 escalating badge blink */
+@keyframes badge-blink{0%,100%{opacity:1}50%{opacity:.4}}
+.solve-card-dark .ui-badge[style*="Escalating"],.escalating-badge{animation:badge-blink 1.4s ease-in-out infinite}
+
+/* #10 for-row-num blur sharpens on hover */
+.for-row:hover .for-row-num{color:var(--sage);filter:blur(0)}
+
+/* #11 for-row-pill alternating colours */
+.for-row-replaces-pills .for-row-pill:nth-child(odd){border-color:rgba(165,168,245,.35)}
+.for-row-replaces-pills .for-row-pill:nth-child(even){border-color:rgba(249,115,22,.3)}
+
+/* #12 FAQ heading left border */
+.faq-hd{border-left:3px solid var(--indigo);padding-left:20px}
+
+/* #13 FAQ icon spring rotation */
+.faq-ico{transition:transform .4s cubic-bezier(.34,1.56,.64,1),background .2s,border-color .2s}
+
+/* #14 CTA ghost text slow drift */
+@keyframes ghost-drift{0%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(-50%) translateX(-32px)}100%{transform:translateY(-50%) translateX(0)}}
+.cta-sec::before{animation:ghost-drift 18s ease-in-out infinite}
+
+/* #15 CTA buttons "or" divider */
+.cta-btns{position:relative}
+.cta-btns::after{content:'or';position:absolute;left:50%;transform:translateX(-50%);top:50%;margin-top:-9px;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
+
+/* Diff card hover — handled in .diff-card block above */
+
+/* Module tab bar slide indicator */
+.mod-tab{transition:all .2s}
+
+/* Hero mod hover */
+.hero-mod{cursor:default}
+
+
+/* Solve card hover */
+.solve-card-light,.solve-card-dark{transition:transform .2s,box-shadow .2s}
+.solve-card-light:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(30,31,94,.1)}
+.solve-card-dark:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(13,14,46,.35)}
+
+/* #3 Marquee item hover shine + dot */
+.trust-item{position:relative;overflow:hidden;transition:color .2s,letter-spacing .2s}
+.trust-item:hover{color:rgba(255,255,255,.8);letter-spacing:.09em}
+.trust-item::after{width:6px;height:6px}
+.trust-item::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .4s}
+.trust-track:not(:hover) .trust-item:hover::before{left:140%}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner,.solve-top,.cta-inner{grid-template-columns:1fr}
+  .hero-img-wrap{display:none}
+  .diff-grid{grid-template-columns:1fr 1fr}
+  .diff-grid .diff-card:nth-child(n){grid-column:auto}
+  .diff-card{border-bottom:1px solid var(--border)}
+  .mod-panel{grid-template-columns:1fr}
+  .mod-panel-img{aspect-ratio:16/9}
+  .mod-panel-body{padding:48px}
+  .solve-cards{grid-template-columns:1fr}
+  .solve-card-light{border-right:none;border-bottom:1px solid var(--border)}
+  .for-inner{grid-template-columns:1fr}
+  .for-inner::after{display:none}
+  .for-sticky-inner{position:static;padding:48px 0 28px}
+  .for-rows{padding-left:0}
+  .cta-btns{align-items:flex-start}
+}
+@media(max-width:640px){
+  .nav-pill{padding:7px 7px 7px 18px}
+  .hero-inner,.diff-sec,.mods-head,.solve-sec,.cta-sec,.bottom-strip{padding-left:20px;padding-right:20px}
+  .for-sec{padding-left:20px;padding-right:20px}
+  .diff-grid{grid-template-columns:1fr}
+  .diff-grid .diff-card:nth-child(n){grid-column:auto}
+  .for-rows{padding-left:0;padding-top:24px;padding-bottom:60px;gap:12px}
+  .for-row{grid-template-columns:52px 1fr;padding:24px 20px}
+  .mods-tab-bar-inner{padding:0 20px}
+  .mod-panel-body{padding:32px 20px}
+  .bottom-strip-inner{flex-direction:column;gap:14px;text-align:center}
+  .bs-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- PILL NAV -->
+  <nav class="nav-pill">
+    <span class="nav-pill-logo"><span>eGlobe</span> B2BStays</span>
+    <div class="nav-pill-links">
+      <a href="#why-b2bstays" class="nav-pill-link">Why Us</a>
+      <a href="#platform" class="nav-pill-link">Platform</a>
+      <a href="#how-it-works" class="nav-pill-link">How It Works</a>
+      <a href="#who-its-for" class="nav-pill-link">Who It's For</a>
+      <a href="#faq" class="nav-pill-link">FAQ</a>
+    </div>
+    <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="nav-pill-demo">BOOK A DEMO</a>
+  </nav>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">B2B Hotel Operations Platform</div>
+      <h1 id="heroHeadline"></h1>
+      <p class="hero-sub">Behind every hotel that sells through agents is a team managing a hundred moving parts: bookings, dues, cab requests, vendor calls, campaigns, often across spreadsheets and WhatsApp. B2BStays puts all of it in one place.</p>
+      <div>
+        <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="hero-cta">GET STARTED FREE &rarr;</a>
+        <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="hero-cta-ghost">BOOK A DEMO</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-frame">
+        <div class="hero-img-frame-inner">
+          <video src="b2b.mp4" autoplay muted loop playsinline style="width:100%;height:auto;display:block;border-radius:8px"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="trust">
+  <div class="trust-track" id="marqueeTrack">
+    <span class="trust-item">Independent Hotels</span>
+    <span class="trust-item">Hotel Chains</span>
+    <span class="trust-item">Destination Management Companies</span>
+    <span class="trust-item">Corporate Travel Desks</span>
+    <span class="trust-item">Fleet Operators</span>
+    <span class="trust-item">Travel Agents</span>
+    <span class="trust-item">Group Booking Teams</span>
+    <span class="trust-item">Revenue Managers</span>
+    <span class="trust-item">Front Office Teams</span>
+    <span class="trust-item">Operations Managers</span>
+  </div>
+</div>
+
+<!-- WHAT MAKES US DIFFERENT -->
+<section id="why-b2bstays" class="diff-sec">
+  <div class="diff-inner">
+    <div class="diff-head reveal">
+      <div class="diff-head-ey">Why B2BStays</div>
+      <h2>What Makes Us Different</h2>
+      <p>Most hotel software was built for direct bookings and then stretched to cover B2B. The gaps show up every month-end.</p>
+    </div>
+    <div class="diff-grid stagger">
+      <div class="diff-card">
+        <div class="diff-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 17h7M17 14v7"/></svg></div>
+        <h3>Built for B2B, not adapted from B2C.</h3>
+        <p>Every module, from agent bookings to city ledger, was built around how hotel B2B actually runs. Not patched onto a generic PMS.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Agent-facing and hotel-facing. Both.</h3>
+        <p>Agents submit requests through their own portal. The hotel team reviews, confirms and tracks without back-and-forth over WhatsApp or email.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Commission tracked at booking, not month-end.</h3>
+        <p>Every confirmed booking logs its commission instantly. No reconciliation runs. No disputes. One click settles via NEFT.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <h3>Vendors escalate themselves. No chasing.</h3>
+        <p>Service requests go to your vendor list automatically. No reply in the window and the next vendor is contacted, staff alerted. Zero manual follow-up.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>All modules share the same data.</h3>
+        <p>A confirmed booking updates the ledger, triggers commission tracking and notifies fleet automatically. No re-entry, no sync delays, no data silos.</p>
+      </div>
+    </div>
+    <div class="diff-cta">
+      <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="btn-green">TALK TO US &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- CORE MODULES -->
+<section id="platform" class="mods-sec">
+  <div class="mods-head reveal">
+    <div class="mods-head-ey">Platform Modules</div>
+    <h2>What's Inside</h2>
+    <p>Six modules, each built for a specific job, all sharing the same data.</p>
+  </div>
+  <div class="mods-tab-bar">
+    <div class="mods-tab-bar-inner">
+      <div class="mod-tab active" data-tab="0">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="mod-tab-label">Agent<br>Bookings</span>
+      </div>
+      <div class="mod-tab" data-tab="1">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span class="mod-tab-label">City<br>Ledger</span>
+      </div>
+      <div class="mod-tab" data-tab="2">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span class="mod-tab-label">Commission<br>Payable</span>
+      </div>
+      <div class="mod-tab" data-tab="3">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span class="mod-tab-label">Fleet &<br>Transport</span>
+      </div>
+      <div class="mod-tab" data-tab="4">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span class="mod-tab-label">Marketing<br>Campaigns</span>
+      </div>
+      <div class="mod-tab" data-tab="5">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        <span class="mod-tab-label">Vendor<br>Management</span>
+      </div>
+    </div>
+  </div>
+  <div class="mod-progress"><div class="mod-progress-fill" id="modProgressFill"></div></div>
+  <div class="mod-panels">
+    <div class="mod-panel active" data-content="0">
+      <div class="mod-panel-img"><img src="imgs/img-travel agents.png" alt="Agent Bookings"></div>
+      <div class="mod-panel-body">
+        <div class="mod-panel-tag">Agent Bookings</div>
+        <h3>Every B2B booking in one place.</h3>
+        <p>All travel agent bookings, across channels, in a single view. Filter by property, city, channel or commission status. Export to CSV or sync to the PMS.</p>
+      </div>
+    </div>
+    <div class="mod-panel" data-content="1">
+      <div class="mod-panel-img"><img src="imgs/img- city ledger.png" alt="City Ledger"></div>
+      <div class="mod-panel-body">
+        <div class="mod-panel-tag">City Ledger</div>
+        <h3>Corporate credit accounts, always current.</h3>
+        <p>Live credit balances for every corporate and travel agent account. Balance due, unassigned credits and downloadable statements, all in one screen. The spreadsheet is gone.</p>
+      </div>
+    </div>
+    <div class="mod-panel" data-content="2">
+      <div class="mod-panel-img"><img src="imgs/img-travel agents.png" alt="Commission"></div>
+      <div class="mod-panel-body">
+        <div class="mod-panel-tag">Commission Payable</div>
+        <h3>Commission settled before the follow-up call.</h3>
+        <p>Every confirmed booking logs its commission automatically. Review, approve and settle via NEFT in one action. Manual statements and end-of-month disputes become a thing of the past.</p>
+      </div>
+    </div>
+    <div class="mod-panel" data-content="3">
+      <div class="mod-panel-img"><img src="imgs/img- fleet.png" alt="Fleet"></div>
+      <div class="mod-panel-body">
+        <div class="mod-panel-tag">Fleet & Transport</div>
+        <h3>Hour-by-hour fleet visibility.</h3>
+        <p>Vehicles, drivers and the full fleet calendar in one view, with bookings, holds and buffers. Every trip tracked from airport pickup to checkout drop, with nothing falling through.</p>
+      </div>
+    </div>
+    <div class="mod-panel" data-content="4">
+      <div class="mod-panel-img"><img src="imgs/img- marketing.png" alt="Marketing"></div>
+      <div class="mod-panel-body">
+        <div class="mod-panel-tag">Marketing Campaigns</div>
+        <h3>Campaigns that actually reach the right agents.</h3>
+        <p>WhatsApp and email campaigns to segmented agent and corporate lists, with a template library, marketing calendar and full delivery tracking. No third-party tools, no extra subscriptions.</p>
+      </div>
+    </div>
+    <div class="mod-panel" data-content="5">
+      <div class="mod-panel-img"><img src="imgs/img-vendor.png" alt="Vendors"></div>
+      <div class="mod-panel-body">
+        <div class="mod-panel-tag">Vendor Management</div>
+        <h3>Vendor coordination that runs itself.</h3>
+        <p>Service requests go to vendors automatically. If no reply comes in time, the next vendor in line is contacted and staff are alerted. No WhatsApp chains, no missed handoffs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLVE / CHAT -->
+<section id="how-it-works" class="solve-sec">
+  <div class="solve-inner">
+    <div class="solve-top">
+      <div class="reveal-left">
+        <div class="solve-pill">See It In Action</div>
+        <h2 class="solve-h">This is what a<br>normal day looks<br>like when it <em>actually works.</em></h2>
+        <p class="solve-sub">Two workflows from a real hotel day: a group booking confirmed with commission logged automatically, and a vendor pickup arranged without a single phone call.</p>
+      </div>
+      <div class="solve-checks reveal-right">
+        <div class="solve-check"><span class="solve-check-dot"></span>No calls. No follow-up messages. No spreadsheet updates.</div>
+        <div class="solve-check"><span class="solve-check-dot"></span>Everything logged, tracked and visible to the whole team in real time.</div>
+        <div class="solve-check"><span class="solve-check-dot"></span>The same process holds for every booking, every vendor, every shift.</div>
+      </div>
+    </div>
+    <div class="solve-cards stagger">
+      <div class="solve-card-light">
+        <div class="card-titlebar">
+          <div class="card-dot" style="background:#ef4444"></div>
+          <div class="card-dot" style="background:#f59e0b"></div>
+          <div class="card-dot" style="background:#22c55e"></div>
+          <span class="card-title" style="margin-left:8px">Agent Bookings</span>
+        </div>
+        <div class="card-body">
+          <div class="ui-row">
+            <div><div class="ui-row-label">Sharma Travel · 12 Deluxe</div><div class="ui-row-sub">Nov 15–18 · ₹1.89L</div></div>
+            <span class="ui-badge green">Confirmed</span>
+          </div>
+          <div class="ui-row">
+            <div><div class="ui-row-label">Mehta Holidays · 8 Superior</div><div class="ui-row-sub">Nov 20–22 · ₹84,000</div></div>
+            <span class="ui-badge amber">Quote Sent</span>
+          </div>
+          <div class="ui-row">
+            <div><div class="ui-row-label">Global DMC · MICE · 40 pax</div><div class="ui-row-sub">Dec 5–8 · Pending rate</div></div>
+            <span class="ui-badge sage">Reviewing</span>
+          </div>
+          <div class="ui-status"><div class="spin"></div>Commission logged automatically for confirmed bookings</div>
+        </div>
+      </div>
+      <div class="solve-card-dark">
+        <div class="card-titlebar-dk">
+          <div class="card-dot" style="background:rgba(255,255,255,.15)"></div>
+          <div class="card-dot" style="background:rgba(255,255,255,.15)"></div>
+          <div class="card-dot" style="background:rgba(255,255,255,.15)"></div>
+          <span class="card-title-dk" style="margin-left:8px">Fleet &amp; Vendor</span>
+        </div>
+        <div class="card-body">
+          <div class="ui-row-dk">
+            <div><div class="ui-row-label-dk">Airport Pickup · SUV · 6 AM</div><div class="ui-row-sub-dk">Nov 15 · Terminal 2 · Sharma group</div></div>
+            <span class="ui-badge white">Assigned</span>
+          </div>
+          <div class="ui-row-dk">
+            <div><div class="ui-row-label-dk">Checkout Drop · Tempo · 11 AM</div><div class="ui-row-sub-dk">Nov 18 · 12 pax · Mehta group</div></div>
+            <span class="ui-badge white">Vendor A</span>
+          </div>
+          <div class="ui-row-dk">
+            <div><div class="ui-row-label-dk">City Transfer · Sedan · 3 PM</div><div class="ui-row-sub-dk">Nov 18 · Awaiting vendor confirm</div></div>
+            <span class="ui-badge escalating-badge" style="background:rgba(249,115,22,.2);color:#fb923c">Escalating</span>
+          </div>
+          <div class="ui-status-dk"><div class="spin dk"></div>Next vendor in chain notified automatically</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="who-its-for" class="for-sec">
+  <div class="for-inner">
+
+    <!-- STICKY LEFT HEADING -->
+    <div class="for-sticky">
+      <div class="for-sticky-inner">
+        <div class="for-sticky-eyebrow">Who It's Built For</div>
+        <h2>Built for the teams that make <em>hotel B2B work.</em></h2>
+        <p>Ten agents or five hundred corporate accounts, the patchwork of spreadsheets, group chats and manual processes that holds things together today has a better alternative.</p>
+      </div>
+    </div>
+
+    <!-- SCROLLING ROWS -->
+    <div class="for-rows">
+      <div class="for-row reveal">
+        <div class="for-row-num">01</div>
+        <div class="for-row-content">
+          <div class="for-row-type">Independent Hotels</div>
+          <h3>Run B2B like a chain. Without the overhead.</h3>
+          <p>Agent relationships, outstanding commissions, vendor coordination, all from one screen. No IT team, no custom setup, no months-long onboarding.</p>
+          <div class="for-row-replaces-label">Replaces</div>
+          <div class="for-row-replaces-pills">
+            <span class="for-row-pill">WhatsApp groups</span>
+            <span class="for-row-pill">Excel ledgers</span>
+            <span class="for-row-pill">Manual commission statements</span>
+          </div>
+        </div>
+      </div>
+      <div class="for-row reveal">
+        <div class="for-row-num">02</div>
+        <div class="for-row-content">
+          <div class="for-row-type">Hotel Chains</div>
+          <h3>One view across every property and market.</h3>
+          <p>Agent bookings, city ledger balances and vendor status across every property, all in one view. Region managers stay across the picture. Nothing gets lost between hotels.</p>
+          <div class="for-row-replaces-label">Replaces</div>
+          <div class="for-row-replaces-pills">
+            <span class="for-row-pill">Property-level silos</span>
+            <span class="for-row-pill">Monthly consolidation reports</span>
+            <span class="for-row-pill">Cross-hotel email threads</span>
+          </div>
+        </div>
+      </div>
+      <div class="for-row reveal">
+        <div class="for-row-num">03</div>
+        <div class="for-row-content">
+          <div class="for-row-type">DMCs &amp; Travel Agents</div>
+          <h3>Submit, track and settle. All in one portal.</h3>
+          <p>Agents get their own portal to submit group requests, check booking status and download commission statements. No phone calls to chase an update, no waiting on an email reply.</p>
+          <div class="for-row-replaces-label">Replaces</div>
+          <div class="for-row-replaces-pills">
+            <span class="for-row-pill">Email RFQs</span>
+            <span class="for-row-pill">Phone confirmations</span>
+            <span class="for-row-pill">PDF commission reports</span>
+          </div>
+        </div>
+      </div>
+      <div class="for-row reveal">
+        <div class="for-row-num">04</div>
+        <div class="for-row-content">
+          <div class="for-row-type">Corporate Accounts</div>
+          <h3>Credit accounts your finance team can actually trust.</h3>
+          <p>Live city ledger with balance due, downloadable statements and credit limit visibility. Finance teams close the month faster, and the surprises stop showing up on day 31.</p>
+          <div class="for-row-replaces-label">Replaces</div>
+          <div class="for-row-replaces-pills">
+            <span class="for-row-pill">Shared spreadsheets</span>
+            <span class="for-row-pill">End-of-month reconciliation</span>
+            <span class="for-row-pill">Billing disputes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-sec">
+  <div class="faq-inner">
+    <div class="faq-hd reveal-left">
+      <div class="faq-hd-ey">Common Questions</div>
+      <h2>Everything you want to know before the demo.</h2>
+      <p>Most questions get answered in the first 10 minutes of a walkthrough. Here are the ones we hear most often.</p>
+      <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="faq-hd-cta">Book a walkthrough &rarr;</a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true"><span>Is this built specifically for hotels, or is it a generic CRM?</span><span class="faq-ico"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><div class="faq-a">B2BStays is built entirely around hotel B2B workflows: agent bookings, city ledger, commission payable, fleet, vendor coordination and WhatsApp campaigns. It is not a generic CRM adapted for hospitality. Every module reflects how hotel operations actually work.</div></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>We already use a PMS. Does B2BStays replace it or sit alongside it?</span><span class="faq-ico"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><div class="faq-a">B2BStays handles the B2B layer (agent relationships, commissions, fleet and vendors) that most PMSs were never designed for. It sits alongside your PMS and fills the gaps, or can replace the spreadsheets and WhatsApp chains your team currently uses instead of a proper B2B system.</div></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>How long does setup take?</span><span class="faq-ico"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><div class="faq-a">Most properties are handling real bookings within the first week. Setup is done with you, not handed off as a manual. The demo walkthrough covers your specific workflow so there are no surprises when you go live.</div></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Does it work for hotel chains with multiple properties?</span><span class="faq-ico"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><div class="faq-a">Yes. Agent bookings, ledger balances and vendor status are visible across all properties from one view. Region managers get a consolidated picture without needing to chase individual property teams.</div></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>What does the free demo actually show?</span><span class="faq-ico"></span></button>
+        <div class="faq-a-wrap"><div class="faq-a-inner"><div class="faq-a">A 30-minute live walkthrough of the modules relevant to your operation. No slides, no generic pitch. You see the real platform with scenarios drawn from your own workflow. No commitment required.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div class="reveal-left">
+      <h2 class="cta-h">One platform.<br>Every B2B workflow.<br><em>Finally under control.</em></h2>
+      <p class="cta-sub">A 30-minute walkthrough is enough to see what changes when bookings, commissions, fleet, marketing and vendor coordination all run from the same place.</p>
+    </div>
+    <div class="cta-btns reveal-right">
+      <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="btn-forest">BOOK A FREE DEMO &rarr;</a>
+      <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="btn-outline-f">GET STARTED FREE</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM STRIP -->
+<div class="bottom-strip">
+  <div class="bottom-strip-inner">
+    <div class="bs-logo">B2B<span>Stays</span></div>
+    <div class="bs-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="bs-copy">&copy; 2025 B2BStays. All rights reserved.</div>
+  </div>
+</div>
+
+<script>
+// MODULE TABS with image zoom + body slide + auto-advance
+(function(){
+  const tabs = Array.from(document.querySelectorAll('.mod-tab'));
+  const panels = Array.from(document.querySelectorAll('.mod-panel'));
+  const modsSection = document.querySelector('.mods-sec');
+  let current = 0;
+  let paused = false;
+  let timer;
+
+  const fill = document.getElementById('modProgressFill');
+
+  function resetProgress(){
+    if(!fill) return;
+    fill.classList.remove('running');
+    void fill.offsetWidth;
+    fill.classList.add('running');
+  }
+
+  function switchTo(idx){
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active','entering'));
+    tabs[idx].classList.add('active');
+    const panel = panels[idx];
+    panel.classList.add('entering');
+    void panel.offsetWidth;
+    panel.classList.add('active');
+    setTimeout(() => panel.classList.remove('entering'), 600);
+    current = idx;
+    resetProgress();
+  }
+
+  function next(){
+    if(!paused) switchTo((current + 1) % tabs.length);
+  }
+
+  function startTimer(){ timer = setInterval(next, 4000); }
+  function stopTimer(){ clearInterval(timer); if(fill) fill.classList.remove('running'); }
+
+  // click to manually switch + reset timer
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      stopTimer();
+      switchTo(i);
+      startTimer();
+    });
+  });
+
+  // pause on hover over entire module section
+  if(modsSection){
+    modsSection.addEventListener('mouseenter', () => {
+      paused = true;
+      if(fill) fill.style.animationPlayState = 'paused';
+    });
+    modsSection.addEventListener('mouseleave', () => {
+      paused = false;
+      if(fill) fill.style.animationPlayState = 'running';
+    });
+  }
+
+  startTimer();
+})();
+
+// INFINITE MARQUEE
+(function(){
+  const track = document.getElementById('marqueeTrack');
+  if(!track) return;
+  const clone = track.innerHTML;
+  track.innerHTML = clone + clone;
+  const totalW = track.scrollWidth / 2;
+  let pos = 0;
+  let paused = false;
+  track.addEventListener('mouseenter', () => paused = true);
+  track.addEventListener('mouseleave', () => paused = false);
+  function step(){
+    if(!paused){
+      pos += 0.6;
+      if(pos >= totalW) pos = 0;
+      track.style.transform = `translateX(-${pos}px)`;
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+
+// SCROLL REVEAL
+(function(){
+  const selectors = '.reveal, .reveal-left, .reveal-right, .stagger';
+  const els = document.querySelectorAll(selectors);
+  if(!els.length) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(el => obs.observe(el));
+})();
+
+// PAGE LOAD PROGRESS BAR
+(function(){
+  const bar = document.getElementById('progressBar');
+  if(!bar) return;
+  // Animate to 80% on load, then 100% and fade
+  let w = 0;
+  const interval = setInterval(() => {
+    w = Math.min(w + Math.random() * 15, 80);
+    bar.style.width = w + '%';
+    if(w >= 80) clearInterval(interval);
+  }, 120);
+  window.addEventListener('load', () => {
+    bar.style.width = '100%';
+    setTimeout(() => { bar.style.opacity = '0'; }, 400);
+  });
+})();
+
+// CYCLING HERO HEADLINE
+(function(){
+  const el = document.getElementById('heroHeadline');
+  if(!el) return;
+  const words = ['Hotels,','Chains,','DMCs,','Agents,','Transport,','Corporates,'];
+  let idx = 0;
+  el.innerHTML = `B2B Operations. For<br><span class="tw-cycle"></span><br><em>one platform.</em>`;
+  const cycleEl = el.querySelector('.tw-cycle');
+
+  function typeWord(word, cb){
+    let i = 0;
+    cycleEl.textContent = '';
+    cycleEl.style.opacity = '1';
+    const t = setInterval(() => {
+      cycleEl.textContent = word.slice(0, ++i);
+      if(i >= word.length){ clearInterval(t); setTimeout(cb, 2400); }
+    }, 60);
+  }
+
+  function eraseWord(cb){
+    let text = cycleEl.textContent;
+    const t = setInterval(() => {
+      text = text.slice(0, -1);
+      cycleEl.textContent = text;
+      if(!text.length){ clearInterval(t); cb(); }
+    }, 35);
+  }
+
+  function cycle(){
+    typeWord(words[idx], () => {
+      eraseWord(() => {
+        idx = (idx + 1) % words.length;
+        cycle();
+      });
+    });
+  }
+
+  setTimeout(cycle, 400);
+})();
+
+// ANIMATED COUNTERS on diff cards
+(function(){
+  const counters = document.querySelectorAll('.counter');
+  if(!counters.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      if(target === 0){ el.textContent = '0'; obs.unobserve(el); return; }
+      let start = 0;
+      const duration = 900;
+      const step = 16;
+      const increment = target / (duration / step);
+      const timer = setInterval(() => {
+        start += increment;
+        if(start >= target){ el.textContent = target; clearInterval(timer); }
+        else { el.textContent = Math.floor(start); }
+      }, step);
+      obs.unobserve(el);
+    });
+  }, {threshold: 0.5});
+  counters.forEach(c => obs.observe(c));
+})();
+
+// FOR SECTION — sticky text parallax
+(function(){
+  const sec = document.querySelector('.for-sec');
+  const inner = document.querySelector('.for-sticky-inner');
+  if(!sec || !inner) return;
+  function update(){
+    const rect = sec.getBoundingClientRect();
+    const secH = sec.offsetHeight;
+    // progress 0 (section top at viewport top) → 1 (section bottom at viewport top)
+    const progress = Math.max(0, Math.min(1, -rect.top / secH));
+    const drift = progress * 60; // max 60px upward drift
+    inner.style.transform = `translateY(-${drift}px)`;
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+
+// NAV PILL — shrink slightly on scroll
+(function(){
+  const pill = document.querySelector('.nav-pill');
+  if(!pill) return;
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 60){
+      pill.style.background = 'rgba(13,31,60,.97)';
+      pill.style.boxShadow = '0 8px 32px rgba(0,0,0,.25)';
+    } else {
+      pill.style.background = 'rgba(13,31,60,.85)';
+      pill.style.boxShadow = 'none';
+    }
+  }, {passive:true});
+})();
+
+// DIFF CARDS — tilt on mouse move
+(function(){
+  document.querySelectorAll('.diff-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `translateY(-4px) rotateX(${(-y*8).toFixed(1)}deg) rotateY(${(x*8).toFixed(1)}deg)`;
+      card.style.transition = 'transform 0.05s';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform .3s ease, background .2s, box-shadow .2s';
+    });
+  });
+})();
+
+// FOR CARDS — tilt on mouse move
+(function(){
+  document.querySelectorAll('.for-row').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `translateY(-3px) rotateX(${(-y*5).toFixed(1)}deg) rotateY(${(x*5).toFixed(1)}deg)`;
+      card.style.transition = 'transform 0.05s';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform .3s ease, box-shadow .22s, border-color .22s, background .22s';
+    });
+  });
+})();
+
+// HERO BUTTONS — ripple effect
+(function(){
+  document.querySelectorAll('.hero-cta, .hero-cta-ghost, .btn-green, .btn-forest, .nav-pill-demo').forEach(btn => {
+    btn.addEventListener('click', function(e){
+      const r = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:0;height:0;left:${e.clientX-r.left}px;top:${e.clientY-r.top}px;transform:translate(-50%,-50%);pointer-events:none;animation:ripple .5s ease-out forwards`;
+      this.style.position = 'relative';
+      this.style.overflow = 'hidden';
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 500);
+    });
+  });
+})();
+
+// ACTIVE SECTION HIGHLIGHT — for-row fades inactive rows
+(function(){
+  const rows = document.querySelectorAll('.for-row');
+  rows.forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      rows.forEach(r => { if(r !== row) r.style.opacity = '0.5'; });
+    });
+    row.addEventListener('mouseleave', () => {
+      rows.forEach(r => r.style.opacity = '');
+    });
+  });
+})();
+
+// FAQ ACCORDION
+(function(){
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      if(item.classList.contains('open')) return;
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    });
+  });
+})();
+
+// CURSOR GLOW on dark sections
+(function(){
+  const glow = document.createElement('div');
+  glow.style.cssText = 'position:fixed;width:320px;height:320px;border-radius:50%;pointer-events:none;z-index:0;opacity:0;transition:opacity .3s;background:radial-gradient(circle,rgba(85,88,232,.12) 0%,transparent 70%)';
+  document.body.appendChild(glow);
+  const darkSections = ['.hero','.mods-sec','.solve-sec','.for-sec'];
+  let inDark = false;
+  window.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX - 160 + 'px';
+    glow.style.top = e.clientY - 160 + 'px';
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    inDark = !!el && !!el.closest(darkSections.join(','));
+    glow.style.opacity = inDark ? '1' : '0';
+  }, {passive:true});
+})();
+</script>
+<style>
+@keyframes ripple{to{width:300px;height:300px;opacity:0}}
+.diff-card{transform-style:preserve-3d}
+.for-row{transform-style:preserve-3d}
+</style>
+</body>
+</html>

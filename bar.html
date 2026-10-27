@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>B2BStays</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --lc:#7c3aed;
+  --lc2:#a78bfa;
+  --lc3:#ede9ff;
+  --lc4:#f5f3ff;
+  --pink:#f3e8ff;
+  --fg:#0f0a1e;
+  --fg2:#3d3558;
+  --fg3:#7a7090;
+  --border:#ece8f8;
+  --r:14px;
+}
+html,body{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:var(--fg);overflow-x:hidden;line-height:1.55;font-size:15px}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 0% 30%,#dce8f8 0%,transparent 55%),radial-gradient(ellipse at 100% 0%,#fde8ee 0%,transparent 45%),radial-gradient(ellipse at 100% 80%,#e8e0f5 0%,transparent 50%),radial-gradient(ellipse at 30% 100%,#eaf0fb 0%,transparent 50%),#f7f8fd;pointer-events:none}
+
+/* ── PILL NAV ── */
+.nav-outer{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:200}
+.nav-pill{display:flex;align-items:center;gap:24px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(200,185,255,.3);border-radius:100px;padding:8px 10px 8px 22px;box-shadow:0 2px 20px rgba(100,60,200,.08)}
+.nav-logo{font-size:.92rem;font-weight:800;color:var(--fg);letter-spacing:-.02em;white-space:nowrap}
+.nav-logo em{color:var(--lc);font-style:normal}
+.nav-links{display:flex;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--fg2);text-decoration:none;padding:6px 13px;border-radius:100px;transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--lc3);color:var(--lc)}
+.nav-actions{display:flex;gap:6px}
+.nb{font-size:.8rem;font-weight:600;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;transition:all .18s}
+.nb-ghost{background:transparent;color:var(--fg2)}
+.nb-ghost:hover{background:rgba(0,0,0,.04)}
+.nb-solid{background:var(--fg);color:#fff}
+.nb-solid:hover{background:#2a1860}
+
+/* ── HERO — full bleed ── */
+.hero{width:100%;min-height:100vh;display:flex;align-items:stretch;overflow:hidden;background:#fff}
+.hero-left{flex:0 0 44%;padding:0 56px 0 80px;display:flex;flex-direction:column;justify-content:center;background:#fff}
+.hero h1{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:800;line-height:1.08;letter-spacing:-.04em;color:var(--fg);margin-bottom:16px}
+.hero h1 .dim{color:var(--fg3)}
+.hero-for{display:block;font-size:.66em;font-weight:600;letter-spacing:.06em;color:var(--fg3);margin-top:.55em;font-family:'Inter',sans-serif}
+.hero-for-word{color:var(--lc)}
+.hero-for-cur{display:inline-block;width:2px;height:.9em;background:var(--lc);vertical-align:middle;margin-left:2px;animation:blink .75s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-sub{font-size:.97rem;color:var(--fg2);line-height:1.72;max-width:390px;margin-bottom:34px}
+.hero-btns{display:flex;gap:10px}
+.hb{font-size:.88rem;font-weight:600;padding:13px 26px;border-radius:100px;border:none;cursor:pointer;transition:all .18s}
+.hb-dark{background:var(--fg);color:#fff}
+.hb-dark:hover{background:#2a1860}
+.hb-line{background:transparent;color:var(--fg2);border:1.5px solid #d8d0f0}
+.hb-line:hover{border-color:var(--lc2);color:var(--lc)}
+.hero-right{flex:1;position:relative;overflow:hidden;background:linear-gradient(140deg,#e8e0ff 0%,#c4b5fd 35%,#d8b4fe 65%,#f0e6ff 100%)}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.hero-marquee{position:absolute;bottom:0;left:0;right:0;z-index:10;background:rgba(255,255,255,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(200,185,255,.3);padding:12px 0;overflow:hidden}
+
+/* ── MARQUEE ── */
+.mq-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;overflow:hidden;background:#fff}
+.mq-track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+.mq-item{display:inline-flex;align-items:center;gap:7px;padding:0 28px;font-size:.8rem;font-weight:500;color:var(--fg2);white-space:nowrap}
+.mq-item .material-icons-round{font-size:15px;color:var(--lc2)}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:#d8d0f0;flex-shrink:0;margin:0 4px}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 64px}
+.bg-lilac{background:transparent}
+
+/* ── STATS — plain, no box ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);padding:64px 0 72px}
+.stat-c{padding:0 0 0 28px;border-left:2px solid var(--border)}
+.stat-c:first-child{padding-left:0;border-left:none}
+.stat-n{font-size:2.6rem;font-weight:900;letter-spacing:-.05em;color:var(--fg);line-height:1}
+.stat-n .sup{font-size:1.4rem;color:var(--lc);vertical-align:super}
+.stat-l{font-size:.82rem;color:var(--fg3);margin-top:5px;line-height:1.4}
+
+/* ── SECTION HEADING ── */
+.s-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lc);margin-bottom:10px}
+.s-h{font-size:clamp(1.8rem,2.8vw,2.5rem);font-weight:800;letter-spacing:-.035em;line-height:1.12;color:var(--fg);margin-bottom:10px}
+.s-h .hl{color:var(--lc)}
+.s-sub{font-size:.95rem;color:var(--fg2);line-height:1.72;max-width:520px;margin-bottom:40px}
+
+/* ── BENTO GRID ── */
+/* 3 columns: col1 wide, col2, col3 equal */
+.bento{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:12px;margin-bottom:80px}
+.bc{background:#fff;border:1px solid rgba(200,190,255,.35);border-radius:16px;padding:0;position:relative;overflow:hidden;transition:box-shadow .22s,transform .22s;box-shadow:0 2px 12px rgba(100,60,200,.06)}
+.bc:hover{box-shadow:0 10px 36px rgba(124,58,237,.13);transform:translateY(-2px)}
+.bc.span2{grid-column:span 2}
+.bc.tall{grid-row:span 2}
+/* card inner layout */
+.bc-body{padding:28px 26px}
+.bc h3{font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:7px;letter-spacing:-.01em}
+.bc p{font-size:.82rem;color:var(--fg2);line-height:1.65}
+/* hover arrow — subtle pink lilac */
+.bc-arr{position:absolute;bottom:20px;right:20px;width:28px;height:28px;border-radius:50%;background:rgba(196,181,253,.22);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.bc-arr .material-icons-round{font-size:14px;color:var(--lc)}
+.bc:hover .bc-arr{opacity:1}
+/* large card visual area */
+.bc-visual{width:100%;overflow:hidden;border-radius:10px 10px 0 0;background:linear-gradient(145deg,#f0ebff,#e4d9ff);display:flex;align-items:flex-end;justify-content:center;min-height:160px;padding:20px 20px 0}
+/* mini UI mockups inside bento */
+.mini-ui{background:#fff;border-radius:10px 10px 0 0;padding:14px 16px;width:100%;box-shadow:0 -4px 20px rgba(91,33,182,.08);border:1px solid var(--border);border-bottom:none}
+.mini-ui-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f3eeff}
+.mini-ui-row:last-child{border-bottom:none}
+.mini-ui-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.mini-ui-label{font-size:.68rem;font-weight:500;color:var(--fg2);flex:1}
+.mini-ui-val{font-size:.68rem;font-weight:700;color:var(--fg)}
+.mini-ui-badge{font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:100px}
+/* chart bars */
+.mini-chart{display:flex;align-items:flex-end;gap:4px;height:70px;padding:0 4px}
+.bar{border-radius:4px 4px 0 0;flex:1}
+
+/* ── WHAT'S POSSIBLE ── */
+.wp-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px}
+.wp-link{font-size:.82rem;font-weight:600;color:var(--lc);text-decoration:none}
+.wp-link:hover{text-decoration:underline}
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:stretch}
+.cc{border-radius:20px;padding:0;min-height:320px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.cc:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.cc.cc-bookings{background:#f0ecff}
+.cc.cc-ledger{background:#ecfdf5}
+.cc.cc-fleet{background:#fff7ed}
+.cc.cc-campaigns{background:#eff6ff}
+.cc.cc-bookings .cc-photo{background:#f0ecff}
+.cc.cc-ledger .cc-photo{background:#ecfdf5}
+.cc.cc-fleet .cc-photo{background:#fff7ed}
+.cc.cc-campaigns .cc-photo{background:#eff6ff}
+.cc.cc-bookings .cc-name{color:#5b21b6}
+.cc.cc-bookings .cc-arr{background:rgba(124,58,237,.1);color:#7c3aed}
+.cc.cc-ledger .cc-name{color:#065f46;font-weight:900}
+.cc.cc-ledger .cc-sub{color:#374151;font-weight:400}
+.cc.cc-ledger .cc-arr{background:rgba(16,185,129,.12);color:#059669}
+.cc.cc-fleet .cc-name{color:#92400e}
+.cc.cc-fleet .cc-arr{background:rgba(245,158,11,.12);color:#d97706}
+.cc.cc-campaigns .cc-name{color:#1e40af}
+.cc.cc-campaigns .cc-arr{background:rgba(59,130,246,.12);color:#2563eb}
+.cc-top{padding:22px 22px 16px;flex-shrink:0}
+.cc-name{font-size:1.55rem;font-weight:900;letter-spacing:-.05em;color:var(--fg);margin-bottom:8px;line-height:1}
+.cc-sub{font-size:.78rem;font-weight:400;color:var(--fg2);line-height:1.55;max-width:200px}
+.cc-photo{flex:1;min-height:150px;overflow:hidden;border-radius:0 0 20px 20px;position:relative}
+.cc-photo img{width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;transition:transform .4s ease;padding:0 8px}
+.cc:hover .cc-photo img{transform:scale(1.04)}
+.cc-arr{position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:rgba(0,0,0,.4);text-decoration:none}
+
+/* ── BUILT FOR / TRUST SECTION ── */
+.trust-sec{padding:80px 0}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+/* left box — pastel bg, animated iso illustration */
+.iso-box{border-radius:20px;padding:0;display:flex;align-items:center;justify-content:center;min-height:420px;position:relative;overflow:hidden;background:transparent}
+.iso-canvas{width:100%;height:420px;display:flex;align-items:center;justify-content:center;position:relative}
+#isoCanvas{border-radius:20px;filter:drop-shadow(0 8px 32px rgba(124,58,237,.18))}
+/* right accordion list */
+.trust-heading{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;letter-spacing:-.035em;line-height:1.2;margin-bottom:48px}
+.trust-heading .line1{display:block;color:var(--fg3);font-weight:700}
+.trust-heading .line2{display:block;color:var(--fg)}
+.acc-list{display:flex;flex-direction:column}
+.acc-item{border-top:1px solid var(--border);padding:20px 0;cursor:pointer;min-height:72px}
+.acc-item:last-child{border-bottom:1px solid var(--border)}
+.acc-title{font-size:1rem;font-weight:600;color:var(--fg3);transition:color .18s;line-height:1.3}
+.acc-item.active .acc-title,.acc-item:hover .acc-title{color:var(--fg);font-weight:700}
+.acc-body{font-size:.85rem;color:var(--fg2);line-height:1.65;height:0;overflow:hidden;transition:height .3s ease,opacity .3s ease;opacity:0;margin-top:0}
+.acc-item.active .acc-body{height:52px;opacity:1;margin-top:6px}
+/* fixed height so layout doesn't shift */
+.acc-list-wrap{min-height:340px}
+
+/* ── CTA ── */
+.cta-sec{padding:88px 0 96px}
+.cta-card{background:var(--fg);border-radius:32px;padding:72px 64px;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(124,58,237,.35) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(167,139,250,.2) 0%,transparent 55%),radial-gradient(ellipse at 70% 90%,rgba(196,181,253,.15) 0%,transparent 50%);pointer-events:none}
+.cta-card::after{content:'B2B';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:clamp(8rem,14vw,16rem);font-weight:800;letter-spacing:-.05em;color:rgba(255,255,255,.03);line-height:1;pointer-events:none;user-select:none}
+.cta-inner{display:grid;grid-template-columns:1fr auto;gap:72px;align-items:center;position:relative;z-index:1}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lc2);margin-bottom:20px}
+.cta-eyebrow::before{content:'';width:20px;height:1.5px;background:var(--lc2);border-radius:2px}
+.cta-h{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;letter-spacing:-.04em;line-height:1.06;color:#fff;margin-bottom:14px}
+.cta-h em{color:var(--lc2);font-style:normal}
+.cta-sub{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.78;max-width:460px}
+.cta-btns{display:flex;flex-direction:column;gap:12px;flex-shrink:0;align-items:stretch;min-width:200px}
+.cb{font-size:.86rem;font-weight:700;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap;text-align:center;text-decoration:none;display:inline-block}
+.cb-dark{background:#fff;color:var(--fg);box-shadow:0 4px 20px rgba(255,255,255,.15)}
+.cb-dark:hover{background:var(--lc3);box-shadow:0 8px 28px rgba(167,139,250,.3)}
+.cb-line{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.8)}
+.cb-line:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
+.cta-trust{display:flex;align-items:center;gap:16px;margin-top:28px}
+.cta-trust-dot{width:6px;height:6px;border-radius:50%;background:rgba(167,139,250,.5);flex-shrink:0}
+.cta-trust span{font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.5}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{flex-direction:column}
+  .hero-left{flex:none;padding:120px 24px 40px}
+  .hero-right{flex:none;width:100%;height:55vw}
+  .wrap{padding:0 24px}
+  .bento{grid-template-columns:1fr}
+  .bc.span2,.bc.tall{grid-column:span 1;grid-row:span 1}
+  .stats{grid-template-columns:1fr 1fr;gap:24px}
+  .stat-c{border-left:none;padding-left:0;border-top:2px solid var(--border);padding-top:16px}
+  .stat-c:first-child{border-top:none;padding-top:0}
+  .cases{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr;gap:36px}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV PILL -->
+<div class="nav-outer">
+  <div class="nav-pill">
+    <div class="nav-logo"><em>eGlobe</em> B2BStays</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#who-its-for">Who It's For</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nb nb-ghost">Sign in</button>
+      <a href="https://www.eglobe-solutions.com/contact.html" class="nb nb-solid">Book a demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>Your hotel's B2B<br>operations, finally<br><span class="dim">under control.</span><span class="hero-for">For <span id="bar-t-word" class="hero-for-word"></span><span class="hero-for-cur"></span></span></h1>
+    <p class="hero-sub">B2BStays gives hotel teams a single place to manage travel agents, settle commissions, run transport, send campaigns and coordinate vendors.</p>
+    <div class="hero-btns">
+      <button class="hb hb-dark">Get started</button>
+      <button class="hb hb-line">Contact sales</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img">
+      <img src="b2b (1).png" alt="B2BStays Dashboard">
+    </div>
+  </div>
+  <!-- marquee pinned to bottom of hero -->
+  <div class="hero-marquee">
+    <div class="mq-track">
+    <span class="mq-item"><span class="material-icons-round">hotel</span>Agent Bookings</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">groups</span>Group Quotations</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">payments</span>Commission Payable</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">account_balance</span>City Ledger</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">inventory_2</span>Hotel Packages</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">directions_car</span>Transportation</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">campaign</span>Campaigns</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">chat</span>WhatsApp Messaging</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">star</span>Reputation</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">people</span>Vendor Management</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">notifications</span>Staff Alerts</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">bar_chart</span>Analytics</span><span class="mq-dot"></span>
+    <!-- duplicate -->
+    <span class="mq-item"><span class="material-icons-round">hotel</span>Agent Bookings</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">groups</span>Group Quotations</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">payments</span>Commission Payable</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">account_balance</span>City Ledger</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">inventory_2</span>Hotel Packages</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">directions_car</span>Transportation</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">campaign</span>Campaigns</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">chat</span>WhatsApp Messaging</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">star</span>Reputation</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">people</span>Vendor Management</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">notifications</span>Staff Alerts</span><span class="mq-dot"></span>
+    <span class="mq-item"><span class="material-icons-round">bar_chart</span>Analytics</span>
+  </div>
+  </div>
+</section>
+
+<!-- BENTO — features with mini UI mockups inside -->
+<div id="features" style="background:transparent;padding:48px 0 32px">
+<div class="wrap">
+  <div style="background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.7);border-radius:32px;padding:48px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <div class="s-eyebrow">Platform</div>
+  <h2 class="s-h">Ten modules. Zero switching.<br><span class="hl">Everything connected.</span></h2>
+  <p class="s-sub">Each module works independently and shares data across the platform, so your front desk, accounts team and transport desk stay in sync.</p>
+
+  <div class="bento">
+
+    <!-- ROW 1: Agent Bookings + City Ledger -->
+    <div class="bc t2">
+      <div class="bc-visual" style="background:linear-gradient(160deg,#ede9ff,#ddd6fe);min-height:140px;padding:16px 16px 0;border-radius:12px 12px 0 0;margin:12px 12px 0">
+        <div class="mini-ui">
+          <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:8px">Agent Bookings</div>
+          <div class="mini-ui-row">
+            <div class="mini-ui-dot" style="background:#22c55e"></div>
+            <span class="mini-ui-label">Confirmed · 14 Nov · 4 rooms</span>
+            <span class="mini-ui-badge" style="background:#dcfce7;color:#15803d">Confirmed</span>
+          </div>
+          <div class="mini-ui-row">
+            <div class="mini-ui-dot" style="background:#f59e0b"></div>
+            <span class="mini-ui-label">Awaiting reply · 2 Suites</span>
+            <span class="mini-ui-badge" style="background:#fef3c7;color:#b45309">Pending</span>
+          </div>
+        </div>
+      </div>
+      <div class="bc-body">
+        <h3>Agent Bookings</h3>
+        <p>View and manage all bookings made by B2B travel agents across channels. Filter by property, city, channel and export to CSV.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <div class="bc t1">
+      <div class="bc-visual" style="min-height:140px;margin:12px 12px 0;border-radius:10px;overflow:hidden;padding:0">
+        <img src="imgs/img- city ledger.png" alt="City Ledger" style="width:100%;height:140px;object-fit:cover;object-position:center;display:block">
+      </div>
+      <div class="bc-body">
+        <h3>City Ledger</h3>
+        <p>Maintain credit accounts for corporates and travel agents. Real-time balance due, charges and downloadable statements.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <!-- ROW 2: Group Quotations + Commission Payable -->
+    <div class="bc t5">
+      <div class="bc-visual" style="background:linear-gradient(160deg,#ede9ff,#c4b5fd);min-height:140px;padding:16px 16px 0;border-radius:12px 12px 0 0;margin:12px 12px 0">
+        <div class="mini-ui">
+          <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin-bottom:8px">Group Quotations</div>
+          <div class="mini-ui-row">
+            <div class="mini-ui-dot" style="background:var(--lc2)"></div>
+            <span class="mini-ui-label">Group · 22 rooms · Corporate event</span>
+            <span class="mini-ui-badge" style="background:var(--lc3);color:var(--lc)">Negotiating</span>
+          </div>
+          <div class="mini-ui-row">
+            <div class="mini-ui-dot" style="background:#22c55e"></div>
+            <span class="mini-ui-label">8 rooms · Wedding · 18 Nov</span>
+            <span class="mini-ui-badge" style="background:#dcfce7;color:#15803d">Confirmed</span>
+          </div>
+        </div>
+      </div>
+      <div class="bc-body">
+        <h3>Group Quotations</h3>
+        <p>Handle group booking requests (10+ rooms). Reply with custom quotes, negotiate pricing and track status end-to-end.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <div class="bc t3">
+      <div class="bc-visual" style="min-height:140px;margin:12px 12px 0;border-radius:10px;overflow:hidden;padding:0">
+        <img src="imgs/img-travel agents.png" alt="Commission Payable" style="width:100%;height:140px;object-fit:cover;object-position:center;display:block">
+      </div>
+      <div class="bc-body">
+        <h3>Commission Payable</h3>
+        <p>Track all commissions owed to B2B agents. Settle per booking or bulk-pay all pending dues via NEFT.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <div class="bc t5 span2">
+      <div class="bc-visual" style="background:linear-gradient(160deg,#fdf4ff,#e9d5ff);min-height:140px;margin:12px 12px 0;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:20px">
+        <!-- donut chart: 847 sent (98.6%) vs 12 failed (1.4%) -->
+        <!-- circumference = 2π×36 ≈ 226.2; sent arc = 226.2×0.986 ≈ 223; failed = 3.2 -->
+        <svg width="90" height="90" viewBox="0 0 90 90" style="flex-shrink:0">
+          <circle cx="45" cy="45" r="36" fill="none" stroke="#ede9ff" stroke-width="10"/>
+          <!-- failed (red), drawn first so sent sits on top -->
+          <circle cx="45" cy="45" r="36" fill="none" stroke="#fca5a5" stroke-width="10"
+            stroke-dasharray="3.2 223" stroke-dashoffset="-223" stroke-linecap="round"/>
+          <!-- sent (purple) -->
+          <circle cx="45" cy="45" r="36" fill="none" stroke="#a78bfa" stroke-width="10"
+            stroke-dasharray="223 3.2" stroke-dashoffset="0" stroke-linecap="round"
+            transform="rotate(-90 45 45)"/>
+          <text x="45" y="41" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#0f0a1e">859</text>
+          <text x="45" y="53" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="500" fill="#7a7090">total</text>
+        </svg>
+        <!-- legend -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#7a7090;margin-bottom:2px">WhatsApp Campaign</div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <div style="width:8px;height:8px;border-radius:50%;background:#a78bfa;flex-shrink:0"></div>
+            <span style="font-size:.78rem;font-weight:700;color:#0f0a1e">847</span>
+            <span style="font-size:.72rem;color:#7a7090">Sent</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <div style="width:8px;height:8px;border-radius:50%;background:#fca5a5;flex-shrink:0"></div>
+            <span style="font-size:.78rem;font-weight:700;color:#0f0a1e">12</span>
+            <span style="font-size:.72rem;color:#7a7090">Failed</span>
+          </div>
+          <div style="font-size:.68rem;color:#a78bfa;font-weight:600;margin-top:2px">98.6% delivery rate</div>
+        </div>
+      </div>
+      <div class="bc-body">
+        <h3>Marketing &amp; Campaigns</h3>
+        <p>Send WhatsApp and email campaigns in bulk to travel agents and corporates. Includes template library, marketing calendar, content approval queue and AI prompt library.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <!-- ROW 3: two equal cards -->
+    <div class="bc t4">
+      <div class="bc-visual" style="min-height:140px;margin:12px 12px 0;border-radius:10px;overflow:hidden;padding:0">
+        <img src="imgs/img- fleet.png" alt="Transportation" style="width:100%;height:140px;object-fit:cover;object-position:center;display:block">
+      </div>
+      <div class="bc-body">
+        <h3>Transportation</h3>
+        <p>Hour-by-hour fleet calendar, cab bookings, vehicle allocation, fleet management and driver master.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <div class="bc t1">
+      <div class="bc-visual" style="min-height:140px;margin:12px 12px 0;border-radius:10px;overflow:hidden;padding:0">
+        <img src="imgs/img- packages.png" alt="Hotel Packages" style="width:100%;height:140px;object-fit:cover;object-position:center;display:block">
+      </div>
+      <div class="bc-body">
+        <h3>Hotel Packages</h3>
+        <p>Create and publish multi-day packages with itinerary, gallery and tiered pricing for B2B agents to book or quote.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+    <div class="bc t6">
+      <div class="bc-visual" style="min-height:140px;margin:12px 12px 0;border-radius:10px;overflow:hidden;padding:0">
+        <img src="imgs/img-vendor.png" alt="Vendor Management" style="width:100%;height:140px;object-fit:cover;object-position:center;display:block">
+      </div>
+      <div class="bc-body">
+        <h3>Vendor Management</h3>
+        <p>Route booking requests to vendors automatically with multi-attempt escalation and real-time staff alerts.</p>
+      </div>
+      <div class="bc-arr"><span class="material-icons-round">arrow_forward</span></div>
+    </div>
+
+  </div>
+  </div><!-- /pill card -->
+</div><!-- /wrap -->
+</div><!-- /gradient bg -->
+
+<!-- WHAT'S POSSIBLE — stats merged into header -->
+<div id="who-its-for" class="bg-lilac" style="padding:32px 0 80px">
+  <div class="wrap">
+    <div style="background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.7);border-radius:32px;padding:48px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <div style="margin-bottom:48px">
+      <div class="s-eyebrow">By department</div>
+      <h2 class="s-h">The right tool for every <span class="hl">hotel team</span></h2>
+    </div>
+    <div class="cases">
+      <div class="cc cc-bookings">
+        <div class="cc-top">
+          <div class="cc-arr">↗</div>
+          <div class="cc-name">Reservations</div>
+          <div class="cc-sub">Your reservations team handles agent bookings, group quotes and payment collection without a single email chain.</div>
+        </div>
+        <div class="cc-photo"><img src="imgs/img-travel agents.png" alt="Bookings"></div>
+      </div>
+      <div class="cc cc-ledger">
+        <div class="cc-top">
+          <div class="cc-arr">↗</div>
+          <div class="cc-name">Accounts</div>
+          <div class="cc-sub">Your accounts team sees every credit balance, charge and commission due in real time, no reconciliation needed.</div>
+        </div>
+        <div class="cc-photo"><img src="imgs/img- city ledger.png" alt="City Ledger"></div>
+      </div>
+      <div class="cc cc-fleet">
+        <div class="cc-top">
+          <div class="cc-arr">↗</div>
+          <div class="cc-name">Transport</div>
+          <div class="cc-sub">Your transport desk assigns vehicles, tracks trips and manages the full fleet from one live calendar.</div>
+        </div>
+        <div class="cc-photo"><img src="imgs/img- fleet.png" alt="Fleet"></div>
+      </div>
+      <div class="cc cc-campaigns">
+        <div class="cc-top">
+          <div class="cc-arr">↗</div>
+          <div class="cc-name">Marketing</div>
+          <div class="cc-sub">Your marketing team runs WhatsApp and email campaigns to agents without needing a separate broadcast tool.</div>
+        </div>
+        <div class="cc-photo"><img src="imgs/img- marketing.png" alt="Campaigns"></div>
+      </div>
+    </div>
+    </div><!-- /pill card -->
+  </div>
+</div>
+
+<!-- BUILT FOR HOTELS — Privy-style: animated iso left, accordion right -->
+<div class="wrap" style="padding-top:0;padding-bottom:80px">
+  <div class="trust-sec" style="padding:0">
+    <div style="background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.7);border-radius:32px;padding:48px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <div class="trust-grid">
+
+      <!-- LEFT: animated isometric illustration in pastel box -->
+      <div class="iso-box" id="isoBox">
+        <canvas id="isoCanvas" width="420" height="420" style="width:100%;height:100%"></canvas>
+      </div>
+
+      <!-- RIGHT: two-tone heading + accordion -->
+      <div>
+        <h2 class="trust-heading">
+          <span class="line1">Why hotels choose B2BStays.</span>
+          <span class="line2">Less admin. More control.</span>
+        </h2>
+        <div class="acc-list-wrap"><div class="acc-list" id="accList">
+          <div class="acc-item active" data-iso="whatsapp">
+            <div class="acc-title">No more chasing agents over WhatsApp</div>
+            <div class="acc-body">Bookings, quotes and commissions are handled inside the platform with a full audit trail.</div>
+          </div>
+          <div class="acc-item" data-iso="finance">
+            <div class="acc-title">Finance that closes itself</div>
+            <div class="acc-body">Ledger balances and commission dues update automatically. Settle in one click via NEFT.</div>
+          </div>
+          <div class="acc-item" data-iso="vendor">
+            <div class="acc-title">Vendors confirm, or the system escalates</div>
+            <div class="acc-body">Requests route to vendors automatically and escalate to backups on timeout, with staff alerts.</div>
+          </div>
+          <div class="acc-item" data-iso="reach">
+            <div class="acc-title">Reach every agent in minutes</div>
+            <div class="acc-body">Send WhatsApp and email campaigns from your hotel's own number with full delivery tracking.</div>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+    </div><!-- /pill card -->
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="wrap" style="padding-bottom:80px">
+  <div class="cta-sec" style="padding:0">
+  <div class="cta-card">
+    <div class="cta-inner">
+      <div>
+        <div class="cta-eyebrow">Get started today</div>
+        <div class="cta-h">One platform.<br>Every B2B workflow.<br><em>Finally under control.</em></div>
+        <div class="cta-sub">A 30-minute walkthrough is enough to see what changes when bookings, commissions, fleet and vendors all run from the same place.</div>
+        <div class="cta-trust">
+          <div class="cta-trust-dot"></div>
+          <span>No commitment required &nbsp;·&nbsp; Live walkthrough of the real platform &nbsp;·&nbsp; Setup done with you</span>
+        </div>
+      </div>
+      <div class="cta-btns">
+        <a href="https://www.eglobe-solutions.com/contact.html" class="cb cb-dark">Book a free demo →</a>
+        <a href="https://www.eglobe-solutions.com/contact.html" class="cb cb-line">Contact sales</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script>
+// ── ACCORDION ──
+const items = document.querySelectorAll('.acc-item');
+let autoTimer;
+
+function activateItem(el) {
+  items.forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  setMode(el.dataset.iso);
+}
+
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    clearInterval(autoTimer);
+    activateItem(item);
+    // restart auto after 6s idle
+    autoTimer = setInterval(cycleNext, 4000);
+  });
+});
+
+function cycleNext() {
+  const active = document.querySelector('.acc-item.active');
+  const all = [...items];
+  const next = all[(all.indexOf(active) + 1) % all.length];
+  activateItem(next);
+}
+autoTimer = setInterval(cycleNext, 4000);
+
+// ── DIAMOND / OCTAHEDRON CANVAS ──
+const canvas = document.getElementById('isoCanvas');
+const ctx = canvas.getContext('2d');
+const W = 420, H = 420;
+canvas.width = W; canvas.height = H;
+
+let currentMode = 'whatsapp';
+let animT = 0;
+let lastTime = 0;
+
+const modeBg = {
+  whatsapp: '#f0ecff',
+  finance:  '#f5f0ff',
+  vendor:   '#fdf0fb',
+  reach:    '#edf3ff'
+};
+let currentBg = modeBg.whatsapp;
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function lerpColor(a, b, t) {
+  const parse = c => [parseInt(c.slice(1,3),16), parseInt(c.slice(3,5),16), parseInt(c.slice(5,7),16)];
+  const ca = parse(a), cb = parse(b);
+  return `rgb(${Math.round(lerp(ca[0],cb[0],t))},${Math.round(lerp(ca[1],cb[1],t))},${Math.round(lerp(ca[2],cb[2],t))})`;
+}
+
+// 3D rotation helpers — true perspective rotation (not isometric)
+function rotX(p, a) { return { x: p.x, y: p.y*Math.cos(a)-p.z*Math.sin(a), z: p.y*Math.sin(a)+p.z*Math.cos(a) }; }
+function rotY(p, a) { return { x: p.x*Math.cos(a)+p.z*Math.sin(a), y: p.y, z: -p.x*Math.sin(a)+p.z*Math.cos(a) }; }
+function rotZ(p, a) { return { x: p.x*Math.cos(a)-p.y*Math.sin(a), y: p.x*Math.sin(a)+p.y*Math.cos(a), z: p.z }; }
+
+function project(p, scale) {
+  // simple orthographic — no perspective divide
+  return { x: W/2 + p.x * scale, y: H/2 - p.y * scale };
+}
+
+// Octahedron: 6 vertices (unit radius=1), 8 triangular faces
+function makeOctahedron() {
+  const verts = [
+    { x: 0,  y: 1,  z: 0  }, // top      — 0
+    { x: 1,  y: 0,  z: 0  }, // right    — 1
+    { x: 0,  y: 0,  z: 1  }, // front    — 2
+    { x:-1,  y: 0,  z: 0  }, // left     — 3
+    { x: 0,  y: 0,  z:-1  }, // back     — 4
+    { x: 0,  y:-1,  z: 0  }, // bottom   — 5
+  ];
+  const faces = [
+    [0,1,2], [0,2,3], [0,3,4], [0,4,1],
+    [5,2,1], [5,3,2], [5,4,3], [5,1,4],
+  ];
+  return { verts, faces };
+}
+
+// Face colors per mode — top half / bottom half tints
+const faceColors = {
+  whatsapp: [
+    ['#c4b5fd','#a78bfa','#9575f7','#b39af9', // top 4
+     '#ddd6fe','#c4b5fd','#b39af9','#d4cafe'], // bottom 4
+  ],
+  finance: [
+    ['#d8b4fe','#c084fc','#a855f7','#c57cfd',
+     '#ede9ff','#d8b4fe','#c084fc','#e6d4fe'],
+  ],
+  vendor: [
+    ['#fbb6ce','#f472b6','#ec4899','#f890be',
+     '#fce7f3','#fbb6ce','#f472b6','#fdd3e7'],
+  ],
+  reach: [
+    ['#bfdbfe','#60a5fa','#3b82f6','#7cb9fb',
+     '#eff6ff','#bfdbfe','#93c5fd','#dbeafe'],
+  ],
+};
+
+function drawOctahedron(t, mode) {
+  const octa = makeOctahedron();
+  let { verts, faces } = octa;
+
+  // ── Per-mode transform & motion ──
+  let ry = 0, rx = 0, rz = 0, yOff = 0, scale = 380;
+
+  if (mode === 'whatsapp') {
+    ry = t * 0.18;
+    rx = Math.PI / 8 + Math.sin(t * 0.4) * 0.06;
+    yOff = Math.sin(t * 0.55) * 12;
+    scale = 108;
+  } else if (mode === 'finance') {
+    ry = t * 0.85;
+    rx = Math.PI / 9;
+    yOff = Math.sin(t * 0.3) * 6;
+    scale = 108;
+  } else if (mode === 'vendor') {
+    // Urgent heartbeat pulse — double-beat then rest
+    const beat = Math.pow(Math.max(0, Math.sin(t * 2.6)), 6) + Math.pow(Math.max(0, Math.sin(t * 2.6 - 0.7)), 6);
+    ry = t * 0.2;
+    rx = Math.PI / 8;
+    yOff = -beat * 14;
+    scale = 108 + beat * 10;
+  } else if (mode === 'reach') {
+    const breath = Math.sin(t * 0.7);
+    scale = 98 + breath * 14;
+    ry = t * 0.22;
+    rx = Math.PI / 9 + breath * 0.04;
+    yOff = breath * 10;
+  }
+
+  // Apply rotations
+  verts = verts.map(v => {
+    let p = rotX(v, rx);
+    p = rotY(p, ry);
+    p = rotZ(p, rz);
+    return p;
+  });
+
+  // Project vertices to 2D (yOff in canvas-px, applied after projection)
+  const proj = verts.map(v => {
+    const p = project(v, scale);
+    return { x: p.x, y: p.y + yOff };
+  });
+
+  // Compute face normals + depth-sort
+  const colors = faceColors[mode][0];
+  const facesData = faces.map((f, fi) => {
+    const a = verts[f[0]], b = verts[f[1]], c = verts[f[2]];
+    // normal via cross product
+    const ab = { x: b.x-a.x, y: b.y-a.y, z: b.z-a.z };
+    const ac = { x: c.x-a.x, y: c.y-a.y, z: c.z-a.z };
+    const nx = ab.y*ac.z - ab.z*ac.y;
+    const ny = ab.z*ac.x - ab.x*ac.z;
+    const nz = ab.x*ac.y - ab.y*ac.x;
+    const nl = Math.sqrt(nx*nx+ny*ny+nz*nz);
+    const norm = { x: nx/nl, y: ny/nl, z: nz/nl };
+    // back-face culling: only draw if facing camera (z component)
+    const visible = norm.z > -0.1;
+    // depth = avg z
+    const depth = (a.z + b.z + c.z) / 3;
+    // lighting
+    const lx=0.45, ly=0.7, lz=0.55, ll=Math.sqrt(lx*lx+ly*ly+lz*lz);
+    const diffuse = Math.max(0, norm.x*lx/ll + norm.y*ly/ll + norm.z*lz/ll);
+    return { f, fi, norm, visible, depth, diffuse, baseColor: colors[fi] };
+  });
+
+  facesData.sort((a, b) => a.depth - b.depth);
+
+  // Draw shadow ellipse beneath gem
+  ctx.save();
+  const shadowY = H/2 + 130 + yOff * 0.4;
+  const shadowGrad = ctx.createRadialGradient(W/2, shadowY, 2, W/2, shadowY, 72);
+  shadowGrad.addColorStop(0, 'rgba(100,60,200,.18)');
+  shadowGrad.addColorStop(1, 'rgba(100,60,200,0)');
+  ctx.fillStyle = shadowGrad;
+  ctx.beginPath();
+  ctx.ellipse(W/2, shadowY, 72, 22, 0, 0, Math.PI*2);
+  ctx.fill();
+  ctx.restore();
+
+  // Draw faces
+  facesData.forEach(({ f, visible, diffuse, baseColor }) => {
+    if (!visible) return;
+    const pa = proj[f[0]], pb = proj[f[1]], pc = proj[f[2]];
+
+    // Parse base color and lighten/darken by diffuse
+    const r = parseInt(baseColor.slice(1,3),16);
+    const g = parseInt(baseColor.slice(3,5),16);
+    const b = parseInt(baseColor.slice(5,7),16);
+    const amb = 0.38, diff = 0.62;
+    const lit = amb + diffuse * diff;
+    const fr = Math.min(255, Math.round(r * lit));
+    const fg = Math.min(255, Math.round(g * lit));
+    const fb = Math.min(255, Math.round(b * lit));
+
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y);
+    ctx.lineTo(pb.x, pb.y);
+    ctx.lineTo(pc.x, pc.y);
+    ctx.closePath();
+    ctx.fillStyle = `rgb(${fr},${fg},${fb})`;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.22)';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+  });
+
+  // Specular highlight on top vertex
+  const topV = proj[0];
+  const specGrad = ctx.createRadialGradient(topV.x, topV.y - 14, 0, topV.x, topV.y - 14, 38);
+  specGrad.addColorStop(0, 'rgba(255,255,255,.42)');
+  specGrad.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = specGrad;
+  ctx.fillRect(topV.x - 38, topV.y - 52, 76, 76);
+}
+
+// Mode-specific ambient rings / particles drawn around the gem
+function drawAmbient(t, mode) {
+  if (mode === 'whatsapp') {
+    // 3 soft floating orbs orbiting slowly — calm, organised
+    for (let i = 0; i < 3; i++) {
+      const angle = t * 0.4 + (i / 3) * Math.PI * 2;
+      const ox = W/2 + Math.cos(angle) * 92;
+      const oy = H/2 + Math.sin(angle) * 44 + Math.sin(t * 0.6 + i) * 8;
+      const rr = ctx.createRadialGradient(ox, oy, 0, ox, oy, 13);
+      rr.addColorStop(0, 'rgba(167,139,250,.45)');
+      rr.addColorStop(1, 'rgba(167,139,250,0)');
+      ctx.fillStyle = rr;
+      ctx.beginPath(); ctx.arc(ox, oy, 13, 0, Math.PI*2); ctx.fill();
+    }
+  } else if (mode === 'finance') {
+    // Tick marks rotating around (like a clock / coin tally)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(168,85,247,.3)';
+    ctx.lineWidth = 2;
+    for (let i = 0; i < 8; i++) {
+      const angle = (i / 8) * Math.PI * 2 + t * 0.85;
+      const r1 = 105, r2 = 115;
+      const x1 = W/2 + Math.cos(angle) * r1, y1 = H/2 + Math.sin(angle) * r1 * 0.48;
+      const x2 = W/2 + Math.cos(angle) * r2, y2 = H/2 + Math.sin(angle) * r2 * 0.48;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    }
+    ctx.restore();
+  } else if (mode === 'vendor') {
+    // Pulsing warning rings — urgent
+    for (let ring = 0; ring < 2; ring++) {
+      const pulse = (t * 1.8 + ring * 0.9) % (Math.PI * 2);
+      const progress = pulse / (Math.PI * 2);
+      const r = 80 + progress * 60;
+      const alpha = (1 - progress) * 0.45;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = '#ec4899';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(W/2, H/2, r, r * 0.46, 0, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+  } else if (mode === 'reach') {
+    // Expanding broadcast rings fading out
+    for (let ring = 0; ring < 3; ring++) {
+      const phase = (t * 0.75 - ring * 0.7 + Math.PI * 4) % (Math.PI * 2);
+      const progress = phase / (Math.PI * 2);
+      const r = 55 + progress * 110;
+      const alpha = (1 - progress) * 0.38;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.ellipse(W/2, H/2, r, r * 0.46, 0, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+}
+
+function setMode(name) {
+  currentMode = name;
+}
+
+function render(ts) {
+  const dt = Math.min((ts - lastTime) / 1000, 0.05);
+  lastTime = ts;
+  animT += dt;
+
+  const bgTarget = modeBg[currentMode] || '#f0ecff';
+  currentBg = lerpColor(currentBg, bgTarget, dt * 3);
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Background
+  ctx.fillStyle = currentBg;
+  ctx.beginPath();
+  ctx.roundRect(0, 0, W, H, 20);
+  ctx.fill();
+
+  // Subtle radial center glow
+  const bg2 = ctx.createRadialGradient(W/2, H/2, 10, W/2, H/2, 180);
+  bg2.addColorStop(0, 'rgba(167,139,250,.1)');
+  bg2.addColorStop(1, 'rgba(167,139,250,0)');
+  ctx.fillStyle = bg2;
+  ctx.fillRect(0, 0, W, H);
+
+  drawAmbient(animT, currentMode);
+  drawOctahedron(animT, currentMode);
+
+  requestAnimationFrame(render);
+}
+requestAnimationFrame(render);
+
+// ── HERO TYPEWRITER ──
+(function(){
+  const words=['Hotels','Travel Agents','DMCs','Corporate Accounts','Fleet Operators','Hotel Chains'];
+  const el=document.getElementById('bar-t-word');
+  if(!el)return;
+  let wi=0,ci=0,del=false;
+  function type(){
+    const w=words[wi];
+    if(!del){el.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1900);return;}}
+    else{el.textContent=w.slice(0,--ci);if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(type,280);return;}}
+    setTimeout(type,del?48:72);
+  }
+  setTimeout(type,800);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2BStays — Hotel B2B Operations Platform | Agent Bookings, City Ledger & Fleet</title>
+<meta name="description" content="B2BStays is the all-in-one B2B operations platform for hotels. Manage travel agent bookings, city ledger, commissions, fleet, vendor coordination and WhatsApp campaigns in one place.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="B2BStays — Hotel B2B Operations Platform">
+<meta property="og:description" content="One platform for every B2B workflow your hotel already runs — agent bookings, city ledger, commissions, fleet and vendor coordination.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="B2BStays — Hotel B2B Operations Platform">
+<meta name="twitter:description" content="One platform for every B2B workflow your hotel already runs — agent bookings, city ledger, commissions, fleet and vendor coordination.">
+<link rel="canonical" href="https://www.eglobe-solutions.com/b2bstays">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"B2BStays","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"All-in-one B2B operations platform for hotels covering agent bookings, city ledger, commissions, fleet and vendor coordination.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"eGlobe Solutions","url":"https://www.eglobe-solutions.com"}}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',system-ui,sans-serif;background:#f4f2ff;min-height:100vh;color:#111;overflow-x:hidden;line-height:1.55}
+body>*{position:relative;z-index:1}
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;animation:blobFloat linear infinite}
+.blob:nth-child(1){width:520px;height:520px;background:radial-gradient(circle,rgba(167,139,250,.7),rgba(139,92,246,.3));top:-10%;left:-8%;animation-duration:22s;animation-delay:0s}
+.blob:nth-child(2){width:400px;height:400px;background:radial-gradient(circle,rgba(196,181,253,.65),rgba(167,139,250,.2));top:5%;right:-5%;animation-duration:28s;animation-delay:-8s}
+.blob:nth-child(3){width:460px;height:460px;background:radial-gradient(circle,rgba(124,58,237,.5),rgba(109,40,217,.2));top:40%;left:20%;animation-duration:32s;animation-delay:-14s}
+.blob:nth-child(4){width:350px;height:350px;background:radial-gradient(circle,rgba(216,180,254,.7),rgba(167,139,250,.25));bottom:5%;right:10%;animation-duration:24s;animation-delay:-6s}
+.blob:nth-child(5){width:280px;height:280px;background:radial-gradient(circle,rgba(147,51,234,.4),rgba(196,181,253,.2));bottom:20%;left:5%;animation-duration:18s;animation-delay:-10s}
+@keyframes blobFloat{
+  0%  {transform:translate(0,0) scale(1)}
+  20% {transform:translate(60px,-40px) scale(1.08)}
+  40% {transform:translate(-30px,70px) scale(.94)}
+  60% {transform:translate(80px,30px) scale(1.05)}
+  80% {transform:translate(-50px,-60px) scale(1.1)}
+  100%{transform:translate(0,0) scale(1)}
+}
+:root{
+  --bg:transparent;--bg2:rgba(255,255,255,.5);--fg:#0a0a0a;--fg2:#222;--fg3:#444;
+  --card:#ffffff;--card2:#ffffff;--border:#ddd8f8;
+  --accent:#5b21b6;--accent2:#7c3aed;--accent-s:#ede9ff;--accent-m:rgba(91,33,182,.09);
+  --green:#15803d;--green-s:#dcfce7;--amber:#b45309;--amber-s:#fef3c7;
+  --blue:#1d4ed8;--blue-s:#dbeafe;--red:#b91c1c;--red-s:#fee2e2;
+  --radius:12px;
+}
+.mi{font-family:'Material Icons Round';font-size:inherit;line-height:1;display:inline-flex;align-items:center;justify-content:center;user-select:none;vertical-align:middle}
+
+/* ── HERO ── */
+.hero{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:64px 24px 36px;
+  text-align:center;background:transparent;
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% -10%,rgba(79,25,200,.06),transparent 65%);pointer-events:none}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,4.5vw,4rem);font-weight:700;
+  letter-spacing:-.01em;line-height:1.15;color:var(--fg);
+  max-width:860px;margin:0 auto;animation:fup .7s .07s ease both;
+}
+.hero h1 .line1{display:block;font-family:'Lato',sans-serif;color:var(--fg3);font-weight:400;font-size:.38em;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5em}
+.hero h1 .line2{display:flex;align-items:baseline;justify-content:center;gap:.25em;flex-wrap:nowrap;white-space:nowrap}
+.for-stable{flex-shrink:0}
+.hero-sub{font-size:1.05rem;color:var(--fg2);max-width:480px;margin:20px auto 0;line-height:1.7;animation:fup .7s .14s ease both;font-weight:400}
+.t-wrap{display:inline-flex;align-items:baseline;min-width:4ch;color:var(--accent)}
+#t-text{color:var(--accent)}
+#t-cur{display:inline-block;width:2px;height:.8em;background:var(--accent);margin-left:2px;vertical-align:baseline;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.hero-cta{margin-top:36px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fup .7s .22s ease both;opacity:0}
+.hero-cta-btn{
+  background:var(--fg);color:#fff;border:none;
+  padding:13px 28px;border-radius:100px;font-size:.875rem;font-weight:600;
+  cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  letter-spacing:.01em;
+}
+.hero-cta-btn:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px rgba(79,25,200,.28)}
+.hero-cta-ghost{
+  background:transparent;color:var(--fg2);border:1.5px solid var(--border);
+  padding:12px 22px;border-radius:100px;font-size:.875rem;font-weight:500;
+  cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  transition:border-color .2s,color .2s,transform .15s;letter-spacing:.01em;
+}
+.hero-cta-ghost:hover{border-color:var(--fg2);color:var(--fg);transform:translateY(-2px)}
+@keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ── PANELS COLLAGE ── */
+.panels-wrap{background:transparent;padding:20px 0 40px}
+.panels-stage{
+  display:grid;
+  grid-template-columns:176px 1fr 200px 170px;
+  grid-template-rows:auto auto auto auto auto;
+  gap:12px;
+  max-width:1160px;
+  margin:0 auto;
+  padding:0 24px;
+}
+/* base panel style */
+.p{
+  border-radius:14px;background:var(--card);border:1px solid var(--border);
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  overflow:hidden;
+  transition:box-shadow .25s,transform .25s;
+  min-width:0;
+}
+.p:hover{box-shadow:0 10px 36px rgba(91,31,210,.13);transform:translateY(-3px);z-index:10;position:relative}
+
+/* Grid placements */
+.p-nav  {grid-column:1; grid-row:1/3;}
+.p-fleet{grid-column:1; grid-row:3/6;}
+.p-book {grid-column:2; grid-row:1/6;}
+.p-camp {grid-column:3; grid-row:1/2;}
+.p-alert{grid-column:3; grid-row:2/4;}
+.p-rzp  {grid-column:3; grid-row:4/6;}
+.p-stat {grid-column:4; grid-row:1/2;}
+.p-chart{grid-column:4; grid-row:2/3;}
+.p-don1 {grid-column:4; grid-row:3/4;}
+.p-don2 {grid-column:4; grid-row:4/6;}
+
+/* ── SIDEBAR ── */
+.sidebar-card{padding:14px}
+.sidebar-brand{font-size:.6rem;font-weight:800;letter-spacing:.14em;color:var(--fg3);text-transform:uppercase;margin-bottom:10px}
+.sidebar-divider{height:2px;width:24px;background:var(--fg);border-radius:2px;margin-bottom:12px}
+.sidebar-nav-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;margin-bottom:2px;font-size:.8rem;font-weight:500;color:var(--fg2);cursor:pointer;transition:background .15s,color .15s}
+.sidebar-nav-item .mi{font-size:1rem;color:var(--fg3)}
+.sidebar-nav-item.active{background:var(--accent-s);color:var(--accent)}
+.sidebar-nav-item.active .mi{color:var(--accent)}
+.sidebar-nav-item:hover:not(.active){background:var(--card2)}
+
+/* ── BOOKINGS TABLE ── */
+.sc-center{background:var(--card);height:100%;display:flex;flex-direction:column;}
+.mod-view{display:flex;flex-direction:column;flex:1;min-height:0;animation:modIn .25s ease both}
+.mod-view[hidden]{display:none!important}
+@keyframes modIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sc-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);background:#fff}
+.sc-title{font-size:1rem;font-weight:800;letter-spacing:-.02em;color:var(--fg);display:flex;align-items:center;gap:8px}
+.sc-title .mi{font-size:1.1rem;color:var(--accent)}
+.sc-sub{font-size:.78rem;color:var(--fg2);margin-top:2px}
+.sc-filters{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}
+.sc-filter{display:inline-flex;align-items:center;gap:3px;background:#fff;border:1px solid var(--border);border-radius:100px;padding:4px 10px;font-size:.75rem;font-weight:500;color:var(--fg2);cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.sc-filter.active{background:var(--accent-s);border-color:var(--accent);color:var(--accent)}
+.sc-filter .mi{font-size:.85rem}
+.bk-row{display:flex;align-items:center;padding:9px 20px;border-bottom:1px solid var(--border);font-size:.82rem;cursor:pointer;transition:background .15s}
+.bk-row:hover{background:var(--accent-s)}
+.bk-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;margin-right:10px}
+.bk-info{flex:1;min-width:0}
+.bk-name{font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.82rem}
+.bk-ch{font-size:.75rem;color:var(--fg2);margin-top:1px}
+.bk-amt{font-weight:700;color:var(--fg);margin-right:8px;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:100px;font-size:.72rem;font-weight:600;white-space:nowrap}
+.badge .mi{font-size:.78rem}
+.bg{background:var(--green-s);color:var(--green)}
+.ba{background:var(--amber-s);color:var(--amber)}
+.bb{background:var(--blue-s);color:var(--blue)}
+.bp{background:var(--accent-s);color:var(--accent)}
+.br{background:var(--red-s);color:var(--red)}
+.sc-foot{padding:10px 20px;border-top:1px solid var(--border);background:#fff;display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.sc-foot-lbl{font-size:.78rem;color:var(--fg2)}
+.sc-export{display:inline-flex;align-items:center;gap:4px;background:var(--fg);color:#fff;border:none;padding:6px 14px;border-radius:5px;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .15s}
+.sc-export .mi{font-size:.9rem}
+.sc-export:hover{background:var(--accent)}
+
+/* ── RAZORPAY ── */
+.rzp{background:linear-gradient(140deg,#a78bfa,#818cf8,#38bdf8);padding:14px;position:relative;overflow:hidden;border:none}
+.rzp::before{content:'';position:absolute;top:-14px;right:-14px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.08)}
+.rzp-logo{font-size:.66rem;font-weight:800;color:#fff;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.rzp-logo .mi{font-size:.9rem}
+.rzp-num{font-size:.54rem;color:rgba(255,255,255,.75);font-family:'Courier New',monospace;letter-spacing:.06em;margin-bottom:4px}
+.rzp-fields{display:grid;grid-template-columns:1fr 1fr}
+.rzp-field label{display:block;font-size:.44rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.07em}
+.rzp-field span{display:block;font-size:.54rem;color:#fff;font-weight:700;font-family:'Courier New',monospace}
+.rzp-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;position:absolute;top:12px;right:12px}
+.rzp-sq{width:7px;height:7px;background:rgba(255,255,255,.25);border-radius:2px}
+
+/* ── CAMPAIGN ── */
+.camp-top{background:linear-gradient(135deg,#25d366,#128c7e);padding:12px 14px 10px}
+.camp-label{font-size:.54rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:3px}
+.camp-label .mi{font-size:.72rem}
+.camp-title{font-size:.84rem;font-weight:800;color:#fff;line-height:1.2}
+.camp-body{padding:9px 13px 11px}
+.camp-stats{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.camp-btn{width:100%;background:var(--fg);color:#fff;border:none;padding:6px;border-radius:5px;font-size:.62rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:background .15s}
+.camp-btn .mi{font-size:.74rem}
+.camp-btn:hover{background:var(--accent)}
+
+/* ── ALERT ── */
+.alert-header{padding:9px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.alert-title{font-size:.82rem;font-weight:700;color:var(--fg);display:flex;align-items:center;gap:4px}
+.alert-title .mi{font-size:.9rem;color:var(--red)}
+.alert-body{padding:10px 12px}
+.alert-row{display:flex;align-items:flex-start;gap:7px}
+.alert-icon-box{width:28px;height:28px;border-radius:7px;background:var(--red-s);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alert-icon-box .mi{font-size:.9rem;color:var(--red)}
+.alert-info-title{font-size:.82rem;font-weight:600;color:var(--fg)}
+.alert-info-sub{font-size:.75rem;color:var(--fg2);margin-top:1px}
+.alert-btns{display:flex;gap:5px;margin-top:7px}
+.alert-btns button{flex:1;border:none;padding:5px;border-radius:5px;font-size:.75rem;font-weight:600;cursor:pointer;transition:background .15s}
+.alert-approve{background:var(--fg);color:#fff}
+.alert-approve:hover{background:var(--green)}
+.alert-dismiss{background:var(--bg2);color:var(--fg2);border:1px solid var(--border)!important}
+.alert-dismiss:hover{background:var(--border)}
+
+/* ── STAT CARD ── */
+.stat-card{background:linear-gradient(140deg,var(--accent),var(--accent2));padding:16px;color:#fff;border:none}
+.stat-label{font-size:.7rem;color:rgba(255,255,255,.85);margin-bottom:4px;display:flex;align-items:center;gap:3px}
+.stat-label .mi{font-size:.85rem}
+.stat-num{font-size:1.7rem;font-weight:900;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.stat-trend{font-size:.72rem;color:rgba(255,255,255,.8);margin-top:5px;display:flex;align-items:center;gap:3px}
+.stat-trend .mi{font-size:.82rem;color:#86efac}
+
+/* ── CHART ── */
+.chart-pad{padding:12px 14px 14px}
+.chart-lbl{font-size:.75rem;font-weight:600;color:var(--fg2);margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.chart-lbl .mi{font-size:.9rem;color:var(--accent)}
+.chart-bars{display:flex;align-items:flex-end;gap:4px;height:68px}
+.bar{flex:1;border-radius:3px 3px 0 0;transition:opacity .2s;cursor:pointer}
+.bar:hover{opacity:.75}
+
+/* ── DONUT ── */
+.donut-pad{padding:14px 13px;display:flex;flex-direction:column;gap:10px}
+.donut-heading{font-size:.72rem;font-weight:700;color:var(--fg);letter-spacing:.05em;text-transform:uppercase;opacity:.6}
+.donut-body{display:flex;align-items:center;gap:12px}
+.donut-svg-wrap{width:42px;height:42px;flex-shrink:0;position:relative}
+.donut-svg-wrap svg{width:42px;height:42px;transform:rotate(-90deg)}
+/* donut ring animation */
+@keyframes donutDraw{from{stroke-dasharray:0 100}to{}}
+@keyframes donutPulse{0%,100%{opacity:1;transform:rotate(-90deg) scale(1)}50%{opacity:.85;transform:rotate(-90deg) scale(1.06)}}
+.donut-svg-wrap svg{transform:rotate(-90deg);transition:transform .3s}
+.donut-arc{stroke-dasharray:0 100;animation:donutDraw .9s cubic-bezier(.22,1,.36,1) both}
+.p-don1 .donut-arc{animation-delay:.18s}
+.p-don2 .donut-arc{animation-delay:.28s}
+.p-don1:hover .donut-arc,.p-don2:hover .donut-arc{animation:donutPulse 1.2s ease-in-out infinite}
+.donut-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:800;color:var(--fg);font-variant-numeric:tabular-nums;transition:transform .2s}
+.p-don1:hover .donut-center,.p-don2:hover .donut-center{transform:scale(1.15)}
+.donut-stack{display:flex;flex-direction:column;gap:6px;flex:1}
+.donut-row{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--fg3)}
+.donut-row-label{flex:1}
+.donut-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.donut-val{font-weight:700;color:var(--fg);font-variant-numeric:tabular-nums}
+
+/* ── CORE FEATURES ── */
+.core-sec{padding:56px 24px;background:transparent}
+.core-inner{max-width:1160px;margin:0 auto}
+.sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;gap:24px;flex-wrap:wrap}
+.sec-eyebrow{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:700;letter-spacing:-.01em;line-height:1.2;color:var(--fg)}
+.core-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* flip card */
+.core-card{perspective:900px;cursor:pointer;height:340px}
+.core-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.core-card:hover .core-card-inner{transform:rotateY(180deg)}
+.core-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+/* front */
+.core-front{background:#fff;border:1px solid var(--border);padding:0;display:flex;flex-direction:column;align-items:flex-start;text-align:left;box-shadow:0 2px 16px rgba(91,33,182,.06)}
+.core-front:hover{box-shadow:0 8px 32px rgba(91,33,182,.12)}
+.core-glow{display:none}
+.core-icon{display:none}
+.core-front-img{width:100%;height:170px;object-fit:cover;display:block;flex-shrink:0}
+.core-front-body{padding:20px 24px;display:flex;flex-direction:column;flex:1}
+.core-front h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:6px;line-height:1.3}
+.core-front p{font-size:.82rem;color:var(--fg2);line-height:1.65;flex:1}
+.core-hint{margin-top:16px;font-size:.78rem;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:4px;opacity:.85}
+.core-hint .mi{font-size:.8rem}
+/* back */
+.core-back{background:linear-gradient(145deg,#5b21b6,#7c3aed);border:none;transform:rotateY(180deg);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left}
+.core-back-icon{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.core-back-icon .mi{font-size:1.25rem;color:#fff}
+.core-back h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.25}
+.core-back p{font-size:.77rem;color:rgba(255,255,255,.78);line-height:1.7;flex:1}
+.core-back-cta{margin-top:16px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);padding:7px 16px;border-radius:100px;font-size:.73rem;font-weight:600;cursor:pointer;transition:background .15s;letter-spacing:.02em}
+.core-back-cta:hover{background:rgba(255,255,255,.25)}
+.core-back-cta .mi{font-size:.85rem}
+
+/* ── WHY ── */
+.why-sec{padding:56px 24px;background:transparent;overflow:hidden}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1160px;margin:0 auto}
+.why-left{}
+.why-label{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.why-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.2;color:var(--fg);margin-bottom:12px}
+.why-sub{font-size:.95rem;color:var(--fg2);line-height:1.7;margin-bottom:32px;max-width:400px}
+.why-list{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
+.why-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:.9rem;font-weight:500;color:var(--fg2);cursor:pointer;transition:all .18s}
+.why-item:hover,.why-item.active{background:var(--accent-s);border-color:var(--accent);color:var(--accent)}
+.why-item .num{font-size:.68rem;font-weight:700;letter-spacing:.06em;color:var(--fg3);min-width:18px}
+.why-item .mi{font-size:1rem;color:var(--fg2);transition:color .15s}
+.why-item:hover .mi,.why-item.active .mi{color:var(--accent)}
+.why-right{display:flex;flex-direction:column;gap:14px}
+.mini-portal{background:var(--card);border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.mini-top{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 11px;display:flex;align-items:center;gap:5px}
+.mini-dot{width:7px;height:7px;border-radius:50%}
+.mini-nav{padding:7px}
+.mini-nav-item{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:6px;font-size:.78rem;font-weight:500;color:var(--fg2);margin-bottom:2px;cursor:pointer;transition:background .15s}
+.mini-nav-item.active{background:var(--accent-s);color:var(--accent)}
+.mini-nav-item .mi{font-size:.9rem;color:var(--fg2)}
+.mini-nav-item.active .mi{color:var(--accent)}
+.mini-stats{display:flex;gap:5px;padding:6px 7px 9px}
+.mini-stat{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px;text-align:center}
+.mini-stat-n{font-size:.9rem;font-weight:800;color:var(--fg);font-variant-numeric:tabular-nums}
+.mini-stat-l{font-size:.68rem;color:var(--fg2);margin-top:1px}
+.why-center{text-align:center}
+.big-txt{font-size:clamp(2.8rem,5vw,4.6rem);font-weight:900;letter-spacing:-.045em;line-height:.96;color:var(--fg)}
+.big-txt .d{color:var(--fg3);font-weight:300}
+.why-graphic{margin:24px auto 0;width:100%;max-width:320px;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 8px 36px rgba(91,31,210,.1)}
+.wg-head{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 13px;display:flex;align-items:center;justify-content:space-between}
+.wg-title{font-size:.8rem;font-weight:700;color:var(--fg);display:flex;align-items:center;gap:4px}
+.wg-title .mi{font-size:.92rem;color:var(--accent)}
+.wg-badge{display:inline-flex;align-items:center;gap:2px;background:var(--red-s);color:var(--red);font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:100px}
+.wg-badge .mi{font-size:.78rem}
+.wg-body{padding:12px}
+.wg-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.wg-row:last-child{border:none}
+.wg-rl{display:flex;align-items:center;gap:7px;flex:1;min-width:0}
+.wg-av{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.wg-av .mi{font-size:.82rem;color:#fff}
+.wg-name{font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px;font-size:.8rem}
+.wg-ch{font-size:.72rem;color:var(--fg2)}
+.why-ctas{margin-top:18px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.alert-panel{background:var(--card);border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.alert-ph{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 13px;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:700;color:var(--fg)}
+.alert-ph .mi{font-size:.95rem;color:var(--accent)}
+.al-item{padding:11px 13px;border-bottom:1px solid var(--border);font-size:.82rem;display:flex;gap:9px;align-items:flex-start;cursor:pointer;transition:background .15s}
+.al-item:hover{background:var(--bg2)}
+.al-item:last-child{border:none}
+.al-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.al-icon .mi{font-size:.95rem}
+.ai-r{background:var(--red-s)}.ai-r .mi{color:var(--red)}
+.ai-a{background:var(--amber-s)}.ai-a .mi{color:var(--amber)}
+.ai-g{background:var(--green-s)}.ai-g .mi{color:var(--green)}
+.al-text strong{display:block;font-weight:600;color:var(--fg);margin-bottom:1px;font-size:.82rem}
+.al-text span{font-size:.75rem;color:var(--fg2)}
+.al-prio{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:4px;margin-top:3px}
+.ap-h{background:var(--red-s);color:var(--red)}
+.ap-m{background:var(--amber-s);color:var(--amber)}
+.ap-o{background:var(--green-s);color:var(--green)}
+.secured{background:var(--accent);margin:9px;border-radius:8px;padding:10px 13px;display:flex;align-items:center;gap:9px;color:#fff}
+.secured .mi{font-size:1.1rem}
+.secured span{font-size:.82rem;font-weight:700}
+
+/* ── CLARITY SECTION ── */
+.clarity-sec{padding:64px 24px;background:transparent}
+.clarity-inner{max-width:1160px;margin:0 auto}
+.clarity-top{text-align:center;max-width:640px;margin:0 auto 52px}
+.clarity-top .sec-eyebrow{display:block;margin-bottom:8px}
+.clarity-h{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:var(--fg);line-height:1.18;letter-spacing:-.01em;margin-bottom:14px}
+.clarity-sub{font-size:.96rem;color:var(--fg3);line-height:1.75}
+.clarity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.clarity-card{background:rgba(255,255,255,.72);border:1px solid var(--border);border-radius:16px;padding:28px 26px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.clarity-card-q{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.clarity-card-a{font-size:.94rem;font-weight:700;color:var(--fg);line-height:1.45;margin-bottom:10px}
+.clarity-card-p{font-size:.83rem;color:var(--fg3);line-height:1.7}
+.clarity-card-icon{width:36px;height:36px;border-radius:10px;background:var(--accent-s);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.clarity-card-icon .mi{font-size:18px;color:var(--accent)}
+
+/* ── EXTRA ANIMATIONS ── */
+
+/* Page-load progress bar */
+.pg-bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),#a78bfa);z-index:9999;transition:width .1s linear;pointer-events:none}
+
+/* Shimmer sweep on cards */
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.p,.core-card,.clarity-card,.why-item,.closing-pill{position:relative;overflow:hidden}
+.p::after,.core-card::after,.clarity-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);
+  background-size:200% 100%;opacity:0;transition:opacity .2s;pointer-events:none
+}
+.p:hover::after,.core-card:hover::after,.clarity-card:hover::after{opacity:1;animation:shimmer .55s ease forwards}
+
+/* Stagger for grids not already using .stg */
+.clarity-grid .clarity-card,.closing-pills .closing-pill{
+  opacity:0;transform:translateY(22px) scale(.97);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)
+}
+.clarity-grid.in-view .clarity-card:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
+.clarity-grid.in-view .clarity-card:nth-child(2){opacity:1;transform:none;transition-delay:.16s}
+.clarity-grid.in-view .clarity-card:nth-child(3){opacity:1;transform:none;transition-delay:.27s}
+
+/* Clarity icon bounce on reveal */
+@keyframes iconBounce{0%{transform:scale(.5) rotate(-12deg);opacity:0}60%{transform:scale(1.18) rotate(4deg);opacity:1}80%{transform:scale(.94) rotate(-2deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+.clarity-card-icon{transform:scale(.5) rotate(-12deg);opacity:0;transition:none}
+.clarity-grid.in-view .clarity-card:nth-child(1) .clarity-card-icon{animation:iconBounce .5s cubic-bezier(.22,1,.36,1) .28s both}
+.clarity-grid.in-view .clarity-card:nth-child(2) .clarity-card-icon{animation:iconBounce .5s cubic-bezier(.22,1,.36,1) .38s both}
+.clarity-grid.in-view .clarity-card:nth-child(3) .clarity-card-icon{animation:iconBounce .5s cubic-bezier(.22,1,.36,1) .48s both}
+
+/* Question label slide in from left */
+.clarity-card-q{opacity:0;transform:translateX(-10px);transition:opacity .35s,transform .35s}
+.clarity-grid.in-view .clarity-card:nth-child(1) .clarity-card-q{opacity:1;transform:none;transition-delay:.35s}
+.clarity-grid.in-view .clarity-card:nth-child(2) .clarity-card-q{opacity:1;transform:none;transition-delay:.45s}
+.clarity-grid.in-view .clarity-card:nth-child(3) .clarity-card-q{opacity:1;transform:none;transition-delay:.55s}
+
+/* Hover tilt */
+.clarity-card{transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s}
+.clarity-card:hover{transform:translateY(-4px) rotate(.4deg);box-shadow:0 12px 32px rgba(100,60,200,.11)}
+.closing-pills.in-view .closing-pill:nth-child(1){opacity:1;transform:none;transition-delay:.03s}
+.closing-pills.in-view .closing-pill:nth-child(2){opacity:1;transform:none;transition-delay:.08s}
+.closing-pills.in-view .closing-pill:nth-child(3){opacity:1;transform:none;transition-delay:.13s}
+.closing-pills.in-view .closing-pill:nth-child(4){opacity:1;transform:none;transition-delay:.18s}
+.closing-pills.in-view .closing-pill:nth-child(5){opacity:1;transform:none;transition-delay:.23s}
+.closing-pills.in-view .closing-pill:nth-child(6){opacity:1;transform:none;transition-delay:.28s}
+
+/* Icon micro-bounce on why-item hover */
+@keyframes iconBounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-4px)}70%{transform:translateY(2px)}}
+.why-item:hover .mi{animation:iconBounce .4s ease}
+
+/* Stat number pop */
+@keyframes numPop{0%{transform:scale(.75);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+.mini-stat-n.pop,.stat-pop{animation:numPop .5s cubic-bezier(.34,1.56,.64,1) both}
+
+/* Subtle float on hero eyebrow line */
+@keyframes floatEye{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.hero h1 .line1{animation:floatEye 4s ease-in-out infinite}
+
+/* Button ripple */
+@keyframes ripple{to{transform:scale(3.5);opacity:0}}
+.ripple-el{position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:60px;height:60px;margin-left:-30px;margin-top:-30px;pointer-events:none;animation:ripple .55s ease-out forwards}
+
+/* Closing divider draw */
+@keyframes drawLine{from{width:0}to{width:40px}}
+.closing-divider.in-view{animation:drawLine .5s .1s cubic-bezier(.22,1,.36,1) both}
+
+/* ── CLOSING SECTION (trust + CTA merged) ── */
+.closing-sec{padding:72px 24px 80px;background:transparent}
+.closing-inner{max-width:760px;margin:0 auto;text-align:center}
+.closing-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.closing-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;color:var(--fg);margin-bottom:12px}
+.closing-h .acc{color:var(--accent)}
+.closing-sub{font-size:.92rem;color:var(--fg3);line-height:1.75;max-width:480px;margin:0 auto 36px}
+.closing-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.closing-divider{width:40px;height:1px;background:var(--border);margin:0 auto 32px}
+.closing-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.closing-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.6);border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:.78rem;font-weight:500;color:var(--fg3);backdrop-filter:blur(8px)}
+.closing-pill .mi{font-size:14px;color:var(--accent)}
+
+/* ── FINAL CTA ── */
+.final-sec{padding:80px 24px;background:transparent;text-align:center;position:relative;overflow:hidden}
+.final-inner{max-width:640px;margin:0 auto}
+.final-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.final-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;color:var(--fg);margin-bottom:36px}
+.final-h .acc{color:var(--accent)}
+.final-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:var(--fg);color:#fff;border:none;padding:14px 32px;border-radius:100px;font-size:.92rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .15s,box-shadow .2s;letter-spacing:.01em}
+.btn-white:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px rgba(79,25,200,.28)}
+.btn-outline-white{background:#fff;color:var(--fg2);border:1.5px solid var(--border);padding:13px 28px;border-radius:100px;font-size:.88rem;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s;letter-spacing:.01em}
+.btn-outline-white:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* ── BTNS ── */
+.btn-dark{background:var(--fg);color:#fff;border:none;padding:12px 24px;border-radius:7px;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:background .15s,transform .15s}
+.btn-dark:hover{background:var(--accent);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--fg);border:1.5px solid var(--border);padding:11px 24px;border-radius:7px;font-size:.85rem;font-weight:600;cursor:pointer;transition:border-color .15s,color .15s,transform .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* ── REVEALS ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv-l.in{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv-r.in{opacity:1;transform:none}
+.stg>*{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+.stg.in>*{opacity:1;transform:none}
+.stg.in>*:nth-child(1){transition-delay:.04s}.stg.in>*:nth-child(2){transition-delay:.11s}.stg.in>*:nth-child(3){transition-delay:.18s}
+
+/* ── FOOTER ── */
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .panels-stage{grid-template-columns:160px 1fr 186px}
+  .p-stat,.p-chart,.p-don1,.p-don2{display:none}
+  .p-rzp{grid-row:4/6}
+}
+@media(max-width:760px){
+  .panels-stage{grid-template-columns:1fr;padding:0 16px}
+  .p-nav,.p-fleet,.p-camp,.p-alert,.p-rzp,.p-stat,.p-chart,.p-don1,.p-don2{display:none}
+  .p-book{grid-column:1;grid-row:1}
+  .core-sec,.why-sec,.final-sec{padding:64px 20px}
+  .core-grid{grid-template-columns:1fr}
+  .core-card{height:320px}
+  .why-grid{grid-template-columns:1fr;gap:36px}.why-graphic{max-width:100%}
+}
+@media(max-width:600px){
+  .hero h1{font-size:clamp(2rem,9vw,2.8rem)}
+}
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true">
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>
+    <span class="line1">One Platform. Every B2B Operation.</span>
+    <span class="line2"><span class="for-stable">For</span> <span class="t-wrap"><span id="t-text"></span><span id="t-cur"></span></span></span>
+  </h1>
+  <p class="hero-sub">One platform to manage travel agents, commissions, transportation, campaigns, and vendor operations.</p>
+  <div class="hero-cta">
+    <button class="hero-cta-btn"><span class="mi" style="font-size:1rem">play_circle</span>Get a Free Demo</button>
+    <button class="hero-cta-ghost"><span class="mi" style="font-size:.9rem">info</span>See All Features</button>
+  </div>
+</section>
+
+<!-- PANELS COLLAGE -->
+<div class="panels-wrap">
+  <div class="panels-stage">
+
+    <!-- Module Sidebar -->
+    <div class="p p-nav sidebar-card rv">
+      <div class="sidebar-brand">B2BStays</div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-nav-item active" data-module="bookings"><span class="mi">book_online</span>Bookings</div>
+      <div class="sidebar-nav-item" data-module="ledger"><span class="mi">account_balance</span>City Ledger</div>
+      <div class="sidebar-nav-item" data-module="packages"><span class="mi">luggage</span>Packages</div>
+      <div class="sidebar-nav-item" data-module="transport"><span class="mi">local_taxi</span>Transport</div>
+      <div class="sidebar-nav-item" data-module="marketing"><span class="mi">campaign</span>Marketing</div>
+      <div class="sidebar-nav-item" data-module="reputation"><span class="mi">star_rate</span>Reputation</div>
+      <div class="sidebar-nav-item" data-module="agents"><span class="mi">manage_accounts</span>Agents</div>
+      <div class="sidebar-nav-item" data-module="vendors"><span class="mi">storefront</span>Vendors</div>
+      <div class="sidebar-nav-item" data-module="alerts"><span class="mi">notifications</span>Alerts</div>
+    </div>
+
+    <!-- Fleet Calendar -->
+    <div class="p p-fleet rv" style="transition-delay:.07s">
+      <div style="padding:10px 12px 8px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:.68rem;font-weight:700;color:var(--fg);display:flex;align-items:center;gap:4px"><span class="mi" style="font-size:.82rem;color:var(--accent)">calendar_view_week</span>Fleet Calendar</div>
+        <span class="badge bb" style="font-size:.54rem">Today</span>
+      </div>
+      <div style="padding:9px 12px 11px">
+        <div style="font-size:.56rem;font-weight:700;color:var(--fg3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px">Vehicle Availability</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="font-size:.54rem;color:var(--fg3);width:44px;flex-shrink:0">VH 01</div>
+            <div style="flex:1;height:11px;border-radius:3px;background:var(--bg2);overflow:hidden"><div style="width:45%;height:100%;background:var(--green);border-radius:3px"></div></div>
+            <span class="badge bg" style="font-size:.5rem;padding:1px 5px">Trip</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="font-size:.54rem;color:var(--fg3);width:44px;flex-shrink:0">DL 3C 56</div>
+            <div style="flex:1;height:11px;border-radius:3px;background:var(--bg2);overflow:hidden;position:relative"><div style="position:absolute;left:55%;width:28%;height:100%;background:var(--accent);border-radius:3px"></div></div>
+            <span class="badge bp" style="font-size:.5rem;padding:1px 5px">Hold</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="font-size:.54rem;color:var(--fg3);width:44px;flex-shrink:0">KA 01 99</div>
+            <div style="flex:1;height:11px;border-radius:3px;background:var(--bg2)"></div>
+            <span class="badge" style="font-size:.5rem;padding:1px 5px;background:var(--bg2);color:var(--fg3)">Free</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="font-size:.54rem;color:var(--fg3);width:44px;flex-shrink:0">GJ 05 12</div>
+            <div style="flex:1;height:11px;border-radius:3px;background:var(--bg2);overflow:hidden"><div style="width:70%;height:100%;background:var(--amber);border-radius:3px"></div></div>
+            <span class="badge ba" style="font-size:.5rem;padding:1px 5px">Multi</span>
+          </div>
+        </div>
+        <!-- Mini commission card below fleet -->
+        <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
+          <div style="font-size:.58rem;font-weight:700;color:var(--fg3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;display:flex;align-items:center;gap:4px"><span class="mi" style="font-size:.76rem;color:var(--accent)">payments</span>Commission Due</div>
+          <div style="font-size:1rem;font-weight:900;color:var(--fg);font-variant-numeric:tabular-nums">₹ 42,500</div>
+          <div style="font-size:.58rem;color:var(--fg3);margin-bottom:7px">3 bookings · NEFT pending</div>
+          <div style="height:4px;background:var(--bg2);border-radius:3px;overflow:hidden;margin-bottom:7px"><div class="comm-bar-fill" style="height:100%;width:72%;background:linear-gradient(to right,var(--accent),var(--accent2));border-radius:3px;transition:width .6s ease"></div></div>
+          <button class="comm-knock" style="width:100%;background:var(--fg);color:#fff;border:none;padding:6px;border-radius:5px;font-size:.6rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:background .15s"><span class="mi" style="font-size:.76rem">done_all</span>Knock Off</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: Interactive module panel -->
+    <div class="p p-book rv" style="transition-delay:.03s">
+      <div class="sc-center" id="module-panel">
+
+        <!-- BOOKINGS -->
+        <div class="mod-view" id="mod-bookings">
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">book_online</span>Agent Bookings</div>
+            <div class="sc-sub">All B2B travel agent bookings across channels</div>
+            <div class="sc-filters">
+              <div class="sc-filter active"><span class="mi">check_circle</span>All</div>
+              <div class="sc-filter"><span class="mi">location_city</span>City</div>
+              <div class="sc-filter"><span class="mi">hub</span>Channel</div>
+              <div class="sc-filter"><span class="mi">payments</span>Commission</div>
+              <div class="sc-filter"><span class="mi">date_range</span>Date</div>
+            </div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Seaside Property</div><div class="bk-ch">OTA Channel · Superior Suite</div></div><span class="bk-amt">Confirmed</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">City Business Hotel</div><div class="bk-ch">Travel Agent · 2 Suites</div></div><span class="bk-amt">Quote Sent</span><span class="badge ba"><span class="mi">pending</span>Quote Sent</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#34d399,#059669)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Airport Transit Hotel</div><div class="bk-ch">DMC Channel · Transfer incl.</div></div><span class="bk-amt">Confirmed</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#60a5fa,#2563eb)"><span class="mi" style="font-size:.85rem">groups</span></div><div class="bk-info"><div class="bk-name">Group Request · 22 Rooms</div><div class="bk-ch">DMC Channel · Annual Sales Meet</div></div><span class="bk-amt">Negotiating</span><span class="badge bb"><span class="mi">forum</span>Negotiating</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f87171,#dc2626)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Heritage Property</div><div class="bk-ch">OTA Channel · Deluxe Room</div></div><span class="bk-amt">Comm. Paid</span><span class="badge bp"><span class="mi">currency_rupee</span>Comm. Paid</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#a78bfa,#5b21b6)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Boutique Palace Hotel</div><div class="bk-ch">OTA Channel · 6 Rooms</div></div><span class="bk-amt">Confirmed</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Beachfront Resort</div><div class="bk-ch">Corporate Account · 4 Rooms</div></div><span class="bk-amt">Confirmed</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f472b6,#db2777)"><span class="mi" style="font-size:.85rem">groups</span></div><div class="bk-info"><div class="bk-name">Convention Centre Hotel</div><div class="bk-ch">Travel Agent · Conference Package</div></div><span class="bk-amt">Quote Sent</span><span class="badge ba"><span class="mi">pending</span>Quote Sent</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">142 bookings this month</span><button class="sc-export"><span class="mi">download</span>Export CSV</button></div>
+        </div>
+
+        <!-- CITY LEDGER -->
+        <div class="mod-view" id="mod-ledger" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">account_balance</span>City Ledger</div>
+            <div class="sc-sub">Corporate &amp; agent credit accounts · real-time balance</div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#7c3aed)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Corporate Account A</div><div class="bk-ch">Corporate · 18 charges</div></div><span class="bk-amt">Due</span><span class="badge br"><span class="mi">pending</span>Due</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#38bdf8)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Travel Agent · DMC</div><div class="bk-ch">Agent · 11 charges</div></div><span class="bk-amt">Partial</span><span class="badge ba"><span class="mi">schedule</span>Partial</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Corporate Account B</div><div class="bk-ch">Corporate · 9 charges</div></div><span class="bk-amt">Settled</span><span class="badge bg"><span class="mi">check_circle</span>Settled</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Outbound Travel Agent</div><div class="bk-ch">Agent · 24 charges</div></div><span class="bk-amt">Due</span><span class="badge br"><span class="mi">pending</span>Due</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Corporate Account C</div><div class="bk-ch">Corporate · 6 charges</div></div><span class="bk-amt">Settled</span><span class="badge bg"><span class="mi">check_circle</span>Settled</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Inbound Travel Agent</div><div class="bk-ch">Agent · 15 charges</div></div><span class="bk-amt">Partial</span><span class="badge ba"><span class="mi">schedule</span>Partial</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f472b6,#db2777)"><span class="mi" style="font-size:.85rem">business</span></div><div class="bk-info"><div class="bk-name">Corporate Account D</div><div class="bk-ch">Corporate · 4 charges</div></div><span class="bk-amt">Settled</span><span class="badge bg"><span class="mi">check_circle</span>Settled</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">14 accounts · balance due this period</span><button class="sc-export"><span class="mi">download</span>Download Statement</button></div>
+        </div>
+
+        <!-- PACKAGES -->
+        <div class="mod-view" id="mod-packages" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">luggage</span>Hotel Packages</div>
+            <div class="sc-sub">Published packages available to B2B agents</div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">luggage</span></div><div class="bk-info"><div class="bk-name">Beach Escape · 3N/4D</div><div class="bk-ch">₹ 8,500/pax · 2–6 pax · Coastal</div></div><span class="bk-amt">₹ 8,500</span><span class="badge bg"><span class="mi">public</span>Live</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#a78bfa)"><span class="mi" style="font-size:.85rem">luggage</span></div><div class="bk-info"><div class="bk-name">Heritage Circuit · 5N/6D</div><div class="bk-ch">₹ 14,200/pax · 4–12 pax · Cultural</div></div><span class="bk-amt">₹ 14,200</span><span class="badge bg"><span class="mi">public</span>Live</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="mi" style="font-size:.85rem">luggage</span></div><div class="bk-info"><div class="bk-name">Nature Retreat · 4N/5D</div><div class="bk-ch">₹ 11,000/pax · 2–8 pax · Wellness</div></div><span class="bk-amt">₹ 11,000</span><span class="badge ba"><span class="mi">edit</span>Draft</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)"><span class="mi" style="font-size:.85rem">luggage</span></div><div class="bk-info"><div class="bk-name">Hill Station Special · 3N/4D</div><div class="bk-ch">₹ 9,800/pax · 2–10 pax · Adventure</div></div><span class="bk-amt">₹ 9,800</span><span class="badge bg"><span class="mi">public</span>Live</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">luggage</span></div><div class="bk-info"><div class="bk-name">Luxury Weekend · 2N/3D</div><div class="bk-ch">₹ 18,500/pax · 2–4 pax · Premium</div></div><span class="bk-amt">₹ 18,500</span><span class="badge bg"><span class="mi">public</span>Live</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">luggage</span></div><div class="bk-info"><div class="bk-name">Desert Safari · 4N/5D</div><div class="bk-ch">₹ 12,000/pax · 4–16 pax · Group</div></div><span class="bk-amt">₹ 12,000</span><span class="badge ba"><span class="mi">edit</span>Draft</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">8 packages · 4 live · 4 draft</span><button class="sc-export"><span class="mi">add</span>New Package</button></div>
+        </div>
+
+        <!-- TRANSPORT -->
+        <div class="mod-view" id="mod-transport" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">local_taxi</span>Cab Bookings</div>
+            <div class="sc-sub">Fleet bookings · hour-by-hour availability</div>
+            <div class="sc-filters">
+              <div class="sc-filter active"><span class="mi">list</span>All</div>
+              <div class="sc-filter"><span class="mi">flight</span>Airport</div>
+              <div class="sc-filter"><span class="mi">schedule</span>Hourly</div>
+              <div class="sc-filter"><span class="mi">route</span>Multi-day</div>
+            </div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#7c3aed)"><span class="mi" style="font-size:.85rem">directions_car</span></div><div class="bk-info"><div class="bk-name">Airport Drop · Sedan</div><div class="bk-ch">Vehicle #1 · Today 06:30</div></div><span class="bk-amt">₹ 1,800</span><span class="badge bg"><span class="mi">directions_car</span>Assigned</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">directions_car</span></div><div class="bk-info"><div class="bk-name">Local 4hr · SUV</div><div class="bk-ch">Vehicle #2 · Today 10:00</div></div><span class="bk-amt">₹ 2,400</span><span class="badge ba"><span class="mi">schedule</span>Pending</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="mi" style="font-size:.85rem">directions_car</span></div><div class="bk-info"><div class="bk-name">Multi-day Trip · Tempo</div><div class="bk-ch">Vehicle #4 · 3 days</div></div><span class="bk-amt">₹ 12,000</span><span class="badge bb"><span class="mi">route</span>In Progress</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)"><span class="mi" style="font-size:.85rem">directions_car</span></div><div class="bk-info"><div class="bk-name">Airport Pickup · Sedan</div><div class="bk-ch">Vehicle #3 · Tomorrow 13:45</div></div><span class="bk-amt">₹ 1,500</span><span class="badge bg"><span class="mi">check_circle</span>Completed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">directions_car</span></div><div class="bk-info"><div class="bk-name">Outstation · SUV</div><div class="bk-ch">Vehicle #2 · 2 days</div></div><span class="bk-amt">₹ 6,500</span><span class="badge ba"><span class="mi">schedule</span>Pending</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">directions_car</span></div><div class="bk-info"><div class="bk-name">Hotel Transfer · Hatchback</div><div class="bk-ch">Vehicle #5 · Today 15:00</div></div><span class="bk-amt">₹ 900</span><span class="badge bg"><span class="mi">check_circle</span>Completed</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">5 vehicles · 6 trips today</span><button class="sc-export"><span class="mi">add</span>New Booking</button></div>
+        </div>
+
+        <!-- MARKETING -->
+        <div class="mod-view" id="mod-marketing" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">campaign</span>Campaigns</div>
+            <div class="sc-sub">WhatsApp &amp; Email campaigns to agents &amp; corporates</div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#25d366,#128c7e)"><span class="mi" style="font-size:.85rem">chat</span></div><div class="bk-info"><div class="bk-name">Festive Season Offer</div><div class="bk-ch">WhatsApp · 847 sent · 12 failed</div></div><span class="bk-amt">98.6%</span><span class="badge bg"><span class="mi">check_circle</span>Sent</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)"><span class="mi" style="font-size:.85rem">email</span></div><div class="bk-info"><div class="bk-name">Q4 Corporate Rate Card</div><div class="bk-ch">Email · 312 sent · 2 bounced</div></div><span class="bk-amt">99.4%</span><span class="badge bg"><span class="mi">check_circle</span>Sent</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">chat</span></div><div class="bk-info"><div class="bk-name">Year-End Package Promo</div><div class="bk-ch">WhatsApp · Scheduled · 15 Dec</div></div><span class="bk-amt">Scheduled</span><span class="badge ba"><span class="mi">schedule</span>Scheduled</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#a78bfa)"><span class="mi" style="font-size:.85rem">email</span></div><div class="bk-info"><div class="bk-name">Agent Commission Update</div><div class="bk-ch">Email · Draft · not sent</div></div><span class="bk-amt">Draft</span><span class="badge" style="background:var(--bg2);color:var(--fg3)"><span class="mi">edit</span>Draft</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#25d366,#128c7e)"><span class="mi" style="font-size:.85rem">chat</span></div><div class="bk-info"><div class="bk-name">Weekend Flash Sale</div><div class="bk-ch">WhatsApp · 524 sent · 4 failed</div></div><span class="bk-amt">99.2%</span><span class="badge bg"><span class="mi">check_circle</span>Sent</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">email</span></div><div class="bk-info"><div class="bk-name">New Package Launch</div><div class="bk-ch">Email · Scheduled · 20 Dec</div></div><span class="bk-amt">—</span><span class="badge ba"><span class="mi">schedule</span>Scheduled</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">6 campaigns · 1,683 total sent</span><button class="sc-export"><span class="mi">add</span>New Campaign</button></div>
+        </div>
+
+        <!-- REPUTATION -->
+        <div class="mod-view" id="mod-reputation" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">star_rate</span>Guest Reviews</div>
+            <div class="sc-sub">Reviews from all connected channels · respond here</div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Business Traveller</div><div class="bk-ch">OTA Channel · 2 days ago</div></div><span style="color:#f59e0b;font-size:.82rem;font-weight:700;white-space:nowrap">★★★★★</span><span class="badge bg" style="margin-left:6px"><span class="mi">check_circle</span>Replied</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#a78bfa)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Leisure Guest</div><div class="bk-ch">Booking.com · 3 days ago</div></div><span style="color:#f59e0b;font-size:.82rem;font-weight:700;white-space:nowrap">★★★★☆</span><span class="badge ba" style="margin-left:6px"><span class="mi">pending</span>Pending</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Corporate Guest</div><div class="bk-ch">Google Reviews · 5 days ago</div></div><span style="color:#f59e0b;font-size:.82rem;font-weight:700;white-space:nowrap">★★★☆☆</span><span class="badge br" style="margin-left:6px"><span class="mi">priority_high</span>Urgent</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Group Tour Guest</div><div class="bk-ch">TripAdvisor · 1 week ago</div></div><span style="color:#f59e0b;font-size:.82rem;font-weight:700;white-space:nowrap">★★★★★</span><span class="badge bg" style="margin-left:6px"><span class="mi">check_circle</span>Replied</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Honeymoon Guest</div><div class="bk-ch">OTA Channel · 1 week ago</div></div><span style="color:#f59e0b;font-size:.82rem;font-weight:700;white-space:nowrap">★★★★★</span><span class="badge bg" style="margin-left:6px"><span class="mi">check_circle</span>Replied</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">person</span></div><div class="bk-info"><div class="bk-name">Weekend Traveller</div><div class="bk-ch">Google Reviews · 10 days ago</div></div><span style="color:#f59e0b;font-size:.82rem;font-weight:700;white-space:nowrap">★★★★☆</span><span class="badge ba" style="margin-left:6px"><span class="mi">pending</span>Pending</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">4.3 avg · 248 reviews · 3 pending</span><button class="sc-export"><span class="mi">reply</span>Reply All Pending</button></div>
+        </div>
+
+        <!-- AGENTS -->
+        <div class="mod-view" id="mod-agents" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">manage_accounts</span>Agent Settings</div>
+            <div class="sc-sub">B2B agents · channel mapping · commission rates</div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#7c3aed)"><span class="mi" style="font-size:.85rem">manage_accounts</span></div><div class="bk-info"><div class="bk-name">OTA Partner · Domestic</div><div class="bk-ch">OTA · 10% commission · 38 bookings</div></div><span class="bk-amt">Active</span><span class="badge bg"><span class="mi">check_circle</span>Mapped</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">manage_accounts</span></div><div class="bk-info"><div class="bk-name">DMC Partner · Outbound</div><div class="bk-ch">DMC · Net rate · 22 bookings</div></div><span class="bk-amt">Active</span><span class="badge bg"><span class="mi">check_circle</span>Mapped</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="mi" style="font-size:.85rem">manage_accounts</span></div><div class="bk-info"><div class="bk-name">DMC Partner · Inbound</div><div class="bk-ch">DMC · 8% commission · 17 bookings</div></div><span class="bk-amt">Active</span><span class="badge bg"><span class="mi">check_circle</span>Mapped</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)"><span class="mi" style="font-size:.85rem">manage_accounts</span></div><div class="bk-info"><div class="bk-name">Corporate Agent · Enterprise</div><div class="bk-ch">Corporate · Net rate · 31 bookings</div></div><span class="bk-amt">Active</span><span class="badge bg"><span class="mi">check_circle</span>Mapped</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">manage_accounts</span></div><div class="bk-info"><div class="bk-name">OTA Partner · International</div><div class="bk-ch">OTA · 9% commission · 0 bookings</div></div><span class="bk-amt">Inactive</span><span class="badge" style="background:var(--bg2);color:var(--fg3)"><span class="mi">block</span>No Mapping</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">manage_accounts</span></div><div class="bk-info"><div class="bk-name">Travel Agency · Regional</div><div class="bk-ch">Agent · 7% commission · 9 bookings</div></div><span class="bk-amt">Active</span><span class="badge bg"><span class="mi">check_circle</span>Mapped</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">24 agents · 3 unmapped</span><button class="sc-export"><span class="mi">group_add</span>Add Agent</button></div>
+        </div>
+
+        <!-- VENDORS -->
+        <div class="mod-view" id="mod-vendors" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">storefront</span>Vendor Approvals</div>
+            <div class="sc-sub">Booking service requests routed to vendors</div>
+          </div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="mi" style="font-size:.85rem">storefront</span></div><div class="bk-info"><div class="bk-name">Transport Vendor · Backup</div><div class="bk-ch">Booking Ref · Airport transfer</div></div><span class="bk-amt">Backup</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><span class="mi" style="font-size:.85rem">storefront</span></div><div class="bk-info"><div class="bk-name">Tour Operator · Primary</div><div class="bk-ch">Booking #4819 · 3-day trip · Timed out</div></div><span class="bk-amt">Primary</span><span class="badge br"><span class="mi">timer</span>Timed Out</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#5b1fd2,#a78bfa)"><span class="mi" style="font-size:.85rem">storefront</span></div><div class="bk-info"><div class="bk-name">Cab Vendor · Local</div><div class="bk-ch">Booking #4822 · 4hr rental</div></div><span class="bk-amt">Primary</span><span class="badge ba"><span class="mi">pending</span>Awaiting</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)"><span class="mi" style="font-size:.85rem">storefront</span></div><div class="bk-info"><div class="bk-name">Cab Vendor · Outstation</div><div class="bk-ch">Booking #4816 · Airport drop</div></div><span class="bk-amt">Primary</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="mi" style="font-size:.85rem">storefront</span></div><div class="bk-info"><div class="bk-name">Guide Vendor · Heritage</div><div class="bk-ch">Booking #4823 · Full day tour</div></div><span class="bk-amt">Primary</span><span class="badge ba"><span class="mi">pending</span>Awaiting</span></div>
+          <div class="bk-row"><div class="bk-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)"><span class="mi" style="font-size:.85rem">storefront</span></div><div class="bk-info"><div class="bk-name">Activity Vendor · Adventure</div><div class="bk-ch">Booking #4824 · Trekking package</div></div><span class="bk-amt">Backup</span><span class="badge bg"><span class="mi">check_circle</span>Confirmed</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">12 active requests · 2 escalated</span><button class="sc-export"><span class="mi">storefront</span>Manage Vendors</button></div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="mod-view" id="mod-alerts" hidden>
+          <div class="sc-head">
+            <div class="sc-title"><span class="mi">notifications_active</span>Staff Alerts</div>
+            <div class="sc-sub">Real-time events requiring staff attention</div>
+          </div>
+          <div class="bk-row" style="align-items:flex-start"><div class="bk-avatar" style="background:var(--red);flex-shrink:0"><span class="mi" style="font-size:.85rem">badge</span></div><div class="bk-info"><div class="bk-name">Driver document expired</div><div class="bk-ch">Vehicle #2 · Licence due for renewal</div></div><span class="badge br"><span class="mi">priority_high</span>High</span></div>
+          <div class="bk-row" style="align-items:flex-start"><div class="bk-avatar" style="background:var(--amber);flex-shrink:0"><span class="mi" style="font-size:.85rem">timer</span></div><div class="bk-info"><div class="bk-name">Vendor timeout escalated</div><div class="bk-ch">Primary vendor → Backup · Booking #4819</div></div><span class="badge ba"><span class="mi">schedule</span>Escalated</span></div>
+          <div class="bk-row" style="align-items:flex-start"><div class="bk-avatar" style="background:var(--green);flex-shrink:0"><span class="mi" style="font-size:.85rem">verified</span></div><div class="bk-info"><div class="bk-name">Backup vendor confirmed</div><div class="bk-ch">Booking Ref · Service assigned</div></div><span class="badge bg"><span class="mi">check_circle</span>Resolved</span></div>
+          <div class="bk-row" style="align-items:flex-start"><div class="bk-avatar" style="background:var(--accent);flex-shrink:0"><span class="mi" style="font-size:.85rem">assignment_late</span></div><div class="bk-info"><div class="bk-name">Group booking needs reply</div><div class="bk-ch">22 rooms · DMC partner · Quote pending</div></div><span class="badge ba"><span class="mi">pending</span>Action</span></div>
+          <div class="bk-row" style="align-items:flex-start"><div class="bk-avatar" style="background:var(--blue);flex-shrink:0"><span class="mi" style="font-size:.85rem">payments</span></div><div class="bk-info"><div class="bk-name">Commission settlement due</div><div class="bk-ch">3 agents · pending NEFT transfer</div></div><span class="badge bb"><span class="mi">info</span>Info</span></div>
+          <div class="bk-row" style="align-items:flex-start"><div class="bk-avatar" style="background:var(--fg3);flex-shrink:0"><span class="mi" style="font-size:.85rem">fitness_center</span></div><div class="bk-info"><div class="bk-name">Vehicle fitness cert expiring</div><div class="bk-ch">Vehicle #4 · Certificate due in 7 days</div></div><span class="badge ba"><span class="mi">warning</span>Reminder</span></div>
+          <div class="sc-foot"><span class="sc-foot-lbl">6 alerts · 1 high priority</span><button class="sc-export"><span class="mi">done_all</span>Mark All Read</button></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Razorpay peeking -->
+    <div class="p p-rzp rzp rv" style="transition-delay:.14s">
+      <div class="rzp-logo"><span class="mi">bolt</span>Razorpay</div>
+      <div class="rzp-grid"><div class="rzp-sq"></div><div class="rzp-sq"></div><div class="rzp-sq"></div><div class="rzp-sq"></div></div>
+      <div class="rzp-num">Payment Link · Advance Deposit</div>
+      <div class="rzp-fields">
+        <div class="rzp-field"><label>For</label><span>Leela Palace</span></div>
+        <div class="rzp-field"><label>Status</label><span>Awaiting</span></div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Campaign -->
+    <div class="p p-camp rv" style="transition-delay:.06s">
+      <div class="camp-top">
+        <div class="camp-label"><span class="mi">campaign</span>WhatsApp Campaign</div>
+        <div class="camp-title">Festive Season<br>Offer 2024</div>
+      </div>
+      <div class="camp-body">
+        <div style="font-size:.6rem;color:var(--fg3);margin-bottom:7px">Travel agents &amp; corporates · 3 templates</div>
+        <div class="camp-stats">
+          <span class="badge bg" style="font-size:.54rem"><span class="mi">check_circle</span>847 Sent</span>
+          <span class="badge br" style="font-size:.54rem"><span class="mi">cancel</span>12 Failed</span>
+        </div>
+        <button class="camp-btn"><span class="mi">send</span>Send Campaign</button>
+      </div>
+    </div>
+
+    <!-- Staff Alert -->
+    <div class="p p-alert rv" style="transition-delay:.1s">
+      <div class="alert-header">
+        <div class="alert-title"><span class="mi">notifications_active</span>Staff Alert</div>
+        <span class="badge br" style="font-size:.54rem"><span class="mi">priority_high</span>High</span>
+      </div>
+      <div class="alert-body">
+        <div class="alert-row">
+          <div class="alert-icon-box"><span class="mi">warning</span></div>
+          <div>
+            <div class="alert-info-title">Driver licence expired</div>
+            <div class="alert-info-sub">Vehicle Reg · Driver Name</div>
+            <div class="alert-btns">
+              <button class="alert-approve">Approve</button>
+              <button class="alert-dismiss">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- City Ledger stat -->
+    <div class="p p-stat stat-card rv" style="transition-delay:.05s">
+      <div class="stat-label"><span class="mi">account_balance</span>City Ledger</div>
+      <div class="stat-num">6.2L</div>
+      <div class="stat-trend"><span class="mi">account_balance_wallet</span>14 accounts · due</div>
+    </div>
+
+    <!-- Bar chart -->
+    <div class="p p-chart rv" style="transition-delay:.09s">
+      <div class="chart-pad">
+        <div class="chart-lbl"><span class="mi">bar_chart</span>Bookings / Month</div>
+        <div class="chart-bars">
+          <div class="bar" style="height:42%;background:linear-gradient(to top,var(--accent),#a78bfa)"></div>
+          <div class="bar" style="height:66%;background:linear-gradient(to top,var(--accent),#a78bfa)"></div>
+          <div class="bar" style="height:50%;background:linear-gradient(to top,var(--accent),#a78bfa);opacity:.55"></div>
+          <div class="bar" style="height:88%;background:linear-gradient(to top,#06b6d4,#38bdf8)"></div>
+          <div class="bar" style="height:58%;background:linear-gradient(to top,#06b6d4,#38bdf8);opacity:.6"></div>
+          <div class="bar" style="height:100%;background:linear-gradient(to top,var(--accent),#a78bfa)"></div>
+          <div class="bar" style="height:74%;background:linear-gradient(to top,var(--accent),#a78bfa);opacity:.65"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commission donut -->
+    <div class="p p-don1 rv" style="transition-delay:.13s">
+      <div class="donut-pad">
+        <div class="donut-heading">Commission</div>
+        <div class="donut-body">
+          <div class="donut-svg-wrap">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="none" stroke="var(--border)" stroke-width="3.5"/><circle class="donut-arc" cx="18" cy="18" r="14" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-dasharray="72 28" stroke-linecap="round"/></svg>
+            <div class="donut-center" data-target="72">0%</div>
+          </div>
+          <div class="donut-stack">
+            <div class="donut-row"><div class="donut-dot" style="background:var(--accent)"></div><span class="donut-row-label">Settled</span><span class="donut-val">72%</span></div>
+            <div class="donut-row"><div class="donut-dot" style="background:var(--border)"></div><span class="donut-row-label">Pending</span><span class="donut-val">28%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor donut -->
+    <div class="p p-don2 rv" style="transition-delay:.17s">
+      <div class="donut-pad">
+        <div class="donut-heading">Vendors</div>
+        <div class="donut-body">
+          <div class="donut-svg-wrap">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="none" stroke="var(--border)" stroke-width="3.5"/><circle class="donut-arc" cx="18" cy="18" r="14" fill="none" stroke="var(--green)" stroke-width="3.5" stroke-dasharray="85 15" stroke-linecap="round"/></svg>
+            <div class="donut-center" data-target="85">0%</div>
+          </div>
+          <div class="donut-stack">
+            <div class="donut-row"><div class="donut-dot" style="background:var(--green)"></div><span class="donut-row-label">Approved</span><span class="donut-val">85%</span></div>
+            <div class="donut-row"><div class="donut-dot" style="background:var(--border)"></div><span class="donut-row-label">Pending</span><span class="donut-val">15%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CORE FEATURES -->
+<section class="core-sec" id="features">
+  <div class="core-inner">
+    <div class="sec-row rv">
+      <div>
+        <div class="sec-eyebrow">Core Features</div>
+        <div class="sec-h">The Ultimate Toolkit for B2B Hotels</div>
+      </div>
+      <button class="btn-dark"><span class="mi" style="font-size:.95rem">play_circle</span>Book a Demo</button>
+    </div>
+    <div class="core-grid stg">
+      <!-- Card 1 -->
+      <div class="core-card">
+        <div class="core-card-inner">
+          <div class="core-face core-front">
+            <img src="imgs/img-travel agents.png" alt="Agent Bookings" class="core-front-img">
+            <div class="core-front-body">
+              <h3>Agent Bookings &amp; Quotations</h3>
+              <p>Manage all B2B travel agent bookings. Filter, quote, and track Awaiting / Confirmed / Rejected status across all channels.</p>
+              <div class="core-hint"><span class="mi">touch_app</span>Hover to explore</div>
+            </div>
+          </div>
+          <div class="core-face core-back">
+            <div class="core-back-icon"><span class="mi">book_online</span></div>
+            <h3>Filter, Quote &amp; Track</h3>
+            <p>Filter by property, city, channel, commission status, and dates. Handle group requests of 10+ rooms, reply with custom quotes.</p>
+            <button class="core-back-cta"><span class="mi">arrow_forward</span>View Bookings Module</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="core-card">
+        <div class="core-card-inner">
+          <div class="core-face core-front">
+            <img src="imgs/img- city ledger.png" alt="City Ledger" class="core-front-img">
+            <div class="core-front-body">
+              <h3>Commissions &amp; City Ledger</h3>
+              <p>Track commissions owed to agents and settle via NEFT. Maintain corporate credit accounts with real-time balance due.</p>
+              <div class="core-hint"><span class="mi">touch_app</span>Hover to explore</div>
+            </div>
+          </div>
+          <div class="core-face core-back">
+            <div class="core-back-icon"><span class="mi">payments</span></div>
+            <h3>Settle, Analyse &amp; Report</h3>
+            <p>Settle per booking or bulk per agent. Generate Razorpay payment links for advances. Full ledger analytics per account.</p>
+            <button class="core-back-cta"><span class="mi">arrow_forward</span>View Ledger Module</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="core-card">
+        <div class="core-card-inner">
+          <div class="core-face core-front">
+            <img src="imgs/img- fleet.png" alt="Fleet & Transportation" class="core-front-img">
+            <div class="core-front-body">
+              <h3>Fleet &amp; Transportation</h3>
+              <p>Hour-by-hour fleet availability calendar with bookings, holds, and buffers. Assign vehicles and manage drivers end-to-end.</p>
+              <div class="core-hint"><span class="mi">touch_app</span>Hover to explore</div>
+            </div>
+          </div>
+          <div class="core-face core-back">
+            <div class="core-back-icon"><span class="mi">local_taxi</span></div>
+            <h3>Book, Assign &amp; Track Trips</h3>
+            <p>Create cab bookings for airport transfers, hourly rentals, and multi-day trips. Track trip status from Pending to Completed.</p>
+            <button class="core-back-cta"><span class="mi">arrow_forward</span>View Fleet Module</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="why-sec" id="why">
+  <div class="why-grid">
+
+    <!-- LEFT: heading + feature list -->
+    <div class="why-left rv-l">
+      <div class="why-label">Why B2BStays</div>
+      <div class="why-heading">Built for the way<br>hotel ops actually work.</div>
+      <div class="why-sub">Six modules, one login. From agent bookings to vendor approvals — no spreadsheets, no follow-up emails, no context-switching.</div>
+      <div class="why-list">
+        <div class="why-item active"><span class="num">01</span><span class="mi">book_online</span>Agent Bookings &amp; Quotations</div>
+        <div class="why-item"><span class="num">02</span><span class="mi">account_balance</span>City Ledger &amp; Accounts</div>
+        <div class="why-item"><span class="num">03</span><span class="mi">luggage</span>Hotel Packages</div>
+        <div class="why-item"><span class="num">04</span><span class="mi">local_taxi</span>Fleet &amp; Transportation</div>
+        <div class="why-item"><span class="num">05</span><span class="mi">campaign</span>WhatsApp Marketing</div>
+        <div class="why-item"><span class="num">06</span><span class="mi">storefront</span>Vendor Approvals</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-dark"><span class="mi" style="font-size:.86rem">play_circle</span>Start Free Trial</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: stacked widgets -->
+    <div class="why-right rv-r">
+      <!-- mini portal -->
+      <div class="mini-portal">
+        <div class="mini-top">
+          <div class="mini-dot" style="background:#ff6b6b"></div>
+          <div class="mini-dot" style="background:#ffd93d"></div>
+          <div class="mini-dot" style="background:#6bcb77"></div>
+          <span style="font-size:.6rem;font-weight:700;color:var(--fg3);margin-left:6px">B2BStays Portal</span>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item active"><span class="mi">book_online</span>Bookings</div>
+          <div class="mini-nav-item"><span class="mi">account_balance</span>Ledger</div>
+          <div class="mini-nav-item"><span class="mi">local_taxi</span>Transport</div>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="mini-stat-n">142</div><div class="mini-stat-l">Agents</div></div>
+          <div class="mini-stat"><div class="mini-stat-n">28L</div><div class="mini-stat-l">Revenue</div></div>
+          <div class="mini-stat"><div class="mini-stat-n">18</div><div class="mini-stat-l">Pending</div></div>
+        </div>
+      </div>
+      <!-- alerts widget -->
+      <div class="alert-panel">
+        <div class="alert-ph"><span class="mi">notifications</span>Vendor &amp; Staff Alerts</div>
+        <div class="al-item">
+          <div class="al-icon ai-r"><span class="mi">badge</span></div>
+          <div class="al-text"><strong>Driver licence expired</strong><span>Driver Name · Vehicle Reg</span><div><span class="al-prio ap-h">High Priority</span></div></div>
+        </div>
+        <div class="al-item">
+          <div class="al-icon ai-a"><span class="mi">timer</span></div>
+          <div class="al-text"><strong>Vendor timeout escalation</strong><span>Primary Vendor to Backup Vendor</span><div><span class="al-prio ap-m">Escalated</span></div></div>
+        </div>
+        <div class="al-item">
+          <div class="al-icon ai-g"><span class="mi">verified</span></div>
+          <div class="al-text"><strong>Vendor confirmed</strong><span>Backup vendor assigned · Booking confirmed</span><div><span class="al-prio ap-o">Resolved</span></div></div>
+        </div>
+        <div class="secured"><span class="mi">lock</span><span>Data Secured · Role-Based Access</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLARITY SECTION -->
+<section class="clarity-sec">
+  <div class="clarity-inner">
+    <div class="clarity-top rv">
+      <span class="sec-eyebrow">The essentials</span>
+      <div class="clarity-h">Three questions every hotel GM asks.<br>Here are the honest answers.</div>
+    </div>
+    <div class="clarity-grid stg">
+      <div class="clarity-card">
+        <div class="clarity-card-icon"><span class="mi">hotel</span></div>
+        <div class="clarity-card-q">What is it?</div>
+        <div class="clarity-card-a">One platform that runs every B2B workflow your hotel already has — just without the spreadsheets.</div>
+        <div class="clarity-card-p">B2BStays connects agent bookings, city ledger, commission payable, fleet, WhatsApp campaigns and vendor coordination into a single system built specifically for hotel operations. Not a generic CRM adapted for hospitality.</div>
+      </div>
+      <div class="clarity-card">
+        <div class="clarity-card-icon"><span class="mi">warning_amber</span></div>
+        <div class="clarity-card-q">Why do I need it?</div>
+        <div class="clarity-card-a">Most hotels run B2B on a mix of WhatsApp threads, Excel files and memory. That works — until it doesn't.</div>
+        <div class="clarity-card-p">When a commission dispute lands with no audit trail, a vendor misses a pickup because no one followed up, or a city ledger goes unreconciled for weeks, the cost is real. B2BStays is what fills the gap your PMS was never designed for.</div>
+      </div>
+      <div class="clarity-card">
+        <div class="clarity-card-icon"><span class="mi">trending_up</span></div>
+        <div class="clarity-card-q">How will it help me?</div>
+        <div class="clarity-card-a">Your team stops chasing confirmations. Your accounts team stops reconciling manually. Your agents stop calling to check status.</div>
+        <div class="clarity-card-p">Bookings confirm with an audit trail. Commissions calculate and settle automatically. Vendors confirm or the system escalates. Ledger balances are always current. Every team sees exactly what they need — nothing more.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING SECTION -->
+<section class="closing-sec" id="integrations">
+  <div class="closing-inner rv">
+    <div class="closing-eyebrow">See it in 30 minutes</div>
+    <div class="closing-h">Less admin.<br><span class="acc">More control.</span></div>
+    <div class="closing-sub">Built by a team that has worked with hotel operations across independent properties, chains and DMCs. Purpose-built for hotel B2B — not a generic CRM.</div>
+    <div class="closing-btns">
+      <button class="btn-white"><span class="mi" style="font-size:1rem">play_circle</span>Book a free demo</button>
+      <button class="btn-outline-white">Talk to Sales</button>
+    </div>
+    <div class="closing-divider"></div>
+    <div class="closing-pills">
+      <div class="closing-pill"><span class="mi">lock</span>Data encrypted in transit &amp; at rest</div>
+      <div class="closing-pill"><span class="mi">manage_accounts</span>Role-based access per department</div>
+      <div class="closing-pill"><span class="mi">history</span>Full audit trail on every booking</div>
+      <div class="closing-pill"><span class="mi">support_agent</span>Setup done with you</div>
+      <div class="closing-pill"><span class="mi">devices</span>Works on any device</div>
+      <div class="closing-pill"><span class="mi">fact_check</span>No commitment required</div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+// TYPING
+const words=['Hotels','Travel Agents','DMCs','Corporate Account','Fleet Operators'];
+let wi=0,ci=0,del=false;
+const tel=document.getElementById('t-text');
+function type(){
+  const w=words[wi];
+  if(!del){tel.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1900);return;}}
+  else{tel.textContent=w.slice(0,--ci);if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(type,280);return;}}
+  setTimeout(type,del?48:72);
+}
+setTimeout(type,800);
+
+// SCROLL REVEAL
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+},{threshold:.06});
+document.querySelectorAll('.rv,.rv-l,.rv-r,.stg').forEach(e=>io.observe(e));
+
+
+// SIDEBAR MODULE SWITCHING
+document.querySelectorAll('.sidebar-nav-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const mod=item.dataset.module;
+    if(!mod)return;
+    // update active state
+    document.querySelectorAll('.sidebar-nav-item').forEach(x=>x.classList.remove('active'));
+    item.classList.add('active');
+    // switch panel
+    document.querySelectorAll('.mod-view').forEach(v=>{v.hidden=true;});
+    const target=document.getElementById('mod-'+mod);
+    if(target){target.hidden=false;}
+    // re-bind filter chips in new view
+    bindFilters();
+  });
+});
+function bindFilters(){
+  document.querySelectorAll('.sc-filter').forEach(f=>{
+    f.onclick=()=>{
+      f.closest('.sc-filters').querySelectorAll('.sc-filter').forEach(x=>x.classList.remove('active'));
+      f.classList.add('active');
+    };
+  });
+}
+bindFilters();
+
+// BOOKING ROW EXPAND
+const bkDetails=[
+  'Check-in: 14 Nov · 3 nights · Seaside Property · 4 rooms',
+  'Awaiting reply · Quote sent · 2 Superior Suites',
+  'Confirmed · Check-in: 18 Nov · Airport transfer incl.',
+  'Group 22 rooms · Corporate Event · Negotiating',
+  'Commission settled via NEFT · Reference on file',
+  'Check-in: 22 Nov · 2 nights · Boutique Palace · 6 rooms',
+];
+document.querySelectorAll('.bk-row').forEach((row,i)=>{
+  const detail=document.createElement('div');
+  detail.style.cssText='max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;background:var(--accent-s);font-size:.65rem;color:var(--accent);padding:0 20px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border)';
+  detail.innerHTML=`<span class="mi" style="font-size:.82rem;flex-shrink:0">info</span>${bkDetails[i]||''}`;
+  row.insertAdjacentElement('afterend',detail);
+  row.addEventListener('click',()=>{
+    const open=detail.style.maxHeight!=='0px'&&detail.style.maxHeight!=='';
+    document.querySelectorAll('.bk-row + div').forEach(d=>{d.style.maxHeight='0';d.style.padding='0 20px';});
+    if(!open){detail.style.maxHeight='36px';detail.style.padding='7px 20px';}
+  });
+});
+
+// COMMISSION KNOCK-OFF
+const knockBtn=document.querySelector('.comm-knock');
+if(knockBtn){
+  knockBtn.addEventListener('click',()=>{
+    if(knockBtn.dataset.done)return;
+    knockBtn.dataset.done='1';
+    knockBtn.innerHTML='<span class="mi" style="font-size:.76rem">hourglass_top</span>Processing…';
+    knockBtn.style.opacity='.65';
+    setTimeout(()=>{
+      const fill=document.querySelector('.comm-bar-fill');
+      if(fill){fill.style.width='100%';}
+      knockBtn.innerHTML='<span class="mi" style="font-size:.76rem">check_circle</span>Commission Settled!';
+      knockBtn.style.background='var(--green)';
+      knockBtn.style.opacity='1';
+    },1200);
+  });
+}
+
+// CAMPAIGN SEND
+document.querySelectorAll('button').forEach(btn=>{
+  if(btn.classList.contains('camp-btn')){
+    btn.addEventListener('click',()=>{
+      if(btn.dataset.sent)return;
+      btn.dataset.sent='1';
+      btn.innerHTML='<span class="mi" style="font-size:.74rem">hourglass_top</span>Sending…';
+      btn.style.opacity='.65';
+      setTimeout(()=>{
+        btn.innerHTML='<span class="mi" style="font-size:.74rem">check_circle</span>Campaign Sent!';
+        btn.style.background='var(--green)';
+        btn.style.opacity='1';
+      },1400);
+    });
+  }
+});
+
+// ALERT APPROVE / DISMISS
+document.querySelectorAll('.alert-approve,.alert-dismiss').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const wrap=btn.closest('.alert-body');
+    if(!wrap||wrap.dataset.done)return;
+    wrap.dataset.done='1';
+    if(btn.classList.contains('alert-approve')){
+      wrap.innerHTML=`
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--green-s);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3.5 9.5l3.5 3.5 7-7" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size:.82rem;font-weight:700;color:var(--green)">Renewal acknowledged</div>
+            <div style="font-size:.74rem;color:var(--fg3);margin-top:2px">Driver flagged · Ops team notified</div>
+          </div>
+        </div>`;
+    } else {
+      wrap.innerHTML=`<div style="font-size:.78rem;color:var(--fg3);padding:4px 0;opacity:.6">Alert dismissed</div>`;
+    }
+  });
+});
+
+// WHY ITEMS
+document.querySelectorAll('.why-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    document.querySelectorAll('.why-item').forEach(x=>x.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// MINI NAV
+document.querySelectorAll('.mini-nav-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    item.closest('.mini-nav').querySelectorAll('.mini-nav-item').forEach(x=>x.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// HERO CTA → scroll to features
+document.querySelectorAll('.hero-cta-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const el=document.getElementById('features');
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.hero-cta-ghost').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const el=document.getElementById('features');
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// CORE CARD RIPPLE on front face
+document.querySelectorAll('.core-front').forEach(face=>{
+  face.addEventListener('click',e=>{
+    const r=document.createElement('span');
+    const rect=face.getBoundingClientRect();
+    const s=Math.max(rect.width,rect.height)*2;
+    r.style.cssText=`position:absolute;border-radius:50%;background:rgba(91,31,210,.1);width:${s}px;height:${s}px;left:${e.clientX-rect.left-s/2}px;top:${e.clientY-rect.top-s/2}px;transform:scale(0);animation:ripple .5s ease-out forwards;pointer-events:none;z-index:2`;
+    face.appendChild(r);setTimeout(()=>r.remove(),550);
+  });
+});
+const rs=document.createElement('style');
+rs.textContent='@keyframes ripple{to{transform:scale(1);opacity:0}}';
+document.head.appendChild(rs);
+
+// PAGE LOAD PROGRESS BAR
+(()=>{
+  const bar=document.createElement('div');
+  bar.className='pg-bar';
+  document.body.prepend(bar);
+  let w=0;
+  const t=setInterval(()=>{
+    w+=Math.random()*18;
+    if(w>85)w=85;
+    bar.style.width=w+'%';
+  },120);
+  window.addEventListener('load',()=>{
+    clearInterval(t);
+    bar.style.width='100%';
+    setTimeout(()=>{bar.style.opacity='0';bar.style.transition='opacity .4s';},300);
+  });
+})();
+
+// COUNTER-UP on stat numbers
+(()=>{
+  const statEls=document.querySelectorAll('.mini-stat-n,[data-count]');
+  const countUp=(el)=>{
+    const txt=el.textContent.trim();
+    const num=parseFloat(txt.replace(/[^0-9.]/g,''));
+    if(isNaN(num)||num===0)return;
+    const suffix=txt.replace(/[0-9.]/g,'');
+    const dur=900,steps=40,inc=num/steps;
+    let cur=0,s=0;
+    el.classList.add('pop');
+    const id=setInterval(()=>{
+      cur+=inc;s++;
+      el.textContent=(s===steps?num:Math.round(cur))+suffix;
+      if(s>=steps)clearInterval(id);
+    },dur/steps);
+  };
+  const cio=new IntersectionObserver(entries=>{
+    entries.forEach(x=>{if(x.isIntersecting){countUp(x.target);cio.unobserve(x.target);}});
+  },{threshold:.5});
+  statEls.forEach(e=>cio.observe(e));
+})();
+
+// STAGGER GRIDS on scroll
+(()=>{
+  const targets=[
+    document.querySelector('.clarity-grid'),
+    document.querySelector('.closing-pills'),
+    document.querySelector('.closing-divider'),
+  ].filter(Boolean);
+  const gio=new IntersectionObserver(entries=>{
+    entries.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in-view');gio.unobserve(x.target);}});
+  },{threshold:.1});
+  targets.forEach(e=>gio.observe(e));
+})();
+
+// BUTTON RIPPLE
+document.querySelectorAll('button,.hero-cta-btn,.btn-white,.btn-dark').forEach(btn=>{
+  btn.style.position='relative';
+  btn.style.overflow='hidden';
+  btn.addEventListener('click',e=>{
+    const r=document.createElement('span');
+    r.className='ripple-el';
+    const rect=btn.getBoundingClientRect();
+    r.style.left=(e.clientX-rect.left)+'px';
+    r.style.top=(e.clientY-rect.top)+'px';
+    btn.appendChild(r);
+    setTimeout(()=>r.remove(),600);
+  });
+});
+
+// DONUT COUNTER-UP
+(()=>{
+  const centers=document.querySelectorAll('.donut-center[data-target]');
+  const dio=new IntersectionObserver(entries=>{
+    entries.forEach(x=>{
+      if(!x.isIntersecting)return;
+      const el=x.target;
+      const target=parseInt(el.dataset.target);
+      let cur=0;const steps=40,dur=900;
+      const id=setInterval(()=>{
+        cur+=target/steps;
+        el.textContent=Math.min(Math.round(cur),target)+'%';
+        if(cur>=target){el.textContent=target+'%';clearInterval(id);}
+      },dur/steps);
+      dio.unobserve(el);
+    });
+  },{threshold:.5});
+  centers.forEach(e=>dio.observe(e));
+})();
+
+// MOUSE PARALLAX on hero
+const heroEl=document.querySelector('.hero');
+document.addEventListener('mousemove',e=>{
+  if(!heroEl)return;
+  const x=(e.clientX/window.innerWidth-.5)*12,y=(e.clientY/window.innerHeight-.5)*6;
+  heroEl.style.backgroundPosition=`calc(50% + ${x}px) calc(50% + ${y}px)`;
+});
+</script>
+</body>
+</html>

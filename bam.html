@@ -1,0 +1,860 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2BStays — Hotel B2B Operations Platform | Agent Bookings, City Ledger & Fleet</title>
+<meta name="description" content="B2BStays is the all-in-one B2B operations platform for hotels. Manage travel agent bookings, city ledger, commissions, fleet, vendor coordination and WhatsApp campaigns in one place.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="B2BStays — Hotel B2B Operations Platform">
+<meta property="og:description" content="One platform for every B2B workflow your hotel already runs: agent bookings, city ledger, commissions, fleet and vendor coordination.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="B2BStays — Hotel B2B Operations Platform">
+<meta name="twitter:description" content="One platform for every B2B workflow your hotel already runs: agent bookings, city ledger, commissions, fleet and vendor coordination.">
+<link rel="canonical" href="https://www.eglobe-solutions.com/b2bstays">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"B2BStays","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"All-in-one B2B operations platform for hotels covering agent bookings, city ledger, commissions, fleet and vendor coordination.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"eGlobe Solutions","url":"https://www.eglobe-solutions.com"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p900:#1a1a4a;--p800:#23236b;--p700:#2e2e8f;--p600:#3d3db5;
+  --p500:#5558e8;--p400:#8080f0;--p300:#a5a8f5;--p200:#d0d1fa;
+  --p100:#eeeeff;--p50:#f5f5ff;
+  --warm:#f97316;--warm-lt:#fff3e8;--warm-dk:#c45a0a;
+  --ink:#1a1a3a;--muted:#4a4b72;--border:#c8c8e8;
+  --r:12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);background:#fafafa;line-height:1.6;font-size:15px;overflow-x:hidden;position:relative}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 60% 50% at var(--mx,50%) var(--my,30%),rgba(85,88,232,.07) 0%,transparent 70%);
+  transition:--mx .8s,--my .8s;}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+#progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--p500),var(--p300));z-index:1100;transition:width .1s linear;pointer-events:none}
+
+.pill{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);
+  z-index:1000;display:inline-flex;align-items:center;
+  background:rgba(26,26,74,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.14);border-radius:999px;
+  padding:6px 6px 6px 22px;white-space:nowrap;
+  transition:top .3s,box-shadow .3s,background .3s;
+  animation:drop .5s .1s both;
+}
+@keyframes drop{from{opacity:0;transform:translateX(-50%) translateY(-14px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.pill.up{top:12px;background:rgba(26,26,74,.97);box-shadow:0 4px 28px rgba(0,0,0,.32)}
+.pill-logo{font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;color:#fff;letter-spacing:.04em;margin-right:2px}
+.pill-logo span{color:var(--p300)}
+.pill-links{display:flex;gap:2px;margin:0 8px}
+.pill-links a{
+  font-size:.72rem;color:rgba(255,255,255,.65);padding:6px 12px;border-radius:999px;
+  transition:color .2s,background .2s;position:relative;
+}
+.pill-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.pill-links a.active{color:#fff;background:rgba(255,255,255,.12)}
+.pill-cta{
+  background:var(--warm);color:#fff;font-size:.75rem;font-weight:700;
+  padding:9px 20px;border-radius:999px;letter-spacing:.04em;border:none;cursor:pointer;
+  font-family:inherit;transition:background .2s,transform .15s,box-shadow .2s;
+}
+.pill-cta:hover{background:#ea6a0a;transform:scale(1.04);box-shadow:0 4px 16px rgba(249,115,22,.4)}
+.pill-cta:active{transform:scale(.97)}
+
+.sec{padding:60px 48px}
+.sec-in{max-width:1100px;margin:0 auto}
+.tag{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--p500);display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.tag::before{content:'';width:18px;height:2px;background:var(--p400)}
+.h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;color:var(--p900);line-height:1.1;margin-bottom:14px}
+.h2 em{color:var(--p500);font-style:normal}
+.sub{font-size:.92rem;color:var(--muted);line-height:1.85;max-width:560px}
+.light{background:rgba(238,238,255,.28)}
+.btn-p{
+  display:inline-flex;align-items:center;gap:8px;background:var(--p300);color:var(--p900);
+  font-size:.84rem;font-weight:700;padding:13px 28px;border-radius:6px;letter-spacing:.04em;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.btn-p:hover{background:#bbbef8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(165,168,245,.35)}
+.btn-p:active{transform:translateY(0)}
+.btn-g{
+  display:inline-flex;align-items:center;background:transparent;color:rgba(255,255,255,.85);
+  font-size:.83rem;font-weight:500;padding:12px 24px;border:1px solid rgba(255,255,255,.3);
+  border-radius:6px;transition:all .2s;
+}
+.btn-g:hover{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(255,255,255,.06)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal-l.in{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal-r.in{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+.hero{
+  background:linear-gradient(145deg,var(--p900) 0%,var(--p800) 45%,var(--p700) 100%);
+  min-height:65vh;display:flex;align-items:stretch;padding:0;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 70% at 72% 40%,rgba(165,168,245,.13) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-in{max-width:100%;margin:0 auto;width:100%;display:grid;grid-template-columns:46fr 54fr;gap:0;align-items:stretch;position:relative;z-index:1}
+.hero-left{padding:100px 48px 72px 64px;display:flex;flex-direction:column;justify-content:center;gap:0}
+.eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--p300);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--p300)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.01em;margin-bottom:18px}
+.hero h1 em{color:var(--p300);font-style:normal}
+.hero-sub{font-size:.94rem;color:rgba(255,255,255,.78);line-height:1.88;margin-bottom:32px;max-width:400px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero-img{overflow:hidden;height:100%;min-height:420px;position:relative;display:flex;align-items:center;justify-content:center;padding:48px 40px 48px 0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.28)}
+
+.marquee-sec{background:var(--p50);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden}
+.marquee-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:flex;align-items:center;gap:10px;padding:0 44px;font-size:.8rem;font-weight:600;color:var(--p700);white-space:nowrap}
+.marquee-dot{width:7px;height:7px;border-radius:50%;background:var(--p400);flex-shrink:0;opacity:.7}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.feat-card{border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(85,88,232,.08);cursor:default;perspective:1000px;position:relative;min-height:320px}
+.feat-card-inner{position:absolute;inset:0;transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.feat-card:hover .feat-card-inner{transform:rotateY(180deg)}
+.feat-front,.feat-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.feat-back{transform:rotateY(180deg);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.feat-top{padding:28px 24px 22px;display:flex;flex-direction:column;gap:10px;position:relative}
+.feat-top::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:var(--p300)}
+.feat-card:nth-child(1) .feat-top::before{background:linear-gradient(90deg,#8fa800,#c8f135)}
+.feat-card:nth-child(2) .feat-top::before{background:linear-gradient(90deg,var(--p600),var(--p300))}
+.feat-card:nth-child(3) .feat-top::before{background:linear-gradient(90deg,#0f7a4d,#a8e6cf)}
+.feat-card:nth-child(4) .feat-top::before{background:linear-gradient(90deg,#1a5276,#b3d9f5)}
+.feat-card:nth-child(5) .feat-top::before{background:linear-gradient(90deg,#7a1a35,#f5c6d0)}
+.feat-card:nth-child(6) .feat-top::before{background:linear-gradient(90deg,#7a5c00,#fde68a)}
+.feat-logo{font-size:1.08rem;font-weight:800;color:var(--p900);letter-spacing:-.01em;line-height:1}
+.feat-logo span{font-weight:400}
+.feat-tagline{font-size:.81rem;line-height:1.62;color:var(--p900);max-width:210px;font-weight:500;opacity:.8}
+.feat-img{flex:1;min-height:180px;overflow:hidden;position:relative}
+.feat-img img{width:100%;height:100%;object-fit:cover;display:block}
+.feat-back-title{font-size:1rem;font-weight:800;color:#fff;line-height:1.2}
+.feat-back-body{font-size:.82rem;color:rgba(255,255,255,.78);line-height:1.72}
+.feat-back-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.feat-back-tag{font-size:.7rem;font-weight:600;background:rgba(255,255,255,.15);color:#fff;border-radius:999px;padding:3px 10px}
+
+.steps-wrap{margin-top:36px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{text-align:left;padding:28px 22px 24px;background:rgba(255,255,255,.7);border:1px solid var(--border);border-radius:14px;transition:box-shadow .25s,transform .25s,border-color .25s;cursor:default;position:relative;overflow:hidden}
+.step::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p500),var(--p300));transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.step:hover::before{transform:scaleX(1)}
+.step:hover{box-shadow:0 12px 36px rgba(85,88,232,.14);transform:translateY(-4px);border-color:var(--p300)}
+.step-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.step-ico{width:36px;height:36px;border-radius:9px;background:var(--p100);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-ico svg{width:16px;height:16px;stroke:var(--p600);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.step-n{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:800;color:var(--p200);line-height:1;filter:blur(1px);opacity:.5;transition:opacity .25s}
+.step:hover .step-n{opacity:.7}
+.step h3{font-size:.9rem;font-weight:700;color:var(--p900);margin-bottom:8px;line-height:1.3}
+.step p{font-size:.8rem;color:var(--muted);line-height:1.72}
+
+.faq-sec{background:rgba(238,238,255,.28);padding:60px 48px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:32px}
+.faq-img{border-radius:var(--r);overflow:hidden;position:sticky;top:80px}
+.faq-stat-panel{background:linear-gradient(145deg,var(--p900),var(--p700));border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:28px;position:relative;overflow:hidden;box-shadow:0 16px 48px rgba(85,88,232,.22)}
+.faq-stat-panel::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 25%,rgba(124,58,237,.3) 0%,transparent 55%),radial-gradient(ellipse at 85% 75%,rgba(167,139,250,.15) 0%,transparent 50%);pointer-events:none}
+.faq-stat{position:relative;z-index:1}
+.faq-stat-num{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.2rem);font-weight:800;color:#fff;line-height:1;margin-bottom:6px}
+.faq-stat-num span{color:var(--p300)}
+.faq-stat-label{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.5}
+.faq-stat-divider{height:1px;background:rgba(255,255,255,.08);position:relative;z-index:1}
+.faq-list{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden;padding:0 20px}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;color:var(--p900);transition:color .2s}
+.faq-q:hover{color:var(--p500)}
+.faq-q.open{color:var(--p500)}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:var(--p100);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .3s}
+.faq-q.open .faq-icon{background:var(--p500);transform:rotate(45deg)}
+.faq-icon svg{width:12px;height:12px;stroke:var(--p600);fill:none;stroke-width:2.5;stroke-linecap:round;transition:stroke .2s}
+.faq-q.open .faq-icon svg{stroke:#fff}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.faq-body p{font-size:.85rem;color:var(--muted);line-height:1.78;padding:0 0 20px}
+
+.trust-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.trust-card{border-radius:14px;padding:32px;display:flex;gap:18px;align-items:flex-start;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+.trust-card::after{content:'';position:absolute;inset:0;border-radius:14px;opacity:0;transition:opacity .3s;pointer-events:none}
+.trust-card.light::after{box-shadow:inset 0 0 0 1.5px var(--p300)}
+.trust-card.dark::after{box-shadow:inset 0 0 0 1.5px rgba(165,168,245,.4)}
+.trust-card:hover::after{opacity:1}
+.trust-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(85,88,232,.15)}
+.trust-card.light{background:rgba(255,255,255,.65);border:1px solid var(--border)}
+.trust-card.dark{background:var(--p900)}
+.tc-icon{width:44px;height:44px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .3s}
+.trust-card:hover .tc-icon{transform:scale(1.18) rotate(-6deg)}
+.trust-card.light .tc-icon{background:var(--p100)}
+.trust-card.dark .tc-icon{background:rgba(255,255,255,.08)}
+.trust-card.light:hover .tc-icon{background:var(--p200)}
+.trust-card.dark:hover .tc-icon{background:rgba(255,255,255,.14)}
+.tc-icon svg{width:22px;height:22px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.trust-card.light .tc-icon svg{stroke:var(--p600)}
+.trust-card.dark .tc-icon svg{stroke:var(--p300)}
+.tc-body h3{font-size:.92rem;font-weight:700;margin-bottom:6px;line-height:1.3}
+.trust-card.light .tc-body h3{color:var(--p900)}
+.trust-card.dark .tc-body h3{color:#fff}
+.tc-body p{font-size:.81rem;line-height:1.72}
+.trust-card.light .tc-body p{color:var(--muted)}
+.trust-card.dark .tc-body p{color:rgba(255,255,255,.62)}
+
+.trust-card.wide{grid-column:1/-1;flex-direction:row;gap:0;padding:0;overflow:hidden;background:none;border:1px solid var(--border)}
+.trust-wide-col{flex:1;padding:32px 36px}
+.trust-wide-col:first-child{background:#fff;border-right:1px solid var(--border)}
+.trust-wide-col:last-child{background:#fff}
+.trust-wide-col h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--p500);margin-bottom:16px}
+.trust-check-list{display:flex;flex-direction:column;gap:8px}
+.trust-check{font-size:.84rem;color:var(--ink);display:flex;align-items:flex-start;gap:10px;line-height:1.5;padding:8px 10px;border-radius:6px;transition:background .2s,transform .15s}
+.trust-check:hover{background:var(--p50);transform:translateX(4px)}
+.trust-check::before{content:'\2713';color:var(--p500);font-weight:700;flex-shrink:0;margin-top:1px}
+.trust-wide-col:last-child .trust-check:hover{background:#fff5f5}
+.trust-wide-col:last-child .trust-check::before{content:'\2717';color:#e57373}
+
+.cta-sec{background:linear-gradient(135deg,var(--p900) 0%,var(--p800) 100%);padding:0 48px;position:relative;overflow:hidden;min-height:440px;display:flex;align-items:stretch}
+.cta-sec-bg-text{position:absolute;left:-10px;bottom:-30px;font-family:'Playfair Display',serif;font-size:clamp(120px,18vw,220px);font-weight:900;line-height:1;color:rgba(85,88,232,.18);pointer-events:none;user-select:none;letter-spacing:-.04em;white-space:nowrap}
+.cta-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;position:relative;z-index:1;padding:72px 0}
+.cta-left{display:flex;flex-direction:column;gap:20px}
+.cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding-left:64px;border-left:1px solid rgba(255,255,255,.1)}
+.cta-right-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);display:flex;align-items:center;gap:8px}
+.cta-right-label::before{content:'';width:18px;height:2px;background:var(--warm)}
+.cta-checks-list{display:flex;flex-direction:column;gap:10px}
+.cta-check-item{display:flex;align-items:center;gap:10px;font-size:.88rem;color:rgba(255,255,255,.8);font-weight:500}
+.cta-check-item::before{content:'✓';color:var(--warm);font-weight:800;font-size:1rem;flex-shrink:0}
+@media(max-width:860px){
+  .cta-inner{grid-template-columns:1fr;gap:40px}
+  .cta-right{padding-left:0;border-left:none;border-top:1px solid rgba(255,255,255,.1);padding-top:32px}
+  .cta-sec{padding:0 20px}
+}
+
+.strip{background:var(--p900);border-top:1px solid rgba(255,255,255,.08);padding:16px 48px}
+.strip-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+#btt{position:fixed;bottom:28px;right:28px;z-index:999;width:42px;height:42px;border-radius:50%;background:var(--p600);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(85,88,232,.35);opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s,background .2s;pointer-events:none}
+#btt.vis{opacity:1;transform:translateY(0);pointer-events:auto}
+#btt:hover{background:var(--p500)}
+#btt svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+[data-tip]{position:relative}
+[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);background:var(--p900);color:#fff;font-size:.7rem;white-space:nowrap;padding:5px 10px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
+[data-tip]:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:860px){
+  .hero-in,.faq-grid,.trust-row{grid-template-columns:1fr;gap:32px}
+  .hero-left{padding:100px 24px 48px}
+  .hero-img{min-height:280px}
+  .trust-card.wide{flex-direction:column}
+  .trust-wide-col:first-child{border-right:none;border-bottom:1px solid var(--border)}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:16px}
+  .pill-links{display:none}
+  .sec,.faq-sec{padding:40px 20px}
+  .faq-img{display:none}
+  .faq-grid{grid-template-columns:1fr}
+}
+/* ── DIFFERENTIATORS ── */
+.diff-sec{padding:72px 48px;overflow:hidden}
+.diff-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.diff-left .tag{margin-bottom:14px}
+.diff-left .h2{margin-bottom:12px}
+.diff-left .sub{margin-bottom:0}
+.diff-pills{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+.diff-pill{
+  display:flex;align-items:center;gap:14px;
+  background:#fff;border:1px solid var(--border);border-radius:999px;
+  padding:12px 20px 12px 12px;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+  cursor:default;
+}
+.diff-pill:hover{border-color:var(--p300);box-shadow:0 6px 20px rgba(85,88,232,.12);transform:translateX(6px)}
+.diff-pill-dot{width:36px;height:36px;border-radius:50%;background:var(--p100);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.diff-pill:hover .diff-pill-dot{background:var(--p300)}
+.diff-pill-dot svg{width:16px;height:16px;fill:none;stroke:var(--p600);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
+.diff-pill:hover .diff-pill-dot svg{stroke:var(--p900)}
+.diff-pill span{font-size:.86rem;font-weight:600;color:var(--ink)}
+
+/* stacked card stack visual */
+.diff-right{position:relative}
+.diff-stack{display:flex;flex-direction:column;gap:10px}
+
+/* the two "before" rows — muted, crossed-out feel */
+.diff-card{
+  border-radius:12px;padding:16px 20px;
+  display:flex;align-items:center;gap:16px;
+  transition:transform .2s;cursor:default;
+}
+.diff-card.bad{background:#f7f7fa;border:1px solid #e0e0ee;opacity:.75}
+.diff-card.bad:hover{opacity:1}
+.diff-card-x{width:28px;height:28px;border-radius:50%;background:#f0e8e8;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#c97a7a;font-weight:700}
+.diff-card-body{flex:1}
+.diff-card-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#aaa;margin-bottom:3px}
+.diff-card-title{font-size:.86rem;font-weight:600;color:#888;text-decoration:line-through;text-decoration-color:#ccc}
+
+/* divider with arrow */
+.diff-divider{display:flex;align-items:center;gap:12px;padding:4px 0}
+.diff-divider-line{flex:1;height:1px;background:var(--border)}
+.diff-divider-arrow{width:32px;height:32px;border-radius:50%;background:var(--p500);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(85,88,232,.3)}
+.diff-divider-arrow svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* the winner card */
+.diff-card.good{
+  background:linear-gradient(135deg,var(--p900) 0%,var(--p700) 100%);
+  border:none;padding:24px 28px;border-radius:16px;
+  box-shadow:0 12px 36px rgba(85,88,232,.28);
+  align-items:flex-start;flex-direction:column;gap:10px;
+  transition:transform .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.diff-card.good::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(124,58,237,.35) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(167,139,250,.18) 0%,transparent 55%);pointer-events:none}
+.diff-card.good>*{position:relative;z-index:1}
+.diff-card.good:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(85,88,232,.36)}
+.diff-card.good .diff-card-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--p300);margin-bottom:0}
+.diff-card.good .diff-card-title{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.2}
+.diff-card.good .diff-card-sub{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65}
+.diff-card-check-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.diff-card-check{font-size:.72rem;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:999px;padding:4px 12px;font-weight:500}
+
+@media(max-width:860px){
+  .diff-inner{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:540px){
+  .feat-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .steps{grid-template-columns:1fr}
+  .strip{padding:14px 20px}
+  .diff-sec{padding:48px 20px}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<button id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<nav class="pill" id="pill" aria-label="Main navigation">
+  <span class="pill-logo">B2B<span>Stays</span></span>
+  <div class="pill-links">
+    <a href="#platform" data-section="platform">Platform</a>
+    <a href="#how" data-section="how">How It Works</a>
+    <a href="#proof" data-section="proof">Why Us</a>
+    <a href="#cta" data-section="cta">Contact</a>
+  </div>
+  <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="pill-cta">Book a Demo</a>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-in">
+    <div class="hero-left reveal-l">
+      <p class="eyebrow">B2B Hotel Management Portal</p>
+      <h1>One portal.<br><em>Every moving part</em> under control.</h1>
+      <p class="hero-sub">Hotels that sell through travel agents juggle a lot: agent bookings, commission dues, city ledger, cab requests, package sales, and vendor coordination. B2BStays brings all of it into one place, so nothing slips through.</p>
+      <div class="hero-acts">
+        <a href="#cta" class="btn-p">Book a Demo &rarr;</a>
+        <a href="#platform" class="btn-g">See Features</a>
+      </div>
+    </div>
+    <div class="hero-img reveal-r d2">
+      <video src="b2b.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.28)"></video>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-sec" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Agent Bookings</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Commission Settlement</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Group Quotations</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>City Ledger</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Fleet Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Hotel Packages</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>WhatsApp Campaigns</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Vendor Approvals</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Staff Alerts</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Reputation Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Agent Bookings</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Commission Settlement</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Group Quotations</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>City Ledger</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Fleet Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Hotel Packages</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>WhatsApp Campaigns</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Vendor Approvals</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Staff Alerts</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Reputation Management</span>
+  </div>
+</div>
+
+<section class="diff-sec" id="diff">
+  <div class="diff-inner">
+    <div class="diff-left reveal-l">
+      <p class="tag">What makes us different</p>
+      <h2 class="h2">Most hotel software ignores<br><em>how B2B actually works.</em></h2>
+      <p class="sub">Agent relationships are built on trust: timely commission payouts, accurate ledger statements, and quick responses to group requests. B2BStays is built around exactly that, not adapted from something designed for walk-in guests.</p>
+      <div class="diff-pills">
+        <div class="diff-pill">
+          <span class="diff-pill-dot"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+          <span>Purpose-built for agent-hotel workflows, not adapted</span>
+        </div>
+        <div class="diff-pill">
+          <span class="diff-pill-dot"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <span>Official Razorpay + WhatsApp Business API integrations</span>
+        </div>
+        <div class="diff-pill">
+          <span class="diff-pill-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span>Six modules in one flat subscription, no per-booking fees</span>
+        </div>
+        <div class="diff-pill">
+          <span class="diff-pill-dot"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>
+          <span>Role-based access for every department in your hotel</span>
+        </div>
+      </div>
+    </div>
+    <div class="diff-right reveal-r d2">
+      <div class="diff-stack">
+        <div class="diff-card bad">
+          <span class="diff-card-x">✕</span>
+          <div class="diff-card-body">
+            <div class="diff-card-label">Generic PMS</div>
+            <div class="diff-card-title">Built for front desk, not for travel agents</div>
+          </div>
+        </div>
+        <div class="diff-card bad">
+          <span class="diff-card-x">✕</span>
+          <div class="diff-card-body">
+            <div class="diff-card-label">Spreadsheets + WhatsApp</div>
+            <div class="diff-card-title">Manual, scattered, and no audit trail</div>
+          </div>
+        </div>
+        <div class="diff-divider">
+          <div class="diff-divider-line"></div>
+          <div class="diff-divider-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="diff-divider-line"></div>
+        </div>
+        <div class="diff-card good">
+          <div class="diff-card-label">B2BStays</div>
+          <div class="diff-card-title">One portal. Every B2B operation.</div>
+          <div class="diff-card-sub">Commissions, credit accounts, packages, fleet, and campaigns. All connected, all in one place.</div>
+          <div class="diff-card-check-row">
+            <span class="diff-card-check">✓ Agent bookings</span>
+            <span class="diff-card-check">✓ City ledger</span>
+            <span class="diff-card-check">✓ WhatsApp campaigns</span>
+            <span class="diff-card-check">✓ Fleet management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="platform">
+  <div class="sec-in">
+    <div class="reveal">
+      <p class="tag">The Platform</p>
+      <h2 class="h2">Six modules. Every B2B operation <em>covered</em>.</h2>
+      <p class="sub">The spreadsheets, the WhatsApp threads, the end-of-month reconciliation headaches. B2BStays replaces all of it with one structured platform that keeps every department on the same page.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal d1">
+        <div class="feat-card-inner">
+          <div class="feat-front">
+            <div class="feat-top" style="background:rgba(200,241,53,.15)">
+              <div class="feat-logo">Hotel <span>Bookings</span></div>
+              <p class="feat-tagline">Agent bookings, group quotes &amp; commission settlement, all in one view</p>
+            </div>
+            <div class="feat-img"><img src="imgs/img-travel agents.png" alt="Hotel Bookings"></div>
+          </div>
+          <div class="feat-back" style="background:linear-gradient(135deg,#1a3a1a,#2d6a2d)">
+            <div class="feat-back-title">Hotel Bookings</div>
+            <div class="feat-back-body">Every B2B booking channel in one view. Filter by agent, city, or commission status. Settle individually or in bulk with Razorpay payment links.</div>
+            <div class="feat-back-tags"><span class="feat-back-tag">Agent channels</span><span class="feat-back-tag">Group quotes</span><span class="feat-back-tag">Commissions</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-card-inner">
+          <div class="feat-front">
+            <div class="feat-top" style="background:rgba(197,198,248,.22)">
+              <div class="feat-logo">City <span>Ledger</span></div>
+              <p class="feat-tagline">Real-time credit accounts, balance tracking &amp; downloadable statements</p>
+            </div>
+            <div class="feat-img"><img src="imgs/img- city ledger.png" alt="City Ledger"></div>
+          </div>
+          <div class="feat-back" style="background:linear-gradient(135deg,var(--p900),var(--p700))">
+            <div class="feat-back-title">City Ledger</div>
+            <div class="feat-back-body">Live credit balances for every corporate and travel agent account. Balance due, unassigned credits, downloadable statements. The spreadsheet is gone.</div>
+            <div class="feat-back-tags"><span class="feat-back-tag">Credit accounts</span><span class="feat-back-tag">Statements</span><span class="feat-back-tag">Balances</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-card-inner">
+          <div class="feat-front">
+            <div class="feat-top" style="background:rgba(168,230,207,.22)">
+              <div class="feat-logo">Hotel <span>Packages</span></div>
+              <p class="feat-tagline">Publish multi-day packages for agents to sell, with tiered pricing &amp; commissions</p>
+            </div>
+            <div class="feat-img"><img src="imgs/img- packages.png" alt="Hotel Packages"></div>
+          </div>
+          <div class="feat-back" style="background:linear-gradient(135deg,#0f3d2e,#1a6b4a)">
+            <div class="feat-back-title">Hotel Packages</div>
+            <div class="feat-back-body">Build multi-day itineraries with Budget, Standard and Premium tiers. Agents book directly or submit quote requests. Commissions tracked automatically.</div>
+            <div class="feat-back-tags"><span class="feat-back-tag">Multi-day builder</span><span class="feat-back-tag">Tiered pricing</span><span class="feat-back-tag">MICE</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card reveal d4">
+        <div class="feat-card-inner">
+          <div class="feat-front">
+            <div class="feat-top" style="background:rgba(179,217,245,.22)">
+              <div class="feat-logo">Fleet &amp; <span>Transport</span></div>
+              <p class="feat-tagline">Hour-by-hour fleet calendar, cab bookings, driver &amp; rate card management</p>
+            </div>
+            <div class="feat-img"><img src="imgs/img- fleet.png" alt="Fleet & Transport"></div>
+          </div>
+          <div class="feat-back" style="background:linear-gradient(135deg,#0d2a3d,#1a5276)">
+            <div class="feat-back-title">Fleet &amp; Transport</div>
+            <div class="feat-back-body">Live availability calendar per vehicle. Airport, hourly and multi-day bookings. Driver profiles, rate cards and manual blocks. All managed from one screen.</div>
+            <div class="feat-back-tags"><span class="feat-back-tag">Live calendar</span><span class="feat-back-tag">Drivers</span><span class="feat-back-tag">Rate cards</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card reveal d5">
+        <div class="feat-card-inner">
+          <div class="feat-front">
+            <div class="feat-top" style="background:rgba(245,198,208,.22)">
+              <div class="feat-logo">Marketing &amp; <span>Campaigns</span></div>
+              <p class="feat-tagline">WhatsApp &amp; Email campaigns to agents from the hotel's own Business number</p>
+            </div>
+            <div class="feat-img"><img src="imgs/img- marketing.png" alt="Marketing"></div>
+          </div>
+          <div class="feat-back" style="background:linear-gradient(135deg,#3d0d1a,#7a1a35)">
+            <div class="feat-back-title">Marketing &amp; Campaigns</div>
+            <div class="feat-back-body">Bulk WhatsApp and email to segmented agent lists. Template library, marketing calendar, AI prompt library and content approval queue. No third-party tools.</div>
+            <div class="feat-back-tags"><span class="feat-back-tag">WhatsApp API</span><span class="feat-back-tag">Email</span><span class="feat-back-tag">Templates</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card reveal d6">
+        <div class="feat-card-inner">
+          <div class="feat-front">
+            <div class="feat-top" style="background:rgba(253,230,138,.22)">
+              <div class="feat-logo">Vendors &amp; <span>Alerts</span></div>
+              <p class="feat-tagline">Automated approval chains &amp; real-time staff alerts for operational events</p>
+            </div>
+            <div class="feat-img"><img src="imgs/img-vendor.png" alt="Vendors & Alerts"></div>
+          </div>
+          <div class="feat-back" style="background:linear-gradient(135deg,#3d2e00,#7a5c00)">
+            <div class="feat-back-title">Vendors &amp; Alerts</div>
+            <div class="feat-back-body">Service requests route to vendors automatically. No reply in time? The next vendor is contacted and staff alerted. No WhatsApp chains, no missed handoffs.</div>
+            <div class="feat-back-tags"><span class="feat-back-tag">Auto-routing</span><span class="feat-back-tag">Escalation</span><span class="feat-back-tag">Staff alerts</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="sec-in">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+      <p class="tag" style="justify-content:center">How It Works</p>
+      <h2 class="h2">Up and running in <em>four steps</em></h2>
+    </div>
+    <div class="steps-wrap">
+      <div class="steps">
+        <div class="step reveal d1">
+          <div class="step-head">
+            <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div class="step-n">01</div>
+          </div>
+          <h3>Onboard your property</h3>
+          <p>Connect Razorpay, WhatsApp Business, your reviews account, and configure property settings.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-head">
+            <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="step-n">02</div>
+          </div>
+          <h3>Map agents &amp; channels</h3>
+          <p>Add every B2B agent, assign distribution channels, and set commission rates: net or percentage.</p>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-head">
+            <div class="step-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div class="step-n">03</div>
+          </div>
+          <h3>Activate your modules</h3>
+          <p>Enable only the modules you need: bookings, ledger, packages, transport, marketing, or vendors.</p>
+        </div>
+        <div class="step reveal d4">
+          <div class="step-head">
+            <div class="step-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+            <div class="step-n">04</div>
+          </div>
+          <h3>Run from one dashboard</h3>
+          <p>Your entire team manages bookings, finance, operations, and marketing from one place.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec light" id="faq">
+  <div class="sec-in">
+    <div class="reveal">
+      <p class="tag">Common Questions</p>
+      <h2 class="h2">Everything you need <em>to know</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-img reveal-l d2">
+        <div class="faq-stat-panel">
+          <div class="faq-stat">
+            <div class="faq-stat-num">6<span> modules</span></div>
+            <div class="faq-stat-label">Agent bookings, city ledger, packages, fleet, marketing and vendor workflows — all in one subscription.</div>
+          </div>
+          <div class="faq-stat-divider"></div>
+          <div class="faq-stat">
+            <div class="faq-stat-num">1<span> dashboard</span></div>
+            <div class="faq-stat-label">Every department — reservations, finance, ops and marketing — working from the same screen.</div>
+          </div>
+          <div class="faq-stat-divider"></div>
+          <div class="faq-stat">
+            <div class="faq-stat-num">0<span> spreadsheets</span></div>
+            <div class="faq-stat-label">Commission tracking, ledger reconciliation and group quotes handled automatically with a full audit trail.</div>
+          </div>
+          <div class="faq-stat-divider"></div>
+          <div class="faq-stat">
+            <div class="faq-stat-num">&lt; 1<span> week</span></div>
+            <div class="faq-stat-label">Typical onboarding time. Setup done with you, included in every plan.</div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-list reveal-r d1">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is B2BStays only for B2B bookings, or does it cover direct bookings too?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>B2BStays is purpose-built for B2B operations: travel agent bookings, corporate credit accounts, group quotations, and trade marketing. It is not a direct booking engine or a front-desk PMS, and it integrates alongside your existing property systems.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does commission settlement work?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>Every confirmed agent booking tracks its commission automatically. You can settle individual bookings with a "Knock Off" action, or pay all pending dues for an agent in a single bulk payment via NEFT, with an optional payment reference recorded against each settlement.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does the WhatsApp campaign module use our hotel's number?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>Yes. B2BStays connects to the official WhatsApp Business API using your hotel's own registered Business number. Campaigns go out from your number, conversations land in your inbox, and agents see your hotel name, not a third-party sender.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the vendor approval workflow handle timeouts?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>When a vendor doesn't respond within the configured timeout window, the system automatically escalates to the next backup vendor in the approval chain. Staff alerts are raised (marked High priority) for every escalation and unresolved event, so nothing falls through.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can different staff members have different access levels?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>Yes. B2BStays supports role-based access control configured at the property level. Your reservations team, finance team, operations team, and marketing team each see only the modules and actions relevant to their role.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What does onboarding look like?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>After signing up, our team walks you through property configuration, agent mapping, and module activation in a structured onboarding session. Most properties are fully set up within a week. Onboarding is included in every plan.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I track which agents are generating the most revenue?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>Yes. B2BStays tracks bookings, revenue, and commission dues per agent with channel-wise breakdowns. You can see which agents are booking most frequently, which channels are performing, and which accounts have outstanding balances, all from the same dashboard.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does B2BStays handle group and MICE bookings?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-body"><p>Yes. The platform includes a dedicated group quotation module where you can negotiate room rates, add-ons, and special terms with agents. Quotes move through a status workflow (Enquiry &rarr; Negotiation &rarr; Confirmed), with payment links and a full audit trail attached to each quote.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="proof">
+  <div class="sec-in">
+    <div class="reveal" style="max-width:600px">
+      <p class="tag">Why hotels choose B2BStays</p>
+      <h2 class="h2">Built specifically for<br><em>B2B hotel operations</em></h2>
+      <p class="sub">Selling through travel agents is a different business. There are commissions to track, credit accounts to maintain, group quotes to negotiate, vendors to coordinate, and agents to keep engaged. B2BStays is built for that reality.</p>
+    </div>
+    <div class="trust-row">
+      <div class="trust-card light reveal d1">
+        <div class="tc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="tc-body">
+          <h3>Purpose-built for B2B, not adapted</h3>
+          <p>Every module, from commission settlement to vendor approval chains, is designed around how B2B hotel operations actually work, not retrofitted from a generic PMS.</p>
+        </div>
+      </div>
+      <div class="trust-card light reveal d2">
+        <div class="tc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="tc-body">
+          <h3>Integrations you can rely on</h3>
+          <p>Razorpay for payments (PCI-DSS compliant), the official WhatsApp Business API for campaigns, and a connected reviews bridge, not third-party hacks.</p>
+        </div>
+      </div>
+      <div class="trust-card dark reveal d3">
+        <div class="tc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="tc-body">
+          <h3>One platform, not ten subscriptions</h3>
+          <p>Bookings, ledger, packages, transport, marketing, vendor workflows, replacing the stack of disconnected tools your team patches together every day.</p>
+        </div>
+      </div>
+      <div class="trust-card dark reveal d4">
+        <div class="tc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="tc-body">
+          <h3>Designed for the whole team</h3>
+          <p>Reservations, finance, ops, and marketing each work from the same dashboard. No more copying data between tools or chasing updates over WhatsApp.</p>
+        </div>
+      </div>
+      <div class="trust-card wide reveal d2">
+        <div class="trust-wide-col">
+          <h3>What B2BStays includes</h3>
+          <div class="trust-check-list">
+            <div class="trust-check">Agent bookings across all B2B channels with channel-wise reporting</div>
+            <div class="trust-check">Group quotation negotiation with status tracking and payment links</div>
+            <div class="trust-check">Commission settlement: per booking or bulk, with payment reference</div>
+            <div class="trust-check">City ledger with real-time balances and downloadable statements</div>
+            <div class="trust-check">Multi-day hotel packages with tiered pricing for agents to sell</div>
+            <div class="trust-check">Fleet calendar, cab bookings, driver &amp; rate card management</div>
+          </div>
+        </div>
+        <div class="trust-wide-col">
+          <h3>What it replaces</h3>
+          <div class="trust-check-list">
+            <div class="trust-check">Commission tracking spreadsheets updated manually each month</div>
+            <div class="trust-check">Group quote emails with no audit trail or status visibility</div>
+            <div class="trust-check">WhatsApp group chats for vendor coordination and driver allocation</div>
+            <div class="trust-check">Separate accounting software for corporate credit accounts</div>
+            <div class="trust-check">Personal phone numbers for marketing campaigns to agents</div>
+            <div class="trust-check">Paper logs and phone calls for cab bookings and fleet scheduling</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec" id="cta">
+  <div class="cta-sec-bg-text">B2B</div>
+  <div class="cta-inner">
+    <div class="cta-left reveal-l">
+      <p class="tag" style="color:var(--p300)">Get Started</p>
+      <h2 class="h2" style="color:#fff;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.08;margin:0">See it working for<br><em>a hotel like yours.</em></h2>
+      <p style="font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:400px">A 30-minute walkthrough built around how your property actually operates. No pressure, no generic pitch deck.</p>
+      <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--warm);color:#fff;font-size:.92rem;font-weight:700;padding:15px 36px;border-radius:8px;letter-spacing:.03em;transition:background .2s,transform .15s,box-shadow .2s;margin-top:4px" onmouseover="this.style.background='#ea6a0a';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(249,115,22,.4)'" onmouseout="this.style.background='var(--warm)';this.style.transform='none';this.style.boxShadow='none'">Book a Free Demo &rarr;</a>
+    </div>
+    <div class="cta-right reveal-r d2">
+      <p class="cta-right-label">What to expect</p>
+      <div class="cta-checks-list">
+        <div class="cta-check-item">Live walkthrough of the modules relevant to your property</div>
+        <div class="cta-check-item">We map B2BStays to your current agent and vendor workflow</div>
+        <div class="cta-check-item">Clear next steps, only if it makes sense for your operation</div>
+        <div class="cta-check-item">30 minutes. No commitment, no pitch deck</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-in">
+    <span style="font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;color:rgba(255,255,255,.75)">B2B<span style="color:var(--p300)">Stays</span></span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <a href="#" style="font-size:.71rem;color:rgba(255,255,255,.45);transition:color .15s" onmouseover="this.style.color='rgba(255,255,255,.75)'" onmouseout="this.style.color='rgba(255,255,255,.45)'">Privacy Policy</a>
+      <a href="#" style="font-size:.71rem;color:rgba(255,255,255,.45);transition:color .15s" onmouseover="this.style.color='rgba(255,255,255,.75)'" onmouseout="this.style.color='rgba(255,255,255,.45)'">Terms of Use</a>
+      <a href="mailto:hello@b2bstays.com" style="font-size:.71rem;color:rgba(255,255,255,.45);transition:color .15s" onmouseover="this.style.color='rgba(255,255,255,.75)'" onmouseout="this.style.color='rgba(255,255,255,.45)'">hello@b2bstays.com</a>
+    </div>
+    <span style="font-size:.71rem;color:rgba(255,255,255,.3)">&copy; 2025 B2BStays</span>
+  </div>
+</div>
+
+<script>
+document.addEventListener('mousemove', e => {
+  const x = (e.clientX / innerWidth * 100).toFixed(1) + '%';
+  const y = (e.clientY / innerHeight * 100).toFixed(1) + '%';
+  document.body.style.setProperty('--mx', x);
+  document.body.style.setProperty('--my', y);
+});
+
+const prog = document.getElementById('progress');
+const btt  = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  const pct = (scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+  prog.style.width = pct + '%';
+  document.getElementById('pill').classList.toggle('up', scrollY > 40);
+  btt.classList.toggle('vis', scrollY > 400);
+}, {passive:true});
+
+const revEls = document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); } });
+}, {threshold:.12});
+revEls.forEach(el => revObs.observe(el));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.pill-links a[data-section]');
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const match = document.querySelector(`.pill-links a[data-section="${e.target.id}"]`);
+      if(match) match.classList.add('active');
+    }
+  });
+}, {threshold:.35});
+sections.forEach(s => secObs.observe(s));
+
+const firstFaq = document.querySelector('.faq-q');
+if(firstFaq){ firstFaq.classList.add('open'); firstFaq.setAttribute('aria-expanded','true'); firstFaq.nextElementSibling.style.maxHeight = firstFaq.nextElementSibling.scrollHeight + 'px'; }
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(b => {
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded','false');
+      b.nextElementSibling.style.maxHeight = '0';
+    });
+    if(!isOpen){
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>
