@@ -396,8 +396,11 @@ img{display:block;max-width:100%}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .hero-inner,.solve-top,.cta-inner{grid-template-columns:1fr}
-  .hero-img-wrap{display:none}
+  .hero-inner,.solve-top,.cta-inner,.faq-inner{grid-template-columns:1fr}
+  .faq-hd{position:static}
+  .hero-img-wrap{display:flex;margin-top:16px;margin-bottom:0;width:100%}
+  .hero-img-frame{width:100%;margin:0 auto}
+  .hero-img-frame-inner{padding:8px}
   .diff-grid{grid-template-columns:1fr 1fr}
   .diff-grid .diff-card:nth-child(n){grid-column:auto}
   .diff-card{border-bottom:1px solid var(--border)}
@@ -414,8 +417,10 @@ img{display:block;max-width:100%}
 }
 @media(max-width:640px){
   .nav-pill{padding:7px 7px 7px 18px}
+  .nav-pill-links{display:none}
   .hero-inner,.diff-sec,.mods-head,.solve-sec,.cta-sec,.bottom-strip{padding-left:20px;padding-right:20px}
   .for-sec{padding-left:20px;padding-right:20px}
+  .hero-inner{padding-top:80px;padding-bottom:0}
   .diff-grid{grid-template-columns:1fr}
   .diff-grid .diff-card:nth-child(n){grid-column:auto}
   .for-rows{padding-left:0;padding-top:24px;padding-bottom:60px;gap:12px}
@@ -424,6 +429,22 @@ img{display:block;max-width:100%}
   .mod-panel-body{padding:32px 20px}
   .bottom-strip-inner{flex-direction:column;gap:14px;text-align:center}
   .bs-links{justify-content:center}
+  .cta-inner{grid-template-columns:1fr;gap:32px}
+  .cta-btns{flex-direction:column;align-items:stretch;width:100%}
+  .cta-btns::after{display:none}
+  .btn-forest,.btn-outline-f{text-align:center;justify-content:center}
+  .hero-btn-row{display:flex;gap:10px;align-items:center}
+  .hero-cta-ghost{margin-left:0}
+  .hero-cta,.hero-cta-ghost{padding:13px 18px;font-size:.8rem;flex:1;text-align:center;justify-content:center}
+  .faq-inner{gap:32px;grid-template-columns:1fr}
+  .faq-hd{position:static}
+  .faq-hd-cta{display:inline-flex}
+}
+@media(max-width:480px){
+  .hero-inner{padding-top:72px;padding-bottom:0}
+  .diff-sec,.solve-sec,.faq-sec,.cta-sec{padding-top:48px;padding-bottom:48px}
+  .for-row-replaces-label{font-size:.65rem}
+  .mod-tab-label{font-size:.6rem}
 }
 </style>
 </head>
@@ -450,7 +471,7 @@ img{display:block;max-width:100%}
       <div class="hero-eyebrow">B2B Hotel Operations Platform</div>
       <h1 id="heroHeadline"></h1>
       <p class="hero-sub">Behind every hotel that sells through agents is a team managing a hundred moving parts: bookings, dues, cab requests, vendor calls, campaigns, often across spreadsheets and WhatsApp. B2BStays puts all of it in one place.</p>
-      <div>
+      <div class="hero-btn-row">
         <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="hero-cta">GET STARTED FREE &rarr;</a>
         <a href="https://www.eglobe-solutions.com/contact.html" target="_blank" rel="noopener" class="hero-cta-ghost">BOOK A DEMO</a>
       </div>

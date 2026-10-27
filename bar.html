@@ -188,13 +188,15 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
 .cb-line:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
 .cta-trust{display:flex;align-items:center;gap:16px;margin-top:28px}
 .cta-trust-dot{width:6px;height:6px;border-radius:50%;background:rgba(167,139,250,.5);flex-shrink:0}
-.cta-trust span{font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.5}
+.cta-trust-items{font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.5}
+.cta-ti{white-space:nowrap}
+.cta-sep{margin:0 4px;opacity:.4}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   .hero{flex-direction:column}
   .hero-left{flex:none;padding:120px 24px 40px}
-  .hero-right{flex:none;width:100%;height:55vw}
+  .hero-right{flex:none;width:100%;height:85vw;min-height:300px}
   .wrap{padding:0 24px}
   .bento{grid-template-columns:1fr}
   .bc.span2,.bc.tall{grid-column:span 1;grid-row:span 1}
@@ -204,6 +206,37 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
   .cases{grid-template-columns:1fr 1fr}
   .two{grid-template-columns:1fr;gap:36px}
   .nav-links{display:none}
+}
+@media(max-width:600px){
+  .hero-left{padding:90px 20px 36px}
+  .trust-grid{grid-template-columns:1fr;gap:32px}
+  .iso-box{min-height:240px}
+  #isoCanvas{height:240px}
+  .acc-list-wrap{min-height:0}
+  .acc-item.active .acc-body{height:auto}
+  .trust-heading{font-size:1.5rem;margin-bottom:24px}
+  .trust-card-wrap{padding:28px 20px !important;border-radius:20px !important}
+  .cases{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .cta-card{padding:40px 28px;border-radius:20px}
+  .cta-inner{grid-template-columns:1fr;gap:32px}
+  .cta-h{font-size:clamp(1.8rem,7vw,2.4rem)}
+  .cta-btns{flex-direction:column;align-items:stretch;min-width:0;width:100%}
+  .cb{text-align:center;justify-content:center}
+  .cta-trust{align-items:flex-start;gap:8px}
+  .cta-trust-dot{display:none}
+  .cta-trust-items{display:flex;flex-direction:column;gap:6px;font-size:.78rem;line-height:1.5}
+  .cta-sep{display:none}
+  .cta-ti{white-space:normal}
+}
+@media(max-width:480px){
+  .hero-right{height:90vw;min-height:280px}
+  .hero-left{padding:80px 16px 32px}
+  .trust-grid{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hb{text-align:center}
+  .cta-card{padding:32px 20px}
 }
 </style>
 </head>
@@ -478,7 +511,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
 <!-- BUILT FOR HOTELS — Privy-style: animated iso left, accordion right -->
 <div class="wrap" style="padding-top:0;padding-bottom:80px">
   <div class="trust-sec" style="padding:0">
-    <div style="background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.7);border-radius:32px;padding:48px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <div class="trust-card-wrap" style="background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.7);border-radius:32px;padding:48px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
     <div class="trust-grid">
 
       <!-- LEFT: animated isometric illustration in pastel box -->
@@ -528,7 +561,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
         <div class="cta-sub">A 30-minute walkthrough is enough to see what changes when bookings, commissions, fleet and vendors all run from the same place.</div>
         <div class="cta-trust">
           <div class="cta-trust-dot"></div>
-          <span>No commitment required &nbsp;·&nbsp; Live walkthrough of the real platform &nbsp;·&nbsp; Setup done with you</span>
+          <span class="cta-trust-items">
+            <span class="cta-ti">✓ No commitment required</span><span class="cta-sep"> · </span>
+            <span class="cta-ti">✓ Live walkthrough of the real platform</span><span class="cta-sep"> · </span>
+            <span class="cta-ti">✓ Setup done with you</span>
+          </span>
         </div>
       </div>
       <div class="cta-btns">

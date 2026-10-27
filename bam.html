@@ -334,6 +334,13 @@ img{display:block;max-width:100%}
   .strip{padding:14px 20px}
   .diff-sec{padding:48px 20px}
 }
+@media(max-width:480px){
+  .hero-left{padding:80px 20px 40px}
+  .pill-links{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .sec,.faq-sec{padding:36px 16px}
+}
 </style>
 </head>
 <body>
@@ -855,6 +862,20 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     }
   });
 });
+// Touch tap-to-flip for feat cards on mobile
+if('ontouchstart' in window){
+  document.querySelectorAll('.feat-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      card.classList.toggle('flipped');
+    });
+  });
+}
 </script>
+<style>
+@media(hover:none){
+  .feat-card.flipped .feat-card-inner{transform:rotateY(180deg)}
+  .feat-card:hover .feat-card-inner{transform:none}
+}
+</style>
 </body>
 </html>
