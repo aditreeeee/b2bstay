@@ -601,8 +601,23 @@ section{position:relative}
   .transport-cal{grid-template-columns:repeat(4,1fr)}
 }
 @media(max-width:600px){
-  .hero,.features,.pages-sec,.setup,.cta{padding-left:18px;padding-right:18px;padding-top:32px;padding-bottom:32px}
+  /* ── section spacing ── */
+  .hero{padding-left:18px;padding-right:18px;padding-top:40px;padding-bottom:40px}
+  .features{padding-left:18px;padding-right:18px;padding-top:40px;padding-bottom:40px}
+  .pages-sec{padding-left:0;padding-right:0;padding-top:36px;padding-bottom:36px}
+  .setup{padding-left:18px;padding-right:18px;padding-top:36px;padding-bottom:36px}
+  .cta{padding-left:18px;padding-right:18px;padding-top:48px;padding-bottom:48px}
+  .sec-in{padding-left:18px;padding-right:18px}
   .aud-strip{padding-left:18px;padding-right:18px}
+  /* ── tabbed UI: horizontal scrollable tabs ── */
+  .pages-sidebar{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:0;padding:0;border-bottom:1px solid var(--line2);border-right:none;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pages-sidebar::-webkit-scrollbar{display:none}
+  .ps-grp-lbl{display:none}
+  .ps-tab{flex:0 0 auto;font-size:11px;padding:10px 14px;margin:0;border-radius:0;border-bottom:2px solid transparent;white-space:nowrap}
+  .ps-tab.active{background:transparent;border-bottom-color:var(--purple);color:var(--purple)}
+  .ps-tab:hover:not(.active){background:transparent}
+  .pages-layout{grid-template-columns:1fr;min-height:auto}
+  .pages-content{height:480px;overflow-y:auto;-webkit-overflow-scrolling:touch}
   .hero h1{font-size:38px}
   .hero-actions{flex-direction:column;align-items:flex-start}
   .d-stats,.pp-stats{grid-template-columns:1fr 1fr}
